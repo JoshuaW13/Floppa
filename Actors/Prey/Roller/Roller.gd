@@ -19,8 +19,8 @@ func _physics_process(delta: float) -> void:
 	_decideAnimation();
 	move_and_slide(velocity);
 
-
 func _on_Area2D_body_entered(body: Node) -> void:
+	print("Made it here!")
 	if !threatDetected:
 		velocity *=-2
 	if velocity.x >=0:
@@ -29,6 +29,3 @@ func _on_Area2D_body_entered(body: Node) -> void:
 			animationplayer.play("FastFlyLeft");
 	
 	threatDetected = true;
-
-
-

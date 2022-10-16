@@ -35,7 +35,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 [node name="World" type="Node"]
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 215.432, 176.201 )
+position = Vector2( 217.955, 177.462 )
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -50,7 +50,7 @@ tile_data = PoolIntArray( 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0
 position = Vector2( 27, 119.311 )
 
 [node name="roller" parent="." instance=ExtResource( 3 )]
-position = Vector2( 34.7725, 21.1262 )
+position = Vector2( 38.548, 79.6464 )
 
 [node name="GoAwaybird" parent="." instance=ExtResource( 5 )]
-position = Vector2( 379, 146 )
+position = Vector2( 305.37, 67.6608 )

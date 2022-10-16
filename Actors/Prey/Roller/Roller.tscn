@@ -138,8 +138,8 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=10]
-radius = 34.5797
-height = 0.0
+radius = 8.92623
+height = 86.1832
 
 [node name="roller" type="KinematicBody2D"]
 collision_layer = 4
@@ -171,6 +171,7 @@ collision_layer = 2147483664
 
 [node name="DetectionRange" type="CollisionShape2D" parent="Area2D"]
 modulate = Color( 0.196078, 0.768627, 0.756863, 1 )
-position = Vector2( 1.05502, 30.8196 )
+position = Vector2( -0.204898, 2.78633 )
+rotation = -1.5708
 shape = SubResource( 10 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]

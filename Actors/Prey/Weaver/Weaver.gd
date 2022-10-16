@@ -8,6 +8,7 @@ var time = 0;
 var frequency;
 var amplitude;
 onready var animationplayer = $AnimationPlayer;
+
 func _ready() -> void:
 	#randomize weaver sinusoidal mouvement pattern
 	randomize();

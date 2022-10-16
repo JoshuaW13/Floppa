@@ -13,7 +13,6 @@ var screen_size = Vector2.ZERO;
 
 func _ready() -> void:
 	screen_size = get_viewport_rect().size
-	print(screen_size);
 
 #calculatte player direction based on input
 func get_direction() -> Vector2:
