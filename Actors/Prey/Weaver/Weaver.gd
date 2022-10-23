@@ -1,13 +1,13 @@
 extends Actor
 
-var speedArray = [60,70];
+var speedArray = [50];
 var frequencyArray = [2,3,4,5,6];
 var amplitudeArray = [1.0,1.5,1.75]
-var velocity;
 var time = 0;
 var frequency;
 var amplitude;
-onready var animationplayer = $AnimationPlayer;
+onready var animationplayer = $AnimationPlayer
+var velocity;
 
 func _ready() -> void:
 	#randomize weaver sinusoidal mouvement pattern
@@ -26,9 +26,16 @@ func determine_ypos()->float:
 	time += get_physics_process_delta_time();
 	var mouvement = cos(frequency*time)*amplitude;
 	return mouvement;
-	
 
 func _physics_process(delta: float) -> void:
 	_decideAnimation();
 	position.y += determine_ypos();
 	move_and_slide(velocity);
+
+
+func _on_Hitbox2_area_entered(area: Area2D) -> void:
+	queue_free()
+
+
+func _on_VisibilityNotifier2D_screen_exited() -> void:
+	queue_free()

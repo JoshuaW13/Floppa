@@ -1,13 +1,9 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Actors/Prey/Roller/roller-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Prey/Roller/Roller.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 6.72307
-height = 5.24264
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "DeathLeft"
 length = 0.4
 loop = true
@@ -24,7 +20,7 @@ tracks/0/keys = {
 "values": [ 16, 17, 18, 19 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "DeathRight"
 length = 0.4
 loop = true
@@ -41,7 +37,7 @@ tracks/0/keys = {
 "values": [ 20, 21, 22, 23 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "FastFlyLeft"
 length = 0.2
 loop = true
@@ -58,7 +54,7 @@ tracks/0/keys = {
 "values": [ 12, 13 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "FastFlyRight"
 length = 0.2
 loop = true
@@ -75,7 +71,7 @@ tracks/0/keys = {
 "values": [ 14, 15 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -91,7 +87,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -107,7 +103,7 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=7]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -122,7 +118,7 @@ tracks/0/keys = {
 "values": [ 8, 9 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=8]
 length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -137,13 +133,21 @@ tracks/0/keys = {
 "values": [ 10, 11 ]
 }
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 8.92623
 height = 86.1832
 
+[sub_resource type="CapsuleShape2D" id=10]
+radius = 6.72307
+height = 5.24264
+
+[sub_resource type="CapsuleShape2D" id=11]
+radius = 2.09698
+height = 6.79512
+
 [node name="roller" type="KinematicBody2D"]
 collision_layer = 4
-collision_mask = 0
+collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -151,20 +155,15 @@ texture = ExtResource( 1 )
 hframes = 24
 frame = 15
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
-modulate = Color( 0.941176, 0.0627451, 0.0627451, 1 )
-position = Vector2( -0.127167, 2.26712 )
-shape = SubResource( 1 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/DeathLeft = SubResource( 2 )
-anims/DeathRight = SubResource( 3 )
-anims/FastFlyLeft = SubResource( 4 )
-anims/FastFlyRight = SubResource( 5 )
-anims/FlyLeft = SubResource( 6 )
-anims/FlyRight = SubResource( 7 )
-anims/GlideLeft = SubResource( 8 )
-anims/GlideRight = SubResource( 9 )
+anims/DeathLeft = SubResource( 1 )
+anims/DeathRight = SubResource( 2 )
+anims/FastFlyLeft = SubResource( 3 )
+anims/FastFlyRight = SubResource( 4 )
+anims/FlyLeft = SubResource( 5 )
+anims/FlyRight = SubResource( 6 )
+anims/GlideLeft = SubResource( 7 )
+anims/GlideRight = SubResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2147483664
@@ -173,5 +172,23 @@ collision_layer = 2147483664
 modulate = Color( 0.196078, 0.768627, 0.756863, 1 )
 position = Vector2( -0.204898, 2.78633 )
 rotation = -1.5708
+shape = SubResource( 9 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="collisionshape" type="CollisionShape2D" parent="Hitbox"]
+modulate = Color( 0.941176, 0.0627451, 0.0627451, 1 )
+position = Vector2( -0.127167, 2.26712 )
 shape = SubResource( 10 )
+
+[node name="FootCollider" type="CollisionShape2D" parent="."]
+position = Vector2( -0.629959, 6.4571 )
+rotation = -1.5708
+shape = SubResource( 11 )
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]

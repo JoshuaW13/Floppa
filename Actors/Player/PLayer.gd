@@ -4,14 +4,16 @@ extends Actor
 const PLAYER_SPEED = Vector2(175, 500);
 
 #intitial variables
-var velocity = Vector2.ZERO; 
+
 onready var animationPlayer = $AnimationPlayer;
 var facing = "left";
 var attacked = 0;
 var animationFree = 1;
 var screen_size = Vector2.ZERO;
+var velocity;
 
 func _ready() -> void:
+	velocity = Vector2.ZERO; 
 	screen_size = get_viewport_rect().size
 
 #calculatte player direction based on input

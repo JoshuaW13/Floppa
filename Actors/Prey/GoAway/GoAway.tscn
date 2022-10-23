@@ -1,13 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Actors/Prey/GoAway/GoAway-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Prey/GoAway/GoAway.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 9.3254
-height = 0.0
-
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "DeathLeft"
 length = 0.2
 loop = true
@@ -24,7 +20,7 @@ tracks/0/keys = {
 "values": [ 8, 9 ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "DeathRight"
 length = 0.2
 loop = true
@@ -41,7 +37,7 @@ tracks/0/keys = {
 "values": [ 10, 11 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -57,7 +53,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.4
 loop = true
 tracks/0/type = "value"
@@ -73,8 +69,16 @@ tracks/0/keys = {
 "values": [ 4, 5, 6, 7 ]
 }
 
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 10.4622
+height = 0.0
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 1.31853, 102.581 )
+
+[sub_resource type="CapsuleShape2D" id=7]
+radius = 1.85946
+height = 3.91904
 
 [node name="GoAwaybird" type="KinematicBody2D"]
 collision_layer = 4
@@ -86,16 +90,20 @@ texture = ExtResource( 1 )
 hframes = 12
 frame = 10
 
-[node name="hitbox" type="CollisionShape2D" parent="."]
-modulate = Color( 0.952941, 0.0823529, 0.0823529, 1 )
-position = Vector2( 1.87559, 0.329282 )
-shape = SubResource( 1 )
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/DeathLeft = SubResource( 2 )
-anims/DeathRight = SubResource( 3 )
-anims/FlyLeft = SubResource( 4 )
-anims/FlyRight = SubResource( 5 )
+anims/DeathLeft = SubResource( 1 )
+anims/DeathRight = SubResource( 2 )
+anims/FlyLeft = SubResource( 3 )
+anims/FlyRight = SubResource( 4 )
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="hitbox" type="CollisionShape2D" parent="HurtBox"]
+modulate = Color( 0.952941, 0.0823529, 0.0823529, 1 )
+position = Vector2( 1.87559, 0.263065 )
+shape = SubResource( 5 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -104,3 +112,13 @@ modulate = Color( 0.12549, 0.835294, 0.784314, 1 )
 position = Vector2( 1.28275, 102.223 )
 scale = Vector2( 8, 1 )
 shape = SubResource( 6 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="FloorCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 1.98649, 6.0257 )
+rotation = -1.5708
+shape = SubResource( 7 )
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

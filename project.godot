@@ -93,6 +93,7 @@ Attack={
 2d_physics/layer_2="ennemies"
 2d_physics/layer_3="prey"
 2d_physics/layer_4="world"
+2d_physics/layer_5="attacks"
 
 [rendering]
 
