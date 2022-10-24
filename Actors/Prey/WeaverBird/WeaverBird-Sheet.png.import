@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/WeaverBird-Sheet.png-98b9dd5de40ad46127d40af117ee7a62.stex"
+path="res://.import/WeaverBird-Sheet.png-406252ad2e57f417c684d74c67f70b9d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Actors/Prey/Weaver/WeaverBird-Sheet.png"
-dest_files=[ "res://.import/WeaverBird-Sheet.png-98b9dd5de40ad46127d40af117ee7a62.stex" ]
+source_file="res://Actors/Prey/WeaverBird/WeaverBird-Sheet.png"
+dest_files=[ "res://.import/WeaverBird-Sheet.png-406252ad2e57f417c684d74c67f70b9d.stex" ]
 
 [params]
 

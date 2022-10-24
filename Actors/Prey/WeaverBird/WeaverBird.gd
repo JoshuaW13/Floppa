@@ -1,18 +1,16 @@
-extends Actor
+extends KinematicBody2D
 
-var speedArray = [50];
 var frequencyArray = [2,3,4,5,6];
 var amplitudeArray = [1.0,1.5,1.75]
 var time = 0;
 var frequency;
 var amplitude;
 onready var animationplayer = $AnimationPlayer
-var velocity;
+var velocity = Vector2(60.0, 0.0);
 
 func _ready() -> void:
 	#randomize weaver sinusoidal mouvement pattern
 	randomize();
-	velocity = Vector2(speedArray[randi()%speedArray.size()],0);
 	frequency = frequencyArray[randi()%frequencyArray.size()];
 	amplitude = amplitudeArray[randi()%amplitudeArray.size()];
 	
@@ -33,9 +31,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide(velocity);
 
 
-func _on_Hitbox2_area_entered(area: Area2D) -> void:
+func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
 
-func _on_VisibilityNotifier2D_screen_exited() -> void:
+func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	queue_free()

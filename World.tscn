@@ -72,6 +72,6 @@ position = Vector2( 448, 168 )
 rotation = -1.5708
 
 [node name="Timer" type="Timer" parent="PreySpawner"]
-wait_time = 2.0
+wait_time = 4.0
 autostart = true
 [connection signal="timeout" from="PreySpawner/Timer" to="PreySpawner" method="_on_Timer_timeout"]

@@ -1,0 +1,79 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Actors/Prey/WeaverBird/WeaverBird-Sheet.png" type="Texture" id=1]
+[ext_resource path="res://Actors/Prey/WeaverBird/WeaverBird.gd" type="Script" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "FlyLeft"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 4, 5, 6, 7 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "FlyRight"
+length = 0.4
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 2.10446
+height = 3.18401
+
+[sub_resource type="CapsuleShape2D" id=4]
+radius = 5.98478
+height = 0.0
+
+[node name="WeaverBird" type="KinematicBody2D"]
+collision_layer = 4
+collision_mask = 8
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+vframes = 3
+hframes = 4
+frame = 8
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FlyLeft = SubResource( 1 )
+anims/FlyRight = SubResource( 2 )
+
+[node name="footCollider" type="CollisionShape2D" parent="."]
+modulate = Color( 0.176471, 0.882353, 0.866667, 1 )
+position = Vector2( -0.140308, 4.34954 )
+rotation = -1.5708
+shape = SubResource( 3 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+modulate = Color( 0.933333, 0.109804, 0.109804, 1 )
+position = Vector2( -0.140308, 0.982151 )
+shape = SubResource( 4 )
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
