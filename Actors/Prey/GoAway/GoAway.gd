@@ -47,7 +47,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 	threatDetected = true;
 	detectionBox.set_deferred("disabled", true);
 	
-	velocity.y = -100
+	velocity.y = -120
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
@@ -56,6 +56,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 func _on_HurtBox_area_entered(area: Area2D) -> void:
 	detectionBox.set_deferred("disabled", true);
-	state = DEATH;
-	velocity.y = 100;
-	hurtbox.set_deferred("disabled", true);
+	#state = DEATH;
+	#velocity.y = 100;
+	#hurtbox.set_deferred("disabled", true);
+	queue_free();

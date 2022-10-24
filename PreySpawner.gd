@@ -29,14 +29,15 @@ func _on_Timer_timeout() -> void:
 	var prey = preys[randi()%preys.size()].instance()
 	var prey_spawn_location
 
+	#Choose spawner side
 	if spawner_side:
 		prey_spawn_location = $LeftPath/LeftPathLocation
 		spawner_side = false
 	elif !spawner_side:
-		print("Reached here!")
 		prey_spawn_location = $RightPath/RightPathLocation
 		prey.velocity.x *= -1
 		spawner_side = true
+	#Apply offset and add prey animal
 	prey_spawn_location.unit_offset = randf();
 	add_child(prey)
 	prey.position = prey_spawn_location.position;

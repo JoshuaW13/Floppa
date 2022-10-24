@@ -134,7 +134,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=9]
-radius = 8.92623
+radius = 15.4515
 height = 86.1832
 
 [sub_resource type="CapsuleShape2D" id=10]
@@ -170,7 +170,7 @@ collision_layer = 2147483664
 
 [node name="DetectionRange" type="CollisionShape2D" parent="Area2D"]
 modulate = Color( 0.196078, 0.768627, 0.756863, 1 )
-position = Vector2( -0.204898, 2.78633 )
+position = Vector2( -0.204898, 2.5879 )
 rotation = -1.5708
 shape = SubResource( 9 )
 

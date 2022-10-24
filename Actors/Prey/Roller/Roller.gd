@@ -48,9 +48,10 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 
 func _on_Hitbox_area_entered(area: Area2D) -> void:
-	state = DEATH
-	deathVelocity();
-	if velocity.x >=0:
-			animationplayer.play("DeathRight")
-	elif velocity.x <= 0:
-			animationplayer.play("DeathLeft");
+	queue_free()
+	#state = DEATH
+	#deathVelocity();
+	#if velocity.x >=0:
+	#		animationplayer.play("DeathRight")
+	#elif velocity.x <= 0:
+	#		animationplayer.play("DeathLeft");
