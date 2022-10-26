@@ -12,7 +12,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var detectionBox = $Area2D/DetectionBox
 onready var hurtbox = $HurtBox/hitbox
 var state = FLYING;
-var velocity = Vector2(70.0, 0.0)
+var velocity = Vector2((randi()%75+55), 0.0)
 
 func _decideAnimation()->void:
 	if threatDetected:

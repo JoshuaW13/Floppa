@@ -32,12 +32,12 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -32, 168, 0, 0, 0, 0, -32, 24 )
+"points": PoolVector2Array( 0, 0, 0, 0, -32, 24, 0, 0, 0, 0, -32, 152 )
 }
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 448, 168, 0, 0, 0, 0, 448, 24 )
+"points": PoolVector2Array( 0, 0, 0, 0, 448, 24, 0, 0, 0, 0, 448, 152 )
 }
 
 [node name="World" type="Node"]
@@ -61,15 +61,15 @@ script = ExtResource( 3 )
 curve = SubResource( 3 )
 
 [node name="LeftPathLocation" type="PathFollow2D" parent="PreySpawner/LeftPath"]
-position = Vector2( -32, 168 )
-rotation = -1.5708
+position = Vector2( -32, 152 )
+offset = 144.013
 
 [node name="RightPath" type="Path2D" parent="PreySpawner"]
 curve = SubResource( 4 )
 
 [node name="RightPathLocation" type="PathFollow2D" parent="PreySpawner/RightPath"]
-position = Vector2( 448, 168 )
-rotation = -1.5708
+position = Vector2( 448, 152 )
+offset = 144.013
 
 [node name="Timer" type="Timer" parent="PreySpawner"]
 wait_time = 4.0

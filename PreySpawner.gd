@@ -19,6 +19,25 @@ func _ready() -> void:
 	goaway = preload("res://Actors/Prey/GoAway/GoAway.tscn")
 	preys = [goaway];
 	
+func _endless_spawn(spawner_side, prey, prey_spawn_location)->void:
+	for i in 3:
+		if (i == 2) and (wave%3 ==0):
+			prey =roller.instance();
+		else:
+			prey = preys[randi()%preys.size()].instance();
+		spawner_side = randi()%2;
+		if spawner_side == 1:
+			prey_spawn_location = $LeftPath/LeftPathLocation
+		elif spawner_side == 0:
+			prey_spawn_location = $RightPath/RightPathLocation
+			prey.velocity.x *= -1
+		prey_spawn_location.unit_offset = randf();
+		add_child(prey)
+		prey.position = prey_spawn_location.position;
+		yield(get_tree().create_timer(1), "timeout")
+	wave +=1;
+		
+	
 
 func _on_Timer_timeout() -> void:
 	var prey = weaver.instance();
@@ -30,10 +49,11 @@ func _on_Timer_timeout() -> void:
 		prey = weaver.instance();
 	if wave <2 && wave != 0:
 		prey = preys[randi()%preys.size()].instance()
-		timer.wait_time = 2;
+		timer.wait_time = 10;
 		preys.append(weaver)
 	if wave >2:
-		prey = preys[randi()%preys.size()].instance()
+		_endless_spawn(spawner_side, prey, prey_spawn_location);
+		return;
 
 	#Choose spawner side
 	if spawner_side == 1:
