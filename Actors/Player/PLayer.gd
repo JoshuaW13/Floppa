@@ -3,18 +3,46 @@ extends Actor
 #constant max player speed
 const PLAYER_SPEED = Vector2(175, 500);
 
-#intitial variables
+#signals
+signal health_update(health)
+signal killed()
 
+#intitial variables
 onready var animationPlayer = $AnimationPlayer;
+onready var invulnerableTimer = $InvulnerabilityTimer
+onready var damageStatesAnimations = $DamageStateAnimations;
+onready var hurtbox = $HurtBox/CollisionShape2D
 var facing = "left";
 var attacked = 0;
 var animationFree = 1;
 var screen_size = Vector2.ZERO;
 var velocity;
+onready var health = health setget _set_health;
 
 func _ready() -> void:
-	velocity = Vector2.ZERO; 
+	velocity = Vector2.ZERO;
+	_set_health(3.0); 
 	screen_size = get_viewport_rect().size
+
+func damage(amount):
+	if invulnerableTimer.is_stopped():
+		invulnerableTimer.start()
+		hurtbox.set_deferred("disabled", true);
+		_set_health(health-amount);
+		damageStatesAnimations.play("Damage");
+		damageStatesAnimations.queue("Invincibility");
+
+func kill():
+	pass
+	
+func _set_health(value):
+	var prev_health = health
+	health = clamp(value,0,3)
+	if health != prev_health:
+		emit_signal("health_updated", health)
+		if health == 0:
+			kill()
+			emit_signal("killed")
 
 #calculatte player direction based on input
 func get_direction() -> Vector2:
@@ -98,6 +126,7 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	#print(health)
 	var is_jump_interrupted = Input.is_action_just_released("jump") and velocity.y <0.0 #see if jump interupted
 	if is_on_floor(): attacked = 0; #Check if can attack again
 	var direction = get_direction() #calc direction
@@ -107,9 +136,13 @@ func _physics_process(delta: float) -> void:
 	position.y = clamp(position.y, 0 ,screen_size.y);
 	velocity = move_and_slide(velocity, FLOOR_NORMAL); #move based on that velocity
 	
-	
-	
 
+func _on_HurtBox_area_entered(area: Area2D) -> void:
+	if(area.name == "biteHitbox"):
+		damage(3)
+	else:
+		damage(1)
 
-
-
+func _on_InvulnerabilityTimer_timeout() -> void:
+	damageStatesAnimations.play("Rest")
+	hurtbox.set_deferred("disabled", false);

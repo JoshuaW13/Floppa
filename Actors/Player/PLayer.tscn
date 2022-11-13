@@ -1,11 +1,11 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Actors/Player/CaracalIdle-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Player/PLayer.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 12.7618
-height = 21.9366
+radius = 15.9114
+height = 8.62698
 
 [sub_resource type="Animation" id=2]
 resource_name = "AerialAttackLeft"
@@ -70,6 +70,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("HurtBox:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.530032, -2.15278 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HurtBox:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "AerialAttackRight"
@@ -133,6 +157,30 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("HurtBox:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3.17869, -3.34468 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("HurtBox:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -210,6 +258,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("HurtBox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4.20448 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HurtBox:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "AttackRight"
@@ -286,6 +358,30 @@ tracks/5/keys = {
 "update": 1,
 "values": [ true, false ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("HurtBox:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.05946, 4.20448 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("HurtBox:rotation_degrees")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.6
@@ -313,6 +409,30 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 4.20448 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HurtBox:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -342,6 +462,30 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -2.25137, 3.93961 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HurtBox:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.1
@@ -358,6 +502,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 29 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtBox:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.530032, -2.15278 ) ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 0.3
@@ -372,6 +540,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 27, 28, 29 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -0.530032, -2.15278 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 45.0 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -389,6 +581,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 40 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtBox:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3.17869, -3.34468 ) ]
+}
 
 [sub_resource type="Animation" id=11]
 length = 0.3
@@ -403,6 +619,30 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
 "values": [ 38, 39, 40 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("HurtBox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3.17869, -3.34468 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -45.0 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -432,6 +672,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=13]
 length = 0.6
@@ -460,29 +712,125 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("HurtBox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0.397, 4.204 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HurtBox:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
-[sub_resource type="CapsuleShape2D" id=14]
-radius = 7.41247
-height = 14.812
+[sub_resource type="Animation" id=14]
+resource_name = "Damage"
+length = 0.1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.972549, 0.0588235, 0.0588235, 1 ), Color( 1, 0.996078, 0.996078, 1 ) ]
+}
 
-[sub_resource type="CapsuleShape2D" id=15]
-radius = 5.51968
+[sub_resource type="Animation" id=15]
+resource_name = "Invincibility"
+length = 0.2
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Rest"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CapsuleShape2D" id=17]
+radius = 8.90573
+height = 16.918
+
+[sub_resource type="CapsuleShape2D" id=18]
+radius = 6.69691
 height = 12.1361
+
+[sub_resource type="CapsuleShape2D" id=19]
+radius = 12.7577
+height = 10.9922
+
+[sub_resource type="CapsuleShape2D" id=20]
+radius = 2.97572
+height = 23.4348
 
 [node name="PLayer" type="KinematicBody2D"]
 collision_mask = 2147483656
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0.996078, 0.996078, 1 )
 position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
-frame = 46
 
-[node name="FootCollider" type="CollisionShape2D" parent="."]
+[node name="Detection range" type="Area2D" parent="."]
+collision_mask = 10
+
+[node name="FootCollider" type="CollisionShape2D" parent="Detection range"]
 modulate = Color( 0.160784, 0.752941, 0.764706, 1 )
-position = Vector2( -0.56746, 2.08112 )
+position = Vector2( 0.258433, -1.22244 )
 rotation = -1.5708
 shape = SubResource( 1 )
 
@@ -501,18 +849,23 @@ anims/JumpRightStart = SubResource( 11 )
 anims/RunLeft = SubResource( 12 )
 anims/RunRight = SubResource( 13 )
 
+[node name="DamageStateAnimations" type="AnimationPlayer" parent="."]
+anims/Damage = SubResource( 14 )
+anims/Invincibility = SubResource( 15 )
+anims/Rest = SubResource( 16 )
+
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -2.082, 0 )
+position = Vector2( -4.014, 0 )
+scale = Vector2( -1, 1 )
 
 [node name="Hitbox" type="Area2D" parent="Position2D"]
 position = Vector2( -16.7975, -11.2975 )
 collision_layer = 16
-collision_mask = 2147483654
+collision_mask = 2147483780
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Hitbox"]
-visible = false
 modulate = Color( 0.921569, 0.117647, 0.117647, 1 )
-shape = SubResource( 14 )
+shape = SubResource( 17 )
 disabled = true
 
 [node name="Position2D2" type="Position2D" parent="."]
@@ -521,12 +874,34 @@ scale = Vector2( -1, 1 )
 
 [node name="GroundHitbox" type="Area2D" parent="Position2D2"]
 position = Vector2( 5.35143, -1.04055 )
-collision_mask = 6
+collision_layer = 16
+collision_mask = 132
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D2/GroundHitbox"]
 visible = false
 modulate = Color( 0.878431, 0.588235, 0.176471, 1 )
 position = Vector2( -26.0139, 1.18921 )
-shape = SubResource( 15 )
+shape = SubResource( 18 )
 disabled = true
+
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2( 0, 4.20448 )
+collision_layer = 64
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+modulate = Color( 0.933333, 0.12549, 0.12549, 1 )
+position = Vector2( -1.05112, -3.27134 )
+rotation = -1.5708
+shape = SubResource( 19 )
+
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FootCollider" type="CollisionShape2D" parent="."]
+position = Vector2( -0.117985, 11.4445 )
+rotation = -1.5708
+shape = SubResource( 20 )
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
+[connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]

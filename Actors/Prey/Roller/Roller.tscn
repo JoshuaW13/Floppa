@@ -166,7 +166,7 @@ anims/GlideLeft = SubResource( 7 )
 anims/GlideRight = SubResource( 8 )
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 2147483664
+collision_layer = 2147483652
 
 [node name="DetectionRange" type="CollisionShape2D" parent="Area2D"]
 modulate = Color( 0.196078, 0.768627, 0.756863, 1 )

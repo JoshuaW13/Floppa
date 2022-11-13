@@ -93,7 +93,10 @@ Attack={
 2d_physics/layer_2="ennemies"
 2d_physics/layer_3="prey"
 2d_physics/layer_4="world"
-2d_physics/layer_5="attacks"
+2d_physics/layer_5="playerAttacks"
+2d_physics/layer_6="ennemyAttacks"
+2d_physics/layer_7="hurtboxes"
+2d_physics/layer_8="ennemyHurtboxes"
 
 [rendering]
 
