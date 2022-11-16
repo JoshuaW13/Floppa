@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Actors/Ennemies/Springbok/Springbok-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Ennemies/Springbok/springbok.gd" type="Script" id=2]
@@ -22,6 +22,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 20, 21, 22, 23, 24, 25, 26, 27 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "DeathRight"
@@ -37,6 +49,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
 "values": [ 12, 13, 14, 15, 16, 17, 18, 19 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
 }
 
 [sub_resource type="Animation" id=4]
@@ -55,6 +79,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 6, 7, 8, 9, 10, 11 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, -90.0, -90.0, 0.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -11.1244, -15.4946 ), Vector2( -15.0973, -20.3947 ), Vector2( -16.9514, -24.712 ), Vector2( -33.1082, -3.33731 ), Vector2( -33.0641, -2.35731 ), Vector2( -17.5915, -24.8179 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.6
@@ -71,8 +119,32 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Hitbox:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9.68967, -15.68 ), Vector2( 12.3383, -20.8449 ), Vector2( 14.7221, -25.5066 ), Vector2( 31.4749, -2.78771 ), Vector2( 31.3645, -2.71487 ), Vector2( 15.0973, -22.838 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Hitbox:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 0.0, 90.0, 90.0, 0.0 ]
+}
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "Damage"
 length = 0.3
 step = 0.05
@@ -106,8 +178,12 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=6]
+[sub_resource type="CapsuleShape2D" id=8]
 height = 37.25
+
+[sub_resource type="CapsuleShape2D" id=9]
+radius = 8.44797
+height = 13.4949
 
 [node name="springbok" type="KinematicBody2D"]
 collision_layer = 0
@@ -115,11 +191,12 @@ collision_mask = 8
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 7
-frame = 15
+frame = 3
 
 [node name="footCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 24.722 )
@@ -134,7 +211,7 @@ anims/RunRight = SubResource( 5 )
 
 [node name="DamageStateAnimator" type="AnimationPlayer" parent="."]
 autoplay = "Rest"
-anims/Damage = SubResource( 8 )
+anims/Damage = SubResource( 6 )
 anims/Rest = SubResource( 7 )
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -145,12 +222,28 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 modulate = Color( 0.0313726, 0.952941, 0.976471, 1 )
 rotation = -1.5708
-shape = SubResource( 6 )
+shape = SubResource( 8 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 6.0625, -0.125 )
 scale = Vector2( 3.21875, 1 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+position = Vector2( 31.4749, -2.78771 )
+rotation = 1.5708
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+modulate = Color( 1, 0.00392157, 0.00392157, 1 )
+position = Vector2( 0.794598, -0.397297 )
+rotation = -1.5708
+shape = SubResource( 9 )
+
+[node name="VisibilityNotifier2D2" type="VisibilityNotifier2D" parent="."]
 [connection signal="killed" from="." to="." method="_on_springbok_killed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D2" to="." method="_on_VisibilityNotifier2D2_screen_exited"]

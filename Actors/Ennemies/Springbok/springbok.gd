@@ -2,6 +2,7 @@ extends Actor
 
 #signals
 signal killed()
+signal hit();
 #fields
 enum states{
 	RUN,
@@ -70,3 +71,11 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		velocity.x = 0
 		yield(get_tree().create_timer(1), "timeout")
 		queue_free()
+
+
+func _on_Hitbox_area_entered(area: Area2D) -> void:
+	get_tree().call_group("Player","set_knock")
+
+
+func _on_VisibilityNotifier2D2_screen_exited() -> void:
+	queue_free()

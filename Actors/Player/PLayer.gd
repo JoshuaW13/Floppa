@@ -13,6 +13,7 @@ onready var invulnerableTimer = $InvulnerabilityTimer
 onready var damageStatesAnimations = $DamageStateAnimations;
 onready var hurtbox = $HurtBox/CollisionShape2D
 var facing = "left";
+var knock = false;
 var attacked = 0;
 var animationFree = 1;
 var screen_size = Vector2.ZERO;
@@ -33,6 +34,7 @@ func damage(amount):
 		damageStatesAnimations.queue("Invincibility");
 
 func kill():
+	print("Player died!");
 	pass
 	
 func _set_health(value):
@@ -44,11 +46,15 @@ func _set_health(value):
 			kill()
 			emit_signal("killed")
 
+func set_knock():
+	if damageStatesAnimations.current_animation != "Invincibility":
+		knock = true;
+
 #calculatte player direction based on input
 func get_direction() -> Vector2:
 	return Vector2(
 		Input.get_action_strength("MoveRight") - Input.get_action_strength("MoveLeft"),
-		-1.0 if Input.is_action_just_pressed("jump") and is_on_floor() else 1.0
+		-1.0 if (Input.is_action_just_pressed("jump") and is_on_floor()) or knock else 1.0
 		)
 
 #calculate move velocity based on direction and if jump is interrupted dont allow double jumps
@@ -60,10 +66,17 @@ func calculate_move_velocity(linear_velocity: Vector2, speed: Vector2, direction
 		return out;
 	out.x = speed.x*direction.x
 	if direction.y == -1.0:
-		out.y = speed.y*direction.y
+		out.y = jump(speed, direction)
 	if is_jump_interrupted:
 		out.y =0.0
+	if knock:
+		speed.y = speed.y/1.1
+		out.y = jump(speed, direction);
+		knock = false;
 	return out
+
+func jump(speed: Vector2, direction: Vector2):
+	return speed.y*direction.y
 
 #Decide animation state
 func _decide_state()-> void:
@@ -138,6 +151,7 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_HurtBox_area_entered(area: Area2D) -> void:
+	print("Entered!")
 	if(area.name == "biteHitbox"):
 		damage(3)
 	else:
