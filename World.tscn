@@ -78,8 +78,8 @@ wait_time = 4.0
 autostart = true
 
 [node name="springbok" parent="." instance=ExtResource( 5 )]
-position = Vector2( -41.7444, 158.204 )
+position = Vector2( -32, 161 )
 
 [node name="brownhyena" parent="." instance=ExtResource( 4 )]
-position = Vector2( 47.931, 163.974 )
+position = Vector2( 43, 170.5 )
 [connection signal="timeout" from="PreySpawner/Timer" to="PreySpawner" method="_on_Timer_timeout"]

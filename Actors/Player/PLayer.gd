@@ -8,6 +8,12 @@ signal health_update(health)
 signal killed()
 
 #intitial variables
+enum states{
+	IDLE,
+	RUN,
+	JUMP,
+}
+var state = states.IDLE
 onready var animationPlayer = $AnimationPlayer;
 onready var invulnerableTimer = $InvulnerabilityTimer
 onready var damageStatesAnimations = $DamageStateAnimations;
@@ -78,72 +84,94 @@ func calculate_move_velocity(linear_velocity: Vector2, speed: Vector2, direction
 func jump(speed: Vector2, direction: Vector2):
 	return speed.y*direction.y
 
-#Decide animation state
-func _decide_state()-> void:
-	#Check for ground attack
-	if(Input.is_action_just_pressed("Attack") and is_on_floor()):
-		animationFree =0;
-		if (facing == "left"):
-			animationPlayer.play("AttackLeft");
-		elif (facing == "right"):
-			animationPlayer.play("AttackRight");
-	#Check if player is running
-	if(velocity.x < 0 and is_on_floor() and animationFree):
-		facing = "left";
-		animationPlayer.play("RunLeft");
-	elif(velocity.x > 0 and is_on_floor() and animationFree):
+#Animation State Handlers
+func idle_state():
+	if !is_on_floor():
+		state = states.JUMP
+		start_jump_anim()
+		return
+	if Input.is_action_just_pressed("Attack"):
+		attack()
+	if !animationFree:
+		return
+	if facing == "left":
+		animationPlayer.play("IdleLeft")
+	if facing == "right":
+		animationPlayer.play("IdleRight")
+	if velocity.x != 0:
+		state = states.RUN
+
+func run_state():
+	if !is_on_floor():
+		state = states.JUMP
+		start_jump_anim()
+		return
+	if Input.is_action_just_pressed("Attack"):
+		attack()
+	if !animationFree:
+		return
+	if velocity.x < 0:
+		facing = "left"
+		animationPlayer.play("RunLeft")
+	if velocity.x > 0:
 		facing = "right"
 		animationPlayer.play("RunRight")
-	#Check if Idle
-	elif( velocity.x == 0.0	and is_on_floor() and facing == "left" and animationFree):
-		animationPlayer.play("IdleLeft");
-	elif( velocity.x == 0 and is_on_floor() and facing == "right" and animationFree):
-		animationPlayer.play("IdleRight")
-	#Check if Jumnp animations should start
-	elif((animationPlayer.current_animation == "RunLeft" or animationPlayer.current_animation == "IdleLeft")
-	and velocity.y <0 and !is_on_floor()):
-		facing = "left";
-		animationPlayer.play("JumpLeftStart");
-	elif((animationPlayer.current_animation == "RunRight" or animationPlayer.current_animation == "IdleRight")
-	and velocity.y <0 and !is_on_floor()):
-		facing = "right";
-		animationPlayer.play("JumpRightStart");
-	#Check if attack animations should play	
-	elif(Input.is_action_just_pressed("Attack") and !is_on_floor() and attacked == 0):
-		attacked = 1
-		if (facing == "left"):
-			animationPlayer.play("AerialAttackLeft");
-		elif (facing == "right"):
-			animationPlayer.play("AerialAttackRight");
-	
+	if velocity.x == 0:
+		state = states.IDLE
 
+func attack():
+	animationFree = 0;
+	if facing == "left":
+		animationPlayer.play("AttackLeft")
+	if facing == "right":
+		animationPlayer.play("AttackRight")
 
-#Some animation states play on finish of others
+func start_jump_anim():
+	if facing == "left":
+		animationPlayer.play("JumpLeftStart")
+		animationPlayer.queue("JumpLeft")
+	if facing == "right":
+		animationPlayer.play("JumpRightStart")
+		animationPlayer.queue("JumpRight")
+
+func jump_state():
+	if is_on_floor():
+		state = states.IDLE
+		attacked =0
+		return
+	if Input.is_action_just_pressed("Attack"):
+		if attacked == 0: 
+			aerial_attack()
+
+func aerial_attack():
+	attacked = 1
+	if facing == "left":
+		animationPlayer.play("AerialAttackLeft")
+		animationPlayer.queue("JumpLeft")
+	if facing == "right":
+		animationPlayer.play("AerialAttackRight")
+		animationPlayer.queue("JumpRight")
+
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	if anim_name == "JumpLeftStart":
-		animationPlayer.play("JumpLeft");
-	elif anim_name == "JumpRightStart":
-		animationPlayer.play("JumpRight")
-	elif anim_name == "AerialAttackLeft":
-		if !is_on_floor():
-			animationPlayer.play("JumpLeft");
-		elif is_on_floor():
-			animationPlayer.play("IdleLeft");
-	elif anim_name == "AerialAttackRight":
-		if !is_on_floor():
-			animationPlayer.play("JumpRight");
-		elif is_on_floor():
-			animationPlayer.play("IdleRight");
-	elif anim_name == "AttackLeft" or anim_name == "AttackRight":
-		animationFree = 1;
-
+	animationFree = 1
+	if anim_name == "AttackLeft":
+		animationPlayer.play("IdleLeft")
+	if anim_name == "AttackRight":
+		animationPlayer.play("IdleRight")
 
 func _physics_process(delta: float) -> void:
 	#print(health)
 	var is_jump_interrupted = Input.is_action_just_released("jump") and velocity.y <0.0 #see if jump interupted
 	if is_on_floor(): attacked = 0; #Check if can attack again
 	var direction = get_direction() #calc direction
-	_decide_state(); #deiced animation state
+	#handle animation state
+	match state:
+		states.IDLE:
+			idle_state()
+		states.RUN:
+			run_state()
+		states.JUMP:
+			jump_state()
 	velocity = calculate_move_velocity(velocity, PLAYER_SPEED, direction, is_jump_interrupted); #calc velocty
 	position.x = clamp(position.x, 16, screen_size.x-11);
 	position.y = clamp(position.y, 0 ,screen_size.y);

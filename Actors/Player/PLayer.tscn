@@ -220,7 +220,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0.2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( -26.0139, 1.18921 ) ]
+"values": [ Vector2( 7.72985, 5.05412 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Position2D2:scale")
@@ -317,10 +317,10 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -26.0139, 1.18921 ) ]
+"values": [ Vector2( -26.0139, 1.18921 ), Vector2( 7.5812, 5.50008 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Position2D2:scale")
@@ -803,8 +803,8 @@ radius = 8.90573
 height = 16.918
 
 [sub_resource type="CapsuleShape2D" id=18]
-radius = 6.69691
-height = 12.1361
+radius = 16.3509
+height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=19]
 radius = 12.7577
@@ -826,6 +826,7 @@ position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
+frame = 46
 
 [node name="Detection range" type="Area2D" parent="."]
 collision_mask = 10
@@ -857,8 +858,7 @@ anims/Invincibility = SubResource( 15 )
 anims/Rest = SubResource( 16 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -4.014, 0 )
-scale = Vector2( -1, 1 )
+position = Vector2( -2.082, 0 )
 
 [node name="Hitbox" type="Area2D" parent="Position2D"]
 position = Vector2( -16.7975, -11.2975 )
@@ -871,8 +871,8 @@ shape = SubResource( 17 )
 disabled = true
 
 [node name="Position2D2" type="Position2D" parent="."]
-position = Vector2( 0, 2.97302 )
-scale = Vector2( -1, 1 )
+position = Vector2( -5.91889, 3.12167 )
+rotation = -3.14159
 
 [node name="GroundHitbox" type="Area2D" parent="Position2D2"]
 position = Vector2( 5.35143, -1.04055 )
@@ -880,14 +880,14 @@ collision_layer = 16
 collision_mask = 132
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D2/GroundHitbox"]
-visible = false
 modulate = Color( 0.878431, 0.588235, 0.176471, 1 )
-position = Vector2( -26.0139, 1.18921 )
+position = Vector2( 7.72985, 5.05412 )
 shape = SubResource( 18 )
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
-position = Vector2( 0, 4.20448 )
+position = Vector2( -0.530032, -2.15278 )
+rotation = 0.785398
 collision_layer = 64
 collision_mask = 32
 
