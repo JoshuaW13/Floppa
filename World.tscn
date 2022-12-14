@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actors/Player/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WorldArt/Grass Tile 1.png" type="Texture" id=2]
 [ext_resource path="res://PreySpawner.gd" type="Script" id=3]
-[ext_resource path="res://Actors/Ennemies/BrownHyena/brownHyena.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Actors/Ennemies/Springbok/springbok.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Actors/Ennemies/MartialEagle/MartialEagle.tscn" type="PackedScene" id=4]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -45,7 +44,7 @@ _data = {
 [node name="World" type="Node"]
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
-position = Vector2( 218.357, 173.574 )
+position = Vector2( 200.857, 177.074 )
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
@@ -77,9 +76,6 @@ offset = 144.013
 wait_time = 4.0
 autostart = true
 
-[node name="springbok" parent="." instance=ExtResource( 5 )]
-position = Vector2( -32, 161 )
-
-[node name="brownhyena" parent="." instance=ExtResource( 4 )]
-position = Vector2( 43, 170.5 )
+[node name="eagle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 424.5, 87 )
 [connection signal="timeout" from="PreySpawner/Timer" to="PreySpawner" method="_on_Timer_timeout"]

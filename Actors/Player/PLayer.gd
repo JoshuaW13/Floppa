@@ -47,7 +47,7 @@ func _set_health(value):
 	var prev_health = health
 	health = clamp(value,0,3)
 	if health != prev_health:
-		emit_signal("health_updated", health)
+		emit_signal("health_update", health)
 		if health == 0:
 			kill()
 			emit_signal("killed")
@@ -172,19 +172,21 @@ func _physics_process(delta: float) -> void:
 			run_state()
 		states.JUMP:
 			jump_state()
+	#calculate velocity and move player
 	velocity = calculate_move_velocity(velocity, PLAYER_SPEED, direction, is_jump_interrupted); #calc velocty
 	position.x = clamp(position.x, 16, screen_size.x-11);
 	position.y = clamp(position.y, 0 ,screen_size.y);
 	velocity = move_and_slide(velocity, FLOOR_NORMAL); #move based on that velocity
 	
-
+#damage player
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	print("Entered!")
+	#print("Entered!")
 	if(area.name == "biteHitbox"):
 		damage(3)
 	else:
 		damage(1)
 
+#give player invincibility
 func _on_InvulnerabilityTimer_timeout() -> void:
 	damageStatesAnimations.play("Rest")
 	hurtbox.set_deferred("disabled", false);
