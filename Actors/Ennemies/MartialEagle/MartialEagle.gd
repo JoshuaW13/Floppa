@@ -11,8 +11,8 @@ enum states{
 }
 var health = health setget _set_health;
 var state = states.SOAR;
-var VELOCITY = Vector2(-60,0)
-var UP = Vector2(-100,-100)
+var VELOCITY = Vector2(60,0)
+var UP = Vector2(100,-100)
 var speed = 150;
 var target = null;
 onready var animationPlayer = $AnimationPlayer
@@ -20,7 +20,19 @@ onready var damagePlayer = $DamagePlayer
 onready var detection = $Detection/CollisionShape2D
 
 func _ready() -> void:
+	detection.set_deferred("disabled", true)
 	_set_health(2)
+
+func init(direction):
+	direction = direction.to_lower();
+	if direction == "left":
+		VELOCITY = Vector2(-60,0)
+		UP = Vector2(-100,-100)
+	elif direction == "right":
+		VELOCITY = Vector2(60,0)
+		UP = Vector2(100,-100)
+	else:
+		print("Invalid direction passed!")
 
 #health functions
 func _set_health(value):
@@ -93,14 +105,18 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 #eagle detects player
 func _on_Detection_area_entered(area: Area2D) -> void:
-	print("detected!")
+	print("detected!",area.name)
 	detection.set_deferred("disabled", true)
 	target = area.global_position;
-	target.y -=20
-	print("Targets ",target)
+	target.y -=15
+	#print("Targets ",target)
 	state = states.DOWN;
 
 #ealge is damaged
 func _on_HurtBox_area_entered(area: Area2D) -> void:
 	print("damged!")
 	damage(1)
+
+
+func _on_VisibilityNotifier2D_screen_entered() -> void:
+	detection.set_deferred("disabled", false)

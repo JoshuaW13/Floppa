@@ -1,5 +1,8 @@
 extends Node
 
+#signals
+signal Ennemy;
+
 #Prey 
 var weaver;
 var roller;
@@ -40,18 +43,27 @@ func _endless_spawn(spawner_side, prey, prey_spawn_location)->void:
 	
 
 func _on_Timer_timeout() -> void:
+	#start ennemy spawner
+	if wave ==2:
+		emit_signal("Ennemy");
+		wave += 1;
+		return
+
 	var prey = weaver.instance();
 	spawner_side = randi()%2;
 	var prey_spawn_location;
 	
 	#early wave scripting
 	if wave ==0:
+		#print("wave 0")
 		prey = weaver.instance();
 	if wave <2 && wave != 0:
+		#print("reached here!")
 		prey = preys[randi()%preys.size()].instance()
 		timer.wait_time = 10;
 		preys.append(weaver)
 	if wave >2:
+		#print("wave greater then 2")
 		_endless_spawn(spawner_side, prey, prey_spawn_location);
 		return;
 

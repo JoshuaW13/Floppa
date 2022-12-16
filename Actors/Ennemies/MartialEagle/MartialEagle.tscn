@@ -391,7 +391,7 @@ tracks/4/keys = {
 "values": [ 0.0 ]
 }
 
-[sub_resource type="Animation" id=12]
+[sub_resource type="Animation" id=7]
 resource_name = "Damage"
 length = 0.3
 tracks/0/type = "value"
@@ -407,7 +407,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=13]
+[sub_resource type="Animation" id=8]
 resource_name = "Rest"
 length = 0.01
 tracks/0/type = "value"
@@ -423,22 +423,22 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=7]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 1.85134
 height = 3.81363
 
-[sub_resource type="CircleShape2D" id=8]
+[sub_resource type="CircleShape2D" id=10]
 radius = 98.0641
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=11]
 radius = 4.01223
 height = 9.63507
 
-[sub_resource type="CapsuleShape2D" id=10]
+[sub_resource type="CapsuleShape2D" id=12]
 radius = 2.29459
 height = 2.90554
 
-[sub_resource type="CapsuleShape2D" id=11]
+[sub_resource type="CapsuleShape2D" id=13]
 height = 5.46858
 
 [node name="eagle" type="KinematicBody2D"]
@@ -460,13 +460,13 @@ anims/SwoopLeft = SubResource( 5 )
 anims/SwoopRight = SubResource( 6 )
 
 [node name="DamagePlayer" type="AnimationPlayer" parent="."]
-anims/Damage = SubResource( 12 )
-anims/Rest = SubResource( 13 )
+anims/Damage = SubResource( 7 )
+anims/Rest = SubResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 10.8595 )
 rotation = -1.5708
-shape = SubResource( 7 )
+shape = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 
@@ -475,26 +475,29 @@ collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Detection"]
 position = Vector2( 0, 106.954 )
-shape = SubResource( 8 )
+shape = SubResource( 10 )
 
 [node name="HitBox" type="Area2D" parent="."]
 position = Vector2( 3.04595, 7.01894 )
 collision_layer = 32
+collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 modulate = Color( 0.992157, 0.0509804, 0.0509804, 1 )
 rotation = -1.5708
-shape = SubResource( 9 )
+shape = SubResource( 11 )
 
 [node name="beakHitBox" type="Area2D" parent="."]
 position = Vector2( 10.5946, -4.63515 )
+collision_layer = 32
+collision_mask = 64
 __meta__ = {
 "_edit_group_": true
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="beakHitBox"]
 modulate = Color( 0.964706, 0.0352941, 0.0352941, 1 )
-shape = SubResource( 10 )
+shape = SubResource( 12 )
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 128
@@ -503,7 +506,8 @@ collision_mask = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 modulate = Color( 0.0823529, 0.937255, 0.815686, 1 )
 rotation = -1.5708
-shape = SubResource( 11 )
+shape = SubResource( 13 )
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Detection" to="." method="_on_Detection_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

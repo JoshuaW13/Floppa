@@ -18,6 +18,15 @@ onready var hurtbox = $HurtBox/CollisionShape2D
 func _ready() -> void:
 	_set_health(2);
 
+func init(direction):
+	direction = direction.to_lower();
+	if direction == "left":
+		velocity = Vector2(-150,0)
+	elif direction == "right":
+		velocity = Vector2(150,0)
+	else:
+		print("Invalid direction passed!")
+
 func _set_health(value):
 	var prev_health = health;
 	health = clamp(value,0,3);

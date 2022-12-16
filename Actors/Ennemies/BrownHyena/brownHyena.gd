@@ -13,7 +13,6 @@ enum states{
 var state = states.WALK
 var damage = 1.0;
 var velocity = Vector2(30,0.0);
-var direction;
 onready var health = health setget _set_health;
 onready var animationPlayer = $AnimationPlayer
 onready var damagePLayer = $DamageStatePlayer
@@ -24,13 +23,16 @@ onready var hurtBox = $HurtBox/CollisionShape2D
 func _ready() -> void:
 	_set_health(6)
 	biteHitbox.set_deferred("disabled", true);
-	if direction == "Left":
+
+func init(direction):
+	direction = direction.to_lower();
+	if direction == "left":
 		HYENA_WALK_SPEED = Vector2(-30,0)
-	elif direction == "Right":
+	elif direction == "right":
 		HYENA_WALK_SPEED = Vector2(30,0)
 	else:
-		HYENA_WALK_SPEED = Vector2(30,0)
-	velocity = HYENA_WALK_SPEED
+		print("Invalid direction passed!")
+	velocity = HYENA_WALK_SPEED;
 	HYENA_RUN_SPEED = HYENA_WALK_SPEED*-4
 
 func _set_health(value):
@@ -38,12 +40,20 @@ func _set_health(value):
 	health = clamp(value,0,6);
 	if health != prev_health:
 		if health == 0:
-			emit_signal("killed")
+			killed()
 
 func _damage(value):
 	_set_health(health-value)
 	damagePLayer.play("Damage");
 	damagePLayer.queue("Rest")
+
+#Make hyena run away after being killed
+func killed() -> void:
+	state = states.FLEE
+	biteHitbox.set_deferred("disabled", true);
+	hurtBox.set_deferred("disabled", true);
+	detectionBox.set_deferred("disabled", true)
+	velocity = HYENA_RUN_SPEED
 
 func _process_walk()->void:
 	if velocity.x < 0:
@@ -81,6 +91,8 @@ func _on_DetectionBox_area_entered(area: Area2D) -> void:
 
 #Player leaves hyena's bite detec area
 func _on_DetectionBox_area_exited(area: Area2D) -> void:
+	if state == states.FLEE:
+		return
 	state = states.WALK;
 	velocity = HYENA_WALK_SPEED
 
@@ -90,13 +102,7 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 		return
 	_damage(1)
 
-#Make hyena run away after being killed
-func _on_brownhyena_killed() -> void:
-	state = states.FLEE
-	biteHitbox.set_deferred("disabled", true);
-	hurtBox.set_deferred("disabled", true);
-	detectionBox.set_deferred("disabled", true)
-	velocity = HYENA_RUN_SPEED
+
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
