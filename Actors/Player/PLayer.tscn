@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.9114
-height = 8.62698
+height = 3.29472
 
 [sub_resource type="Animation" id=2]
 resource_name = "AerialAttackLeft"
@@ -282,6 +282,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Detection range/FootCollider:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
+}
 
 [sub_resource type="Animation" id=5]
 resource_name = "AttackRight"
@@ -382,6 +406,30 @@ tracks/7/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/8/type = "value"
+tracks/8/path = NodePath("Detection range/FootCollider:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
+}
 
 [sub_resource type="Animation" id=6]
 length = 0.6
@@ -433,6 +481,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -486,6 +558,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [ 0.0 ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.1
@@ -526,6 +622,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -0.530032, -2.15278 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Detection range/FootCollider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.35968, -3.65751 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -40.6 ]
+}
 
 [sub_resource type="Animation" id=9]
 length = 0.3
@@ -564,6 +684,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 45.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Detection range/FootCollider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 2.35968, -3.65751 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -47.7 ]
 }
 
 [sub_resource type="Animation" id=10]
@@ -605,6 +749,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -3.17869, -3.34468 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("Detection range/FootCollider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5.66356, -3.77599 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 40.6 ]
+}
 
 [sub_resource type="Animation" id=11]
 length = 0.3
@@ -643,6 +811,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -45.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Detection range/FootCollider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -5.66356, -3.77599 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 47.7 ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -683,6 +875,30 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Detection range/FootCollider:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
 }
 
 [sub_resource type="Animation" id=13]
@@ -735,6 +951,30 @@ tracks/3/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Detection range/FootCollider:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Detection range/FootCollider:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ -90.0002 ]
 }
 
 [sub_resource type="Animation" id=14]
@@ -826,15 +1066,15 @@ position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
-frame = 46
+frame = 38
 
 [node name="Detection range" type="Area2D" parent="."]
 collision_mask = 10
 
 [node name="FootCollider" type="CollisionShape2D" parent="Detection range"]
 modulate = Color( 0.160784, 0.752941, 0.764706, 1 )
-position = Vector2( 0.258433, -1.22244 )
-rotation = -1.5708
+position = Vector2( -5.66356, -3.77599 )
+rotation = 0.832522
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -871,8 +1111,9 @@ shape = SubResource( 17 )
 disabled = true
 
 [node name="Position2D2" type="Position2D" parent="."]
-position = Vector2( -5.91889, 3.12167 )
+position = Vector2( 0, 2.97302 )
 rotation = -3.14159
+scale = Vector2( -1, 1 )
 
 [node name="GroundHitbox" type="Area2D" parent="Position2D2"]
 position = Vector2( 5.35143, -1.04055 )
@@ -886,8 +1127,8 @@ shape = SubResource( 18 )
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
-position = Vector2( -0.530032, -2.15278 )
-rotation = 0.785398
+position = Vector2( -3.17869, -3.34468 )
+rotation = -0.785398
 collision_layer = 64
 collision_mask = 32
 

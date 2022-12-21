@@ -39,7 +39,6 @@ func _set_health(value):
 	var prev_health = health
 	health = clamp(value,0,2)
 	if health != prev_health:
-		emit_signal("health_updated", health)
 		if health == 0:
 			killed()
 			emit_signal("kill")
