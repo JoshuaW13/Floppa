@@ -8,6 +8,7 @@ var wave = 0;
 var eagle;
 var hyena;
 var deer;
+var num_hyenas = 0;
 var ennemies;
 var aerials;
 
@@ -29,7 +30,17 @@ func spawn_ennemy():
 		timer.wait_time = 10;
 		timer.start()
 	else:
-		en = ennemies[randi()%ennemies.size()].instance();
+		var temp = ennemies[randi()%ennemies.size()];
+		if temp==hyena:
+			num_hyenas+=1;
+		else:
+			num_hyenas=0;
+		if num_hyenas==3:
+			print("entered here!")
+			while temp ==hyena:
+				temp=ennemies[randi()%ennemies.size()]
+			num_hyenas=0;
+		en = temp.instance();
 	var side = randi()%2;
 	#decide the side
 	if side == 0:
@@ -51,7 +62,8 @@ func spawn_aerial():
 		timer.wait_time = 10;
 		timer.start()
 	else:
-		en = aerials[randi()%aerials.size()].instance();
+		var temp = aerials[randi()%aerials.size()]
+		en = temp.instance();
 	var side = randi()%2;
 	#decide the side
 	if side == 0:
@@ -66,14 +78,11 @@ func spawn_aerial():
 
 func _on_Timer_timeout() -> void:
 	var numEnem = 1;
-	if wave >20:
-		numEnem = 5;
-	elif wave >15:
-		numEnem = 4;
-	elif wave >10:
-		numEnem = 3;
-	elif wave>5:
-		numEnem = 2;
+	if wave  >=2 and wave <5:
+		numEnem = 2
+	elif wave>=5:
+		numEnem = wave/5+2
+
 	for i in numEnem:
 		var altitude = randi()%2;
 		if altitude ==1:

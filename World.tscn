@@ -110,6 +110,7 @@ position = Vector2( -24, 176 )
 position = Vector2( 440, 176 )
 
 [node name="Timer" type="Timer" parent="EnnemySpawner"]
+wait_time = 5.0
 
 [node name="PLayer" parent="." instance=ExtResource( 1 )]
 position = Vector2( 207.568, 178.457 )

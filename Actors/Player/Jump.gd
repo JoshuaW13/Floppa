@@ -2,7 +2,7 @@
 extends PlayerState
 
 # If we get a message asking us to jump, we jump.
-func enter(msg := {}) -> void:
+func enter(_msg := {}) -> void:
 	#start the start of jump animation
 	if(player.facing == 'left'):
 		player.animationPlayer.play("JumpLeftStart")
@@ -21,7 +21,7 @@ func handle_input(_event: InputEvent) -> void:
 			player.animationPlayer.play("AerialAttackRight")
 			player.animationPlayer.queue("JumpRight")
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	#print("Is jumping")
 	#print(player.facing)
 	# Landing.
