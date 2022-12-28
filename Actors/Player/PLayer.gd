@@ -1,3 +1,4 @@
+class_name Player
 extends Actor
 
 #constant max player speed
@@ -84,94 +85,11 @@ func calculate_move_velocity(linear_velocity: Vector2, speed: Vector2, direction
 func jump(speed: Vector2, direction: Vector2):
 	return speed.y*direction.y
 
-#Animation State Handlers
-func idle_state():
-	if !is_on_floor():
-		state = states.JUMP
-		start_jump_anim()
-		return
-	if Input.is_action_just_pressed("Attack"):
-		attack()
-	if !animationFree:
-		return
-	if facing == "left":
-		animationPlayer.play("IdleLeft")
-	if facing == "right":
-		animationPlayer.play("IdleRight")
-	if velocity.x != 0:
-		state = states.RUN
-
-func run_state():
-	if !is_on_floor():
-		state = states.JUMP
-		start_jump_anim()
-		return
-	if Input.is_action_just_pressed("Attack"):
-		attack()
-	if !animationFree:
-		return
-	if velocity.x < 0:
-		facing = "left"
-		animationPlayer.play("RunLeft")
-	if velocity.x > 0:
-		facing = "right"
-		animationPlayer.play("RunRight")
-	if velocity.x == 0:
-		state = states.IDLE
-
-func attack():
-	animationFree = 0;
-	if facing == "left":
-		animationPlayer.play("AttackLeft")
-	if facing == "right":
-		animationPlayer.play("AttackRight")
-
-func start_jump_anim():
-	if facing == "left":
-		animationPlayer.play("JumpLeftStart")
-		animationPlayer.queue("JumpLeft")
-	if facing == "right":
-		animationPlayer.play("JumpRightStart")
-		animationPlayer.queue("JumpRight")
-
-func jump_state():
-	if is_on_floor():
-		state = states.IDLE
-		attacked =0
-		return
-	if Input.is_action_just_pressed("Attack"):
-		if attacked == 0: 
-			aerial_attack()
-
-func aerial_attack():
-	attacked = 1
-	if facing == "left":
-		animationPlayer.play("AerialAttackLeft")
-		animationPlayer.queue("JumpLeft")
-	if facing == "right":
-		animationPlayer.play("AerialAttackRight")
-		animationPlayer.queue("JumpRight")
-
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
-	animationFree = 1
-	if anim_name == "AttackLeft":
-		animationPlayer.play("IdleLeft")
-	if anim_name == "AttackRight":
-		animationPlayer.play("IdleRight")
-
 func _physics_process(delta: float) -> void:
 	#print(health)
 	var is_jump_interrupted = Input.is_action_just_released("jump") and velocity.y <0.0 #see if jump interupted
 	if is_on_floor(): attacked = 0; #Check if can attack again
 	var direction = get_direction() #calc direction
-	#handle animation state
-	match state:
-		states.IDLE:
-			idle_state()
-		states.RUN:
-			run_state()
-		states.JUMP:
-			jump_state()
 	#calculate velocity and move player
 	velocity = calculate_move_velocity(velocity, PLAYER_SPEED, direction, is_jump_interrupted); #calc velocty
 	position.x = clamp(position.x, 16, screen_size.x-11);

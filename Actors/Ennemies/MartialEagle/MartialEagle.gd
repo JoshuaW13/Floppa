@@ -99,12 +99,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
-	print("destroyed!");
+	#print("destroyed!");
 	queue_free();
 
 #eagle detects player
 func _on_Detection_area_entered(area: Area2D) -> void:
-	print("detected!",area.name)
+	#print("detected!",area.name)
 	detection.set_deferred("disabled", true)
 	target = area.global_position;
 	target.y -=15
@@ -113,7 +113,7 @@ func _on_Detection_area_entered(area: Area2D) -> void:
 
 #ealge is damaged
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	print("damged!")
+	#print("damged!")
 	damage(1)
 
 

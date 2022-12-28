@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://interface/images/RestartButton.png" type="Texture" id=1]
+[ext_resource path="res://interface/images/HomeButton.png" type="Texture" id=2]
+[ext_resource path="res://interface/images/MenuBackground.png" type="Texture" id=3]
+[ext_resource path="res://interface/images/PauseButton.png" type="Texture" id=4]
+[ext_resource path="res://interface/images/XButton.png" type="Texture" id=5]
+[ext_resource path="res://interface/images/PauseButtonPressed.png" type="Texture" id=6]
+[ext_resource path="res://interface/PauseMenu.gd" type="Script" id=7]
+[ext_resource path="res://interface/images/XButtonPressed.png" type="Texture" id=8]
+[ext_resource path="res://interface/images/HomeButtonPressed.png" type="Texture" id=9]
+[ext_resource path="res://interface/images/RestartButtonPressed.png" type="Texture" id=10]
+
+[node name="PauseMenu" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 7 )
+
+[node name="Control" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseScreen" type="ColorRect" parent="Control"]
+visible = false
+modulate = Color( 1, 1, 1, 0.521569 )
+margin_right = 416.0
+margin_bottom = 224.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseMenu" type="Control" parent="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="Control/PauseMenu"]
+margin_left = 152.0
+margin_top = 40.0
+margin_right = 260.0
+margin_bottom = 148.0
+mouse_filter = 2
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="XButton" type="TextureButton" parent="Control/PauseMenu"]
+margin_left = 232.0
+margin_top = 40.0
+margin_right = 264.0
+margin_bottom = 72.0
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 5 )
+texture_hover = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="homebutton" type="TextureButton" parent="Control/PauseMenu"]
+margin_left = 172.568
+margin_top = 80.0
+margin_right = 204.568
+margin_bottom = 112.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 9 )
+texture_pressed = ExtResource( 2 )
+texture_hover = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="restartbutton" type="TextureButton" parent="Control/PauseMenu"]
+margin_left = 208.0
+margin_top = 80.0
+margin_right = 240.0
+margin_bottom = 112.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 10 )
+texture_pressed = ExtResource( 1 )
+texture_hover = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pausebutton" type="TextureButton" parent="Control"]
+margin_left = 376.0
+margin_top = 8.0
+margin_right = 408.0
+margin_bottom = 40.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="button_up" from="Control/PauseMenu/XButton" to="." method="_on_XButton_button_up"]
+[connection signal="button_up" from="Control/PauseMenu/homebutton" to="." method="_on_homebutton_button_up"]
+[connection signal="button_up" from="Control/PauseMenu/restartbutton" to="." method="_on_restartbutton_button_up"]
+[connection signal="button_up" from="Control/pausebutton" to="." method="_on_pausebutton_button_up"]

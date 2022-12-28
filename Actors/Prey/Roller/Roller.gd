@@ -1,4 +1,4 @@
-extends Actor
+extends Prey
 
 enum {
 	FLYING,
@@ -10,7 +10,9 @@ onready var detection = $Area2D/DetectionRange
 var threatDetected = false; 
 var state = FLYING
 var velocity = Vector2(95.0,0.0);
-	
+
+func _ready() -> void:
+	points = 3;
 
 func _decideAnimation() ->void:
 	if threatDetected:
@@ -46,6 +48,7 @@ func _on_Area2D_body_entered(body: Node) -> void:
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
-
+#roller killed
 func _on_Hitbox_area_entered(area: Area2D) -> void:
+	emit_signal("killed",points)
 	queue_free()

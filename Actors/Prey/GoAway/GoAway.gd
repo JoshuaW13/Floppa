@@ -1,4 +1,4 @@
-extends Actor
+extends Prey
 
 enum {
 	FLYING,
@@ -6,13 +6,15 @@ enum {
 }
 
 #fields
-
 var threatDetected = false
 onready var animationPlayer = $AnimationPlayer
 onready var detectionBox = $Area2D/DetectionBox
 onready var hurtbox = $HurtBox/hitbox
 var state = FLYING;
 var velocity = Vector2((randi()%75+55), 0.0)
+
+func _ready() -> void:
+	points = 1
 
 func _decideAnimation()->void:
 	if threatDetected:
@@ -53,10 +55,11 @@ func _on_Area2D_body_entered(body: Node) -> void:
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free();
 
-
+#goaway bird killed
 func _on_HurtBox_area_entered(area: Area2D) -> void:
 	detectionBox.set_deferred("disabled", true);
 	#state = DEATH;
 	#velocity.y = 100;
 	#hurtbox.set_deferred("disabled", true);
+	emit_signal("killed",points)
 	queue_free();

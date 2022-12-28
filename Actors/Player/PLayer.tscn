@@ -1,7 +1,11 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Actors/Player/CaracalIdle-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Player/PLayer.gd" type="Script" id=2]
+[ext_resource path="res://StateMachine/StateMachine.gd" type="Script" id=3]
+[ext_resource path="res://Actors/Player/Idle.gd" type="Script" id=4]
+[ext_resource path="res://Actors/Player/Run.gd" type="Script" id=5]
+[ext_resource path="res://Actors/Player/Jump.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 15.9114
@@ -585,7 +589,6 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id=8]
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -712,7 +715,6 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id=10]
 length = 0.1
-loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -1066,7 +1068,7 @@ position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
-frame = 38
+frame = 40
 
 [node name="Detection range" type="Area2D" parent="."]
 collision_mask = 10
@@ -1074,8 +1076,21 @@ collision_mask = 10
 [node name="FootCollider" type="CollisionShape2D" parent="Detection range"]
 modulate = Color( 0.160784, 0.752941, 0.764706, 1 )
 position = Vector2( -5.66356, -3.77599 )
-rotation = 0.832522
+rotation = 0.708604
 shape = SubResource( 1 )
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 3 )
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource( 4 )
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource( 5 )
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "IdleLeft"
@@ -1139,12 +1154,12 @@ rotation = -1.5708
 shape = SubResource( 19 )
 
 [node name="InvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 1.5
 one_shot = true
 
 [node name="FootCollider" type="CollisionShape2D" parent="."]
 position = Vector2( -0.117985, 11.4445 )
 rotation = -1.5708
 shape = SubResource( 20 )
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]

@@ -76,4 +76,6 @@ collision_mask = 0
 modulate = Color( 0.933333, 0.109804, 0.109804, 1 )
 position = Vector2( -0.140308, 0.982151 )
 shape = SubResource( 4 )
+[connection signal="tree_exited" from="." to="." method="_on_WeaverBird_tree_exited"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
