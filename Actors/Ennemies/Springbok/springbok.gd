@@ -1,7 +1,6 @@
-extends Actor
+extends Ennemy
 
 #signals
-signal killed()
 signal hit();
 #fields
 enum states{
@@ -32,6 +31,7 @@ func _set_health(value):
 	health = clamp(value,0,3);
 	if health != prev_health:
 		if health == 0:
+			print("killed emitted")
 			emit_signal("killed")
 
 func _damage(value):
@@ -67,14 +67,6 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 func _on_HurtBox_area_entered(area: Area2D) -> void:
 	_damage(1);
 
-
-func _on_springbok_killed() -> void:
-	print("killed!")
-	hurtbox.set_deferred("disabled", true)
-	velocity = velocity/1.4;
-	state = states.DEAD
-
-
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "DeathLeft" or anim_name == "DeathRight":
 		velocity.x = 0
@@ -88,3 +80,9 @@ func _on_Hitbox_area_entered(area: Area2D) -> void:
 
 func _on_VisibilityNotifier2D2_screen_exited() -> void:
 	queue_free()
+
+func _on_springbok_killed() -> void:
+	print("springbok killed!")
+	hurtbox.set_deferred("disabled", true)
+	velocity = velocity/1.4;
+	state = states.DEAD

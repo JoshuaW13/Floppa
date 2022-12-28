@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Actors/Player/PLayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://WorldArt/Grass Tile 1.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://interface/PauseMenu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://EnnemySpawner.gd" type="Script" id=6]
 [ext_resource path="res://World.gd" type="Script" id=7]
+[ext_resource path="res://interface/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
@@ -34,22 +35,25 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 } ]
 0/z_index = 0
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 8 )
+
+[sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -24, 24, 0, 0, 0, 0, -24, 128 )
 }
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=5]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 440, 24, 0, 0, 0, 0, 440, 128 )
 }
 
-[sub_resource type="Curve2D" id=5]
+[sub_resource type="Curve2D" id=6]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -32, 24, 0, 0, 0, 0, -32, 152 )
 }
 
-[sub_resource type="Curve2D" id=6]
+[sub_resource type="Curve2D" id=7]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 448, 24, 0, 0, 0, 0, 448, 152 )
 }
@@ -71,14 +75,17 @@ format = 1
 tile_data = PoolIntArray( 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0 )
 
 [node name="Label" type="Label" parent="."]
+modulate = Color( 0.290196, 0.160784, 0.137255, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -19.3115
+margin_left = -8.00002
 margin_top = 8.0
-margin_right = -8.31152
-margin_bottom = 22.0
+margin_right = 7.99998
+margin_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+custom_fonts/font = SubResource( 3 )
+text = "0"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -89,7 +96,7 @@ script = ExtResource( 6 )
 
 [node name="LeftAerial" type="Path2D" parent="EnnemySpawner"]
 self_modulate = Color( 1, 0.164706, 0, 0.701961 )
-curve = SubResource( 3 )
+curve = SubResource( 4 )
 
 [node name="LeftPathLocation" type="PathFollow2D" parent="EnnemySpawner/LeftAerial"]
 position = Vector2( -24, 24 )
@@ -97,7 +104,7 @@ rotation = 1.5708
 
 [node name="RightAerial" type="Path2D" parent="EnnemySpawner"]
 self_modulate = Color( 1, 0.0941176, 0, 0.701961 )
-curve = SubResource( 4 )
+curve = SubResource( 5 )
 
 [node name="RightPathLocation" type="PathFollow2D" parent="EnnemySpawner/RightAerial"]
 position = Vector2( 440, 24 )
@@ -119,14 +126,14 @@ position = Vector2( 207.568, 178.457 )
 script = ExtResource( 3 )
 
 [node name="LeftPath" type="Path2D" parent="PreySpawner"]
-curve = SubResource( 5 )
+curve = SubResource( 6 )
 
 [node name="LeftPathLocation" type="PathFollow2D" parent="PreySpawner/LeftPath"]
 position = Vector2( -32, 152 )
 offset = 144.013
 
 [node name="RightPath" type="Path2D" parent="PreySpawner"]
-curve = SubResource( 6 )
+curve = SubResource( 7 )
 
 [node name="RightPathLocation" type="PathFollow2D" parent="PreySpawner/RightPath"]
 position = Vector2( 448, 152 )

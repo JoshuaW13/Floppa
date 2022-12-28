@@ -1,7 +1,4 @@
-extends Actor
-
-#signals
-signal kill()
+extends Ennemy
 
 #variables
 enum states{
@@ -40,17 +37,13 @@ func _set_health(value):
 	health = clamp(value,0,2)
 	if health != prev_health:
 		if health == 0:
-			killed()
-			emit_signal("kill")
+			emit_signal("killed")
 
 func damage(value):
 	_set_health(health-value)
 	UP = UP/1.2
 	damagePlayer.play("Damage")
 	damagePlayer.queue("Rest")
-
-func killed():
-	queue_free()
 
 #animation state hanlders
 func soar(velocity):
@@ -119,3 +112,7 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 
 func _on_VisibilityNotifier2D_screen_entered() -> void:
 	detection.set_deferred("disabled", false)
+
+
+func _on_eagle_killed() -> void:
+	queue_free()

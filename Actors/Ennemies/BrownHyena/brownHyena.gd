@@ -1,7 +1,5 @@
-extends Actor
+extends Ennemy
 
-#signals
-signal killed()
 #fields
 var HYENA_WALK_SPEED;
 var HYENA_RUN_SPEED;
@@ -21,7 +19,7 @@ onready var detectionBox = $DetectionBox/CollisionShape2D
 onready var hurtBox = $HurtBox/CollisionShape2D
 
 func _ready() -> void:
-	_set_health(6)
+	_set_health(4)
 	biteHitbox.set_deferred("disabled", true);
 
 func init(direction):
@@ -40,20 +38,13 @@ func _set_health(value):
 	health = clamp(value,0,6);
 	if health != prev_health:
 		if health == 0:
-			killed()
+			emit_signal("killed")
 
 func _damage(value):
 	_set_health(health-value)
 	damagePLayer.play("Damage");
 	damagePLayer.queue("Rest")
 
-#Make hyena run away after being killed
-func killed() -> void:
-	state = states.FLEE
-	biteHitbox.set_deferred("disabled", true);
-	hurtBox.set_deferred("disabled", true);
-	detectionBox.set_deferred("disabled", true)
-	velocity = HYENA_RUN_SPEED
 
 func _process_walk()->void:
 	if velocity.x < 0:
@@ -104,3 +95,11 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free();
+
+
+func _on_brownhyena_killed() -> void:
+	state = states.FLEE
+	biteHitbox.set_deferred("disabled", true);
+	hurtBox.set_deferred("disabled", true);
+	detectionBox.set_deferred("disabled", true)
+	velocity = HYENA_RUN_SPEED

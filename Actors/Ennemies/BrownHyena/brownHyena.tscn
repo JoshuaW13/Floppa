@@ -404,6 +404,7 @@ disabled = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 scale = Vector2( 2.85838, 1 )
+[connection signal="killed" from="." to="." method="_on_brownhyena_killed"]
 [connection signal="area_entered" from="DetectionBox" to="." method="_on_DetectionBox_area_entered"]
 [connection signal="area_exited" from="DetectionBox" to="." method="_on_DetectionBox_area_exited"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
