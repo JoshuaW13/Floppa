@@ -12,11 +12,11 @@ enum states{
 }
 var state = states.WALK
 var damage = 1.0;
-var velocity = Vector2(30,0.0);
+var velocity = Vector2(-30,0.0);
 onready var health = health setget _set_health;
 onready var animationPlayer = $AnimationPlayer
 onready var damagePLayer = $DamageStatePlayer
-onready var biteHitbox = $Position2D/biteHitbox/CollisionShape2D
+onready var biteHitbox = $biteHitbox/CollisionShape2D
 onready var detectionBox = $DetectionBox/CollisionShape2D
 onready var hurtBox = $HurtBox/CollisionShape2D
 
@@ -101,9 +101,6 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":
 		return
 	_damage(1)
-
-
-
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free();

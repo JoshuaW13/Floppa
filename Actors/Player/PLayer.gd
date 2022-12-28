@@ -41,8 +41,7 @@ func damage(amount):
 		damageStatesAnimations.queue("Invincibility");
 
 func kill():
-	print("Player died!");
-	pass
+	emit_signal("killed");
 	
 func _set_health(value):
 	var prev_health = health
@@ -51,7 +50,6 @@ func _set_health(value):
 		emit_signal("health_update", health)
 		if health == 0:
 			kill()
-			emit_signal("killed")
 
 func set_knock():
 	if damageStatesAnimations.current_animation != "Invincibility":
@@ -98,7 +96,7 @@ func _physics_process(delta: float) -> void:
 	
 #damage player
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	#print("Entered!")
+	print(area.name)
 	if(area.name == "biteHitbox"):
 		damage(3)
 	else:

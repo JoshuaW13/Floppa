@@ -85,6 +85,7 @@ func _on_Timer_timeout() -> void:
 
 	for i in numEnem:
 		var altitude = randi()%2;
+		altitude = 0;
 		if altitude ==1:
 			spawn_aerial()
 		elif altitude == 0:

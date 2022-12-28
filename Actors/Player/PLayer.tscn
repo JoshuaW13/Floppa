@@ -8,8 +8,8 @@
 [ext_resource path="res://Actors/Player/Jump.gd" type="Script" id=6]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 15.9114
-height = 3.29472
+radius = 13.7545
+height = 3.66151
 
 [sub_resource type="Animation" id=2]
 resource_name = "AerialAttackLeft"
@@ -510,6 +510,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ -90.0002 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Detection range:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
 
 [sub_resource type="Animation" id=7]
 length = 0.6
@@ -586,6 +598,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ -90.0002 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Detection range:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=8]
 length = 0.1
@@ -648,6 +672,18 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ -40.6 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Detection range:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1.80709, -11.2975 ) ]
 }
 
 [sub_resource type="Animation" id=9]
@@ -902,6 +938,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [ -90.0002 ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Detection range:rotation_degrees")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 180.0 ]
+}
 
 [sub_resource type="Animation" id=13]
 length = 0.6
@@ -978,6 +1026,18 @@ tracks/5/keys = {
 "update": 0,
 "values": [ -90.0002 ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath("Detection range:rotation_degrees")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
 
 [sub_resource type="Animation" id=14]
 resource_name = "Damage"
@@ -1050,7 +1110,7 @@ height = 0.0
 
 [sub_resource type="CapsuleShape2D" id=19]
 radius = 12.7577
-height = 10.9922
+height = 6.65623
 
 [sub_resource type="CapsuleShape2D" id=20]
 radius = 2.97572
@@ -1068,15 +1128,17 @@ position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
-frame = 40
+frame = 29
 
 [node name="Detection range" type="Area2D" parent="."]
+position = Vector2( 1.80709, -11.2975 )
+rotation = 3.14159
 collision_mask = 10
 
 [node name="FootCollider" type="CollisionShape2D" parent="Detection range"]
 modulate = Color( 0.160784, 0.752941, 0.764706, 1 )
-position = Vector2( -5.66356, -3.77599 )
-rotation = 0.708604
+position = Vector2( 2.35968, -3.65751 )
+rotation = -0.708604
 shape = SubResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -1142,8 +1204,8 @@ shape = SubResource( 18 )
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
-position = Vector2( -3.17869, -3.34468 )
-rotation = -0.785398
+position = Vector2( -0.530032, -2.15278 )
+rotation = 0.785398
 collision_layer = 64
 collision_mask = 32
 

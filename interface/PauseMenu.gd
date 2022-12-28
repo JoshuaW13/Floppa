@@ -5,7 +5,8 @@ onready var pauseItems = $Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	#make sure scene always starts playing
+	get_tree().paused = false
 
 #detects escape key press
 func _input(event: InputEvent) -> void:
@@ -18,6 +19,14 @@ func toggle_pause():
 	get_tree().paused = !get_tree().paused
 	for node in pauseItems.get_children():
 		node.visible = !node.visible
+
+func player_died_menu():
+	var pauseButton = $Control/pausebutton
+	for node in pauseItems.get_children():
+		node.visible = !node.visible
+		if node.name == "PauseMenu":
+			node.get_node("XButton").visible = false
+	pauseButton.visible = false
 
 
 #exit pause when x pressed
