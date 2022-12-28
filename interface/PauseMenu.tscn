@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://interface/images/RestartButton.png" type="Texture" id=1]
 [ext_resource path="res://interface/images/HomeButton.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://interface/images/XButtonPressed.png" type="Texture" id=8]
 [ext_resource path="res://interface/images/HomeButtonPressed.png" type="Texture" id=9]
 [ext_resource path="res://interface/images/RestartButtonPressed.png" type="Texture" id=10]
+[ext_resource path="res://interface/PauseScreen.tscn" type="PackedScene" id=11]
 
 [node name="PauseMenu" type="CanvasLayer"]
 pause_mode = 2
@@ -23,16 +24,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseScreen" type="ColorRect" parent="Control"]
-visible = false
-modulate = Color( 1, 1, 1, 0.521569 )
-margin_right = 416.0
-margin_bottom = 224.0
-mouse_filter = 2
-color = Color( 0, 0, 0, 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="PauseScreen" parent="Control" instance=ExtResource( 11 )]
 
 [node name="PauseMenu" type="Control" parent="Control"]
 visible = false
