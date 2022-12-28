@@ -20,6 +20,7 @@ onready var hurtBox = $HurtBox/CollisionShape2D
 
 func _ready() -> void:
 	_set_health(4)
+	points = 8;
 	biteHitbox.set_deferred("disabled", true);
 
 func init(direction):
@@ -38,6 +39,7 @@ func _set_health(value):
 	health = clamp(value,0,6);
 	if health != prev_health:
 		if health == 0:
+			emit_signal("killed",points)
 			emit_signal("killed")
 
 func _damage(value):

@@ -18,3 +18,7 @@ func _on_PreySpawner_pointScored(to_add) -> void:
 func _on_PLayer_killed() -> void:
 	player.queue_free()
 	pauseMenu.player_died_menu()
+
+func _on_EnnemySpawner_pointScored(to_add) -> void:
+	points += to_add
+	scoreBoard.text = str(points)

@@ -3,6 +3,7 @@ extends Node
 #other vars
 onready var timer = $Timer
 var wave = 0;
+signal pointScored;
 
 #ennemies
 var eagle;
@@ -50,6 +51,7 @@ func spawn_ennemy():
 		en.init("left")
 		ennemyLocation = $RightGround
 	#ennemyLocation.unit_offset = randf();
+	en.connect("killed", self, "_on_ennemy_killed")
 	add_child(en);
 	en.position = ennemyLocation.position;
 
@@ -73,6 +75,7 @@ func spawn_aerial():
 		en.init("left")
 		ennemyLocation = $RightAerial/RightPathLocation
 	ennemyLocation.unit_offset = randf();
+	en.connect("killed", self, "_on_ennemy_killed")
 	add_child(en);
 	en.position = ennemyLocation.position;
 
@@ -94,6 +97,8 @@ func _on_Timer_timeout() -> void:
 	wave+=1;
 	#print("wave over")
 
+func _on_ennemy_killed(points):
+	emit_signal("pointScored",points)
 #turns on ennemy spawn in sync with prey spawner
 func _on_PreySpawner_Ennemy() -> void:
 	timer.autostart = true;

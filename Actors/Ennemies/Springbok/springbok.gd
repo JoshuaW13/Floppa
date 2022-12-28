@@ -15,6 +15,7 @@ onready var damagePlayer = $DamageStateAnimator
 onready var hurtbox = $HurtBox/CollisionShape2D
 
 func _ready() -> void:
+	points=6
 	_set_health(2);
 
 func init(direction):
@@ -31,7 +32,7 @@ func _set_health(value):
 	health = clamp(value,0,3);
 	if health != prev_health:
 		if health == 0:
-			print("killed emitted")
+			emit_signal("killed",points)
 			emit_signal("killed")
 
 func _damage(value):

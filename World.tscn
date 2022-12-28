@@ -144,6 +144,7 @@ wait_time = 4.0
 autostart = true
 
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
+[connection signal="pointScored" from="EnnemySpawner" to="." method="_on_EnnemySpawner_pointScored"]
 [connection signal="timeout" from="EnnemySpawner/Timer" to="EnnemySpawner" method="_on_Timer_timeout"]
 [connection signal="killed" from="PLayer" to="." method="_on_PLayer_killed"]
 [connection signal="Ennemy" from="PreySpawner" to="EnnemySpawner" method="_on_PreySpawner_Ennemy"]

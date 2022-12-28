@@ -17,6 +17,7 @@ onready var damagePlayer = $DamagePlayer
 onready var detection = $Detection/CollisionShape2D
 
 func _ready() -> void:
+	points = 5
 	detection.set_deferred("disabled", true)
 	_set_health(2)
 
@@ -37,6 +38,7 @@ func _set_health(value):
 	health = clamp(value,0,2)
 	if health != prev_health:
 		if health == 0:
+			emit_signal("killed",points)
 			emit_signal("killed")
 
 func damage(value):
