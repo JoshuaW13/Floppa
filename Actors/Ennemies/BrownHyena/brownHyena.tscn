@@ -30,7 +30,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.5 ),
+"times": PoolRealArray( 0.1, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -95,7 +95,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0.2, 0.5 ),
+"times": PoolRealArray( 0.1, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ false, true ]
@@ -351,7 +351,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 29
-frame = 27
+frame = 21
 
 [node name="FloorCollider" type="CollisionShape2D" parent="."]
 modulate = Color( 0.172549, 0.862745, 0.815686, 1 )
