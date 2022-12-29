@@ -9,7 +9,7 @@
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 13.7545
-height = 3.66151
+height = 10.3289
 
 [sub_resource type="Animation" id=2]
 resource_name = "AerialAttackLeft"
@@ -472,7 +472,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0, 4.20448 ) ]
+"values": [ Vector2( -2.251, 3.94 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("HurtBox:rotation_degrees")
@@ -521,6 +521,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 180.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Detection range:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3.15, 0 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -609,6 +621,18 @@ tracks/6/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ 0.0 ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Detection range:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -3.15, 0 ) ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -988,7 +1012,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 0.397, 4.204 ) ]
+"values": [ Vector2( -2.251, 3.94 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("HurtBox:rotation_degrees")
@@ -1128,17 +1152,16 @@ position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
-frame = 29
+frame = 17
 
 [node name="Detection range" type="Area2D" parent="."]
-position = Vector2( 1.80709, -11.2975 )
+position = Vector2( -3.15, 0 )
 rotation = 3.14159
 collision_mask = 10
 
 [node name="FootCollider" type="CollisionShape2D" parent="Detection range"]
 modulate = Color( 0.160784, 0.752941, 0.764706, 1 )
-position = Vector2( 2.35968, -3.65751 )
-rotation = -0.708604
+rotation = -1.5708
 shape = SubResource( 1 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -1204,8 +1227,7 @@ shape = SubResource( 18 )
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
-position = Vector2( -0.530032, -2.15278 )
-rotation = 0.785398
+position = Vector2( -2.251, 3.94 )
 collision_layer = 64
 collision_mask = 32
 

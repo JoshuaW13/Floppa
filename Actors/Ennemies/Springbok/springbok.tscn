@@ -224,10 +224,6 @@ modulate = Color( 0.0313726, 0.952941, 0.976471, 1 )
 rotation = -1.5708
 shape = SubResource( 8 )
 
-[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-position = Vector2( 6.0625, -0.125 )
-scale = Vector2( 3.21875, 1 )
-
 [node name="Hitbox" type="Area2D" parent="."]
 position = Vector2( 31.4749, -2.78771 )
 rotation = 1.5708
@@ -240,10 +236,15 @@ position = Vector2( 0.794598, -0.397297 )
 rotation = -1.5708
 shape = SubResource( 9 )
 
-[node name="VisibilityNotifier2D2" type="VisibilityNotifier2D" parent="."]
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 6.0625, -0.125 )
+scale = Vector2( 3.21875, 1 )
+
+[node name="invulnerableTimer" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="killed" from="." to="." method="_on_springbok_killed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
-[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
-[connection signal="screen_exited" from="VisibilityNotifier2D2" to="." method="_on_VisibilityNotifier2D2_screen_exited"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="invulnerableTimer" to="." method="_on_invulnerableTimer_timeout"]

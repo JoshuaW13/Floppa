@@ -10,6 +10,7 @@ func _toggle_character_menu():
 		node.visible = !node.visible
 
 func _on_PlayButton_button_up() -> void:
+# warning-ignore:return_value_discarded
 	get_tree().change_scene(mainGameScene.resource_path)
 
 #quite the game

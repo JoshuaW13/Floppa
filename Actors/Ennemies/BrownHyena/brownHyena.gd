@@ -12,6 +12,7 @@ var state = states.WALK
 var damage = 1.0;
 var velocity = Vector2(-30,0.0);
 onready var health = health setget _set_health;
+onready var invulnerableTimer = $InvulnerableTimer
 onready var animationPlayer = $AnimationPlayer
 onready var damagePLayer = $DamageStatePlayer
 onready var biteHitbox = $biteHitbox/CollisionShape2D
@@ -40,9 +41,11 @@ func _set_health(value):
 	if health != prev_health:
 		if health == 0:
 			emit_signal("killed",points)
-			emit_signal("killed")
 
 func _damage(value):
+	if invulnerableTimer.is_stopped():
+		hurtBox.set_deferred("disabled", true);
+		invulnerableTimer.start()
 	_set_health(health-value)
 	damagePLayer.play("Damage");
 	damagePLayer.queue("Rest")
@@ -99,9 +102,14 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free();
 
 
-func _on_brownhyena_killed() -> void:
+func _on_brownhyena_killed(_points) -> void:
 	state = states.FLEE
 	biteHitbox.set_deferred("disabled", true);
 	hurtBox.set_deferred("disabled", true);
 	detectionBox.set_deferred("disabled", true)
 	velocity = HYENA_RUN_SPEED
+
+
+func _on_InvulnerableTimer_timeout() -> void:
+	if state!=states.FLEE:
+		hurtBox.set_deferred("disabled", false);

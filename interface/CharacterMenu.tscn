@@ -8,6 +8,7 @@
 [ext_resource path="res://interface/themes/MainTheme.tres" type="Theme" id=6]
 
 [node name="CharacterMenu" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 5 )
 
 [node name="PauseScreen" parent="." instance=ExtResource( 1 )]

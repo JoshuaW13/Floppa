@@ -13,6 +13,7 @@ var velocity = Vector2(150,0)
 onready var animationPLayer = $AnimationPlayer
 onready var damagePlayer = $DamageStateAnimator
 onready var hurtbox = $HurtBox/CollisionShape2D
+onready var invulnerableTimer = $invulnerableTimer
 
 func _ready() -> void:
 	points=6
@@ -33,9 +34,11 @@ func _set_health(value):
 	if health != prev_health:
 		if health == 0:
 			emit_signal("killed",points)
-			emit_signal("killed")
 
 func _damage(value):
+	if invulnerableTimer.is_stopped():
+		hurtbox.set_deferred("disabled", true);
+		invulnerableTimer.start();
 	_set_health(health-value)
 	damagePlayer.play("Damage");
 	damagePlayer.queue("Rest")
@@ -65,7 +68,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
 
-func _on_HurtBox_area_entered(area: Area2D) -> void:
+func _on_HurtBox_area_entered(_area: Area2D) -> void:
 	_damage(1);
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
@@ -74,16 +77,15 @@ func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 		yield(get_tree().create_timer(1), "timeout")
 		queue_free()
 
-
-func _on_Hitbox_area_entered(area: Area2D) -> void:
+func _on_Hitbox_area_entered(_area: Area2D) -> void:
 	get_tree().call_group("Player","set_knock")
 
-
-func _on_VisibilityNotifier2D2_screen_exited() -> void:
-	queue_free()
-
-func _on_springbok_killed() -> void:
+func _on_springbok_killed(_points) -> void:
 	print("springbok killed!")
 	hurtbox.set_deferred("disabled", true)
 	velocity = velocity/1.4;
 	state = states.DEAD
+
+func _on_invulnerableTimer_timeout() -> void:
+	if state!=states.DEAD:
+		hurtbox.set_deferred("disabled", false);

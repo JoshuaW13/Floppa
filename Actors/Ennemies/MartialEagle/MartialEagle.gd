@@ -13,8 +13,10 @@ var UP = Vector2(100,-100)
 var speed = 150;
 var target = null;
 onready var animationPlayer = $AnimationPlayer
+onready var hurtBox = $HurtBox/CollisionShape2D
 onready var damagePlayer = $DamagePlayer
 onready var detection = $Detection/CollisionShape2D
+onready var invulnerableTimer = $InvulnerableTimer
 
 func _ready() -> void:
 	points = 5
@@ -39,9 +41,11 @@ func _set_health(value):
 	if health != prev_health:
 		if health == 0:
 			emit_signal("killed",points)
-			emit_signal("killed")
 
 func damage(value):
+	if invulnerableTimer.is_stopped():
+		hurtBox.set_deferred("disabled", true);
+		invulnerableTimer.start();
 	_set_health(health-value)
 	UP = UP/1.2
 	damagePlayer.play("Damage")
@@ -116,5 +120,9 @@ func _on_VisibilityNotifier2D_screen_entered() -> void:
 	detection.set_deferred("disabled", false)
 
 
-func _on_eagle_killed() -> void:
+func _on_eagle_killed(_points) -> void:
 	queue_free()
+
+
+func _on_InvulnerableTimer_timeout() -> void:
+	hurtBox.set_deferred("disabled", false);
