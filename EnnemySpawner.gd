@@ -84,13 +84,13 @@ func _on_Timer_timeout() -> void:
 	if wave  >=2 and wave <5:
 		numEnem = 2
 	elif wave>=5:
-		numEnem = wave/5+2
+		numEnem = wave/4+2
 
 	for i in numEnem:
-		var altitude = randi()%2;
+		var altitude = randi()%3;
 		if altitude ==1:
 			spawn_aerial()
-		elif altitude == 0:
+		elif altitude == 0 or altitude==2:
 			spawn_ennemy()
 		yield(get_tree().create_timer(2), "timeout")
 		#print("spawned")

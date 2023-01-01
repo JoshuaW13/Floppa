@@ -13,6 +13,7 @@ var preys;
 #Fields
 var spawner_side = 0;
 onready var timer = $Timer
+onready var soundPlayer = $PreynewWavePlayer
 var wave = 0;
 var inter_wave = 0;
 
@@ -68,6 +69,7 @@ func _on_Timer_timeout() -> void:
 			timer.wait_time=4;
 			timer.start()
 			wave+=1
+			soundPlayer.play()
 			#print("endless wave finished")
 			inter_wave=0;
 			return
@@ -89,6 +91,7 @@ func _on_Timer_timeout() -> void:
 	prey.position = prey_spawn_location.position;
 	#print("wave finsihed")
 	wave +=1;
+	soundPlayer.play()
 
 #signal responses
 func _on_prey_killed(points):

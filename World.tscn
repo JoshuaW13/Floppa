@@ -143,6 +143,8 @@ offset = 144.013
 wait_time = 4.0
 autostart = true
 
+[node name="PreynewWavePlayer" type="AudioStreamPlayer2D" parent="PreySpawner"]
+
 [node name="PauseMenu" parent="." instance=ExtResource( 5 )]
 [connection signal="pointScored" from="EnnemySpawner" to="." method="_on_EnnemySpawner_pointScored"]
 [connection signal="timeout" from="EnnemySpawner/Timer" to="EnnemySpawner" method="_on_Timer_timeout"]
