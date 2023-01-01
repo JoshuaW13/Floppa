@@ -7,19 +7,17 @@ func enter(_msg := {}) -> void:
 func animate()->void:
 	if(player.velocity.x <0):
 		player.facing = "left"
-		player.animationPlayer.queue("RunLeft")
+		player.animationPlayer.play("RunLeft")
 	elif(player.velocity.x >0):
 		player.facing = "right"
-		player.animationPlayer.queue("RunRight")
+		player.animationPlayer.play("RunRight")
 
 func handle_input(_event: InputEvent) -> void:
 	if _event.is_action_pressed("Attack"):
 		player.animationPlayer.clear_queue();
 
 func physics_update(delta: float) -> void:
-	#print("Run state")
 	animate()
-	
 	#Check if jumping
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Jump", {do_jump = true})

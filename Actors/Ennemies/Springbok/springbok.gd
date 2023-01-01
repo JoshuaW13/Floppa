@@ -1,6 +1,7 @@
 extends Ennemy
 
 #signals
+# warning-ignore:unused_signal
 signal hit();
 #fields
 enum states{
@@ -9,7 +10,7 @@ enum states{
 }
 var state = states.RUN
 onready var health = health setget _set_health;
-var velocity = Vector2(150,0)
+var velocity = Vector2(175,0)
 onready var animationPLayer = $AnimationPlayer
 onready var damagePlayer = $DamageStateAnimator
 onready var hurtbox = $HurtBox/CollisionShape2D
@@ -61,6 +62,7 @@ func _physics_process(delta: float) -> void:
 		process_run();
 	elif state == states.DEAD:
 		process_death()
+# warning-ignore:return_value_discarded
 	move_and_slide(velocity,FLOOR_NORMAL)	
 
 
