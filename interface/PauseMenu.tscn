@@ -96,6 +96,22 @@ theme = ExtResource( 12 )
 text = "Score: 678"
 align = 1
 
+[node name="HighScore" type="Label" parent="Control/PauseMenu"]
+visible = false
+modulate = Color( 0.290196, 0.160784, 0.137255, 1 )
+margin_left = 164.0
+margin_top = 117.0
+margin_right = 248.0
+margin_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource( 12 )
+text = "Highscore: 678"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="pausebutton" type="TextureButton" parent="Control"]
 margin_left = 376.0
 margin_top = 8.0

@@ -24,11 +24,6 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Player/PLayer.gd"
 }, {
-"base": "Node",
-"class": "PlayerData",
-"language": "GDScript",
-"path": "res://PlayerData.gd"
-}, {
 "base": "State",
 "class": "PlayerState",
 "language": "GDScript",
@@ -53,7 +48,6 @@ _global_script_class_icons={
 "Actor": "",
 "Ennemy": "",
 "Player": "",
-"PlayerData": "",
 "PlayerState": "",
 "Prey": "",
 "State": "",
@@ -65,6 +59,10 @@ _global_script_class_icons={
 config/name="Floppa"
 run/main_scene="res://interface/TitleScreen.tscn"
 config/icon="res://CarcaleIcon.png"
+
+[autoload]
+
+PlayerData="*res://PlayerData.gd"
 
 [debug]
 
