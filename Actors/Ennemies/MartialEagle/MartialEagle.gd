@@ -19,7 +19,7 @@ onready var detection = $Detection/CollisionShape2D
 onready var invulnerableTimer = $InvulnerableTimer
 
 func _ready() -> void:
-	points = 5
+	points = 7
 	detection.set_deferred("disabled", true)
 	_set_health(2)
 
@@ -106,7 +106,7 @@ func _on_Detection_area_entered(area: Area2D) -> void:
 	#print("detected!",area.name)
 	detection.set_deferred("disabled", true)
 	target = area.global_position;
-	target.y -=15
+	target.y -=10
 	#print("Targets ",target)
 	state = states.DOWN;
 

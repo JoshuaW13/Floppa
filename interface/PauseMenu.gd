@@ -20,12 +20,15 @@ func toggle_pause():
 	for node in pauseItems.get_children():
 		node.visible = !node.visible
 
-func player_died_menu():
+func player_died_menu(score):
 	var pauseButton = $Control/pausebutton
+	var score_display = $Control/PauseMenu/Score
+	score_display.text = "Score: "+score
 	for node in pauseItems.get_children():
 		node.visible = !node.visible
 		if node.name == "PauseMenu":
 			node.get_node("XButton").visible = false
+	score_display.visible=true
 	pauseButton.visible = false
 
 

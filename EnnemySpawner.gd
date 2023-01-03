@@ -79,18 +79,19 @@ func spawn_aerial():
 	add_child(en);
 	en.position = ennemyLocation.position;
 
+
 func _on_Timer_timeout() -> void:
 	var numEnem = 1;
-	if wave  >=2 and wave <5:
+	if wave  >=2 and wave <4:
 		numEnem = 2
-	elif wave>=5:
-		numEnem = wave/4+2
+	elif wave>=4:
+		numEnem = wave/3+2
 
 	for i in numEnem:
-		var altitude = randi()%3;
-		if altitude ==1:
+		var altitude = randi()%5;
+		if altitude %2==1:
 			spawn_aerial()
-		elif altitude == 0 or altitude==2:
+		elif altitude%2==0:
 			spawn_ennemy()
 		yield(get_tree().create_timer(2), "timeout")
 		#print("spawned")

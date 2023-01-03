@@ -3,7 +3,7 @@ extends Node
 
 #Fields
 var points=0;
-onready var scoreBoard = $Label
+onready var scoreBoard = $Score
 onready var pauseMenu = $PauseMenu
 onready var player = $PLayer
 
@@ -16,8 +16,9 @@ func _on_PreySpawner_pointScored(to_add) -> void:
 	scoreBoard.text = str(points)
 
 func _on_PLayer_killed() -> void:
+	scoreBoard.visible=false
 	player.queue_free()
-	pauseMenu.player_died_menu()
+	pauseMenu.player_died_menu(scoreBoard.text)
 
 func _on_EnnemySpawner_pointScored(to_add) -> void:
 	points += to_add

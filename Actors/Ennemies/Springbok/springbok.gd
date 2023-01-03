@@ -10,14 +10,14 @@ enum states{
 }
 var state = states.RUN
 onready var health = health setget _set_health;
-var velocity = Vector2(175,0)
+var velocity = Vector2(190,0)
 onready var animationPLayer = $AnimationPlayer
 onready var damagePlayer = $DamageStateAnimator
 onready var hurtbox = $HurtBox/CollisionShape2D
 onready var invulnerableTimer = $invulnerableTimer
 
 func _ready() -> void:
-	points=6
+	points=5
 	_set_health(2);
 
 func init(direction):

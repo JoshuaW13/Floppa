@@ -74,7 +74,7 @@ collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 393221, 0, 0, 393222, 0, 0, 393223, 0, 0, 393224, 0, 0, 393225, 0, 0, 393226, 0, 0, 393227, 0, 0, 393228, 0, 0, 393229, 0, 0 )
 
-[node name="Label" type="Label" parent="."]
+[node name="Score" type="Label" parent="."]
 modulate = Color( 0.290196, 0.160784, 0.137255, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
