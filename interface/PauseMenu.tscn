@@ -87,7 +87,7 @@ __meta__ = {
 
 [node name="Score" type="Label" parent="Control/PauseMenu"]
 visible = false
-modulate = Color( 0.290196, 0.160784, 0.137255, 1 )
+modulate = Color( 0.188235, 0.105882, 0.0901961, 1 )
 margin_left = 176.0
 margin_top = 104.0
 margin_right = 240.0
@@ -98,7 +98,7 @@ align = 1
 
 [node name="HighScore" type="Label" parent="Control/PauseMenu"]
 visible = false
-modulate = Color( 0.290196, 0.160784, 0.137255, 1 )
+modulate = Color( 0.188235, 0.105882, 0.0901961, 1 )
 margin_left = 164.0
 margin_top = 117.0
 margin_right = 248.0
