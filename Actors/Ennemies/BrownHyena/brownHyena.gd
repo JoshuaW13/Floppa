@@ -81,13 +81,12 @@ func _physics_process(delta: float) -> void:
 
 #Player enteres hyena's bite detect area
 func _on_DetectionBox_area_entered(area: Area2D) -> void:
-	biteHitbox.set_deferred("enabled", true);
 	state = states.ATTACK;
 	velocity.x = 0;
 
 #Player leaves hyena's bite detec area
 func _on_DetectionBox_area_exited(area: Area2D) -> void:
-	biteHitbox.set_deferred("enabled",false)
+	biteHitbox.set_deferred("disabled",true)
 	if state == states.FLEE:
 		return
 	state = states.WALK;

@@ -351,7 +351,7 @@ scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 29
-frame = 21
+frame = 29
 
 [node name="FloorCollider" type="CollisionShape2D" parent="."]
 modulate = Color( 0.172549, 0.862745, 0.815686, 1 )
@@ -381,7 +381,7 @@ position = Vector2( -2.66971, 2.43502 )
 shape = SubResource( 10 )
 
 [node name="HurtBox" type="Area2D" parent="."]
-position = Vector2( -3.30728, 3.33786e-06 )
+position = Vector2( 1.575, 0 )
 scale = Vector2( 1, 1.12243 )
 collision_layer = 160
 collision_mask = 16
@@ -393,7 +393,7 @@ rotation = -1.5708
 shape = SubResource( 11 )
 
 [node name="biteHitbox" type="Area2D" parent="."]
-position = Vector2( 26.1106, 1.80798 )
+position = Vector2( -25.3294, 3.49581 )
 rotation = 3.14159
 collision_layer = 32
 
