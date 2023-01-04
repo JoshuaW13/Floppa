@@ -87,6 +87,7 @@ func _on_DetectionBox_area_entered(area: Area2D) -> void:
 
 #Player leaves hyena's bite detec area
 func _on_DetectionBox_area_exited(area: Area2D) -> void:
+	biteHitbox.set_deferred("enabled",false)
 	if state == states.FLEE:
 		return
 	state = states.WALK;
