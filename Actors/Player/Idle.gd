@@ -12,12 +12,13 @@ func animate()->void:
 		player.animationPlayer.queue("IdleRight")
 
 func handle_input(_event: InputEvent) -> void:
-	if _event.is_action_pressed("Attack"):
-		player.animationPlayer.clear_queue();
-		if(player.facing=="left"):
-			player.animationPlayer.play("AttackLeft")
-		elif(player.facing=="right"):
-			player.animationPlayer.play("AttackRight")
+	pass
+#	if _event.is_action_pressed("Attack"):
+#		player.animationPlayer.clear_queue();
+#		if(player.facing=="left"):
+#			player.animationPlayer.play("AttackLeft")
+#		elif(player.facing=="right"):
+#			player.animationPlayer.play("AttackRight")
 
 func physics_update(_delta: float) -> void:
 	#print("Is in idle state")
