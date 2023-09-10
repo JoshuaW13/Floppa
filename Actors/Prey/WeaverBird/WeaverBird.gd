@@ -26,7 +26,7 @@ func determine_ypos()->float:
 	var mouvement = cos(frequency*time)*amplitude;
 	return mouvement;
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_decideAnimation();
 	position.y += determine_ypos();
 	move_and_slide(velocity);
@@ -36,7 +36,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free()
 
 #bird is killed
-func _on_Hurtbox_area_entered(area: Area2D) -> void:
+func _on_Hurtbox_area_entered(_area: Area2D) -> void:
 	emit_signal("killed",points)
 	queue_free()
 

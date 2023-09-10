@@ -72,7 +72,7 @@ func rise(velocity):
 	
 	
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var velocity = Vector2.ZERO
 	#animation state manager
 	match state:
@@ -111,7 +111,7 @@ func _on_Detection_area_entered(area: Area2D) -> void:
 	state = states.DOWN;
 
 #ealge is damaged
-func _on_HurtBox_area_entered(area: Area2D) -> void:
+func _on_HurtBox_area_entered(_area: Area2D) -> void:
 	#print("damged!")
 	damage(1)
 

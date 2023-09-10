@@ -11,7 +11,7 @@ var goaway;
 var preys;
 
 #Fields
-var spawner_side = 0;
+var spawner_side_ = 0;
 onready var timer = $Timer
 onready var soundPlayer = $PreynewWavePlayer
 var wave = 0;
@@ -49,7 +49,7 @@ func _on_Timer_timeout() -> void:
 		return
 
 	var prey ;
-	spawner_side = randi()%2;
+	spawner_side_ = randi()%2;
 	var prey_spawn_location;
 	
 	#early wave scripting
@@ -73,14 +73,14 @@ func _on_Timer_timeout() -> void:
 			#print("endless wave finished")
 			inter_wave=0;
 			return
-		_endless_spawn(spawner_side, prey, prey_spawn_location,inter_wave);
+		_endless_spawn(spawner_side_, prey, prey_spawn_location,inter_wave);
 		inter_wave+=1;
 		return;
 
 	#Choose spawner side
-	if spawner_side == 1:
+	if spawner_side_ == 1:
 		prey_spawn_location = $LeftPath/LeftPathLocation
-	elif spawner_side == 0:
+	elif spawner_side_ == 0:
 		prey_spawn_location = $RightPath/RightPathLocation
 		prey.velocity.x *= -1
 

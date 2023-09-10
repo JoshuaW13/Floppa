@@ -16,7 +16,7 @@ func handle_input(_event: InputEvent) -> void:
 	if _event.is_action_pressed("Attack"):
 		player.animationPlayer.clear_queue();
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	animate()
 	#Check if jumping
 	if Input.is_action_just_pressed("jump"):

@@ -32,14 +32,14 @@ func _decideAnimation()->void:
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if position.y>= 180 and state==DEATH:
 		queue_free();
 	_decideAnimation()
 	move_and_slide(velocity);
 
 
-func _on_Area2D_body_entered(body: Node) -> void:
+func _on_Area2D_body_entered(_body: Node) -> void:
 	if threatDetected:
 		return
 	if velocity.x <= 0:
@@ -56,7 +56,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free();
 
 #goaway bird killed
-func _on_HurtBox_area_entered(area: Area2D) -> void:
+func _on_HurtBox_area_entered(_area: Area2D) -> void:
 	detectionBox.set_deferred("disabled", true);
 	#state = DEATH;
 	#velocity.y = 100;
