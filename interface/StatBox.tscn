@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://interface/StatBox.gd" type="Script" id=2]
+
+[node name="HBoxContainer" type="HBoxContainer"]
+margin_right = 164.0
+margin_bottom = 80.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 15.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 15, 15 )
+expand = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color( 0.188235, 0.105882, 0.0901961, 1 )
+margin_left = 19.0
+margin_top = 33.0
+margin_right = 35.0
+margin_bottom = 47.0
+text = ": 4"

@@ -112,8 +112,8 @@ func _on_Detection_area_entered(area: Area2D) -> void:
 
 #ealge is damaged
 func _on_HurtBox_area_entered(_area: Area2D) -> void:
-	#print("damged!")
-	damage(1)
+	var player = _area.get_parent().get_parent()	
+	damage(player.attack)
 
 
 func _on_VisibilityNotifier2D_screen_entered() -> void:

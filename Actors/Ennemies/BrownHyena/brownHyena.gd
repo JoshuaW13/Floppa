@@ -96,7 +96,8 @@ func _on_DetectionBox_area_exited(_area: Area2D) -> void:
 func _on_HurtBox_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":
 		return
-	_damage(1)
+	var player = area.get_parent().get_parent()	
+	_damage(player.attack)
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free();

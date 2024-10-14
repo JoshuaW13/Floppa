@@ -71,7 +71,8 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 
 func _on_HurtBox_area_entered(_area: Area2D) -> void:
-	_damage(1);
+	var player = _area.get_parent().get_parent()	
+	_damage(player.attack)
 
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "DeathLeft" or anim_name == "DeathRight":

@@ -106,3 +106,6 @@ margin_left = 244.0
 margin_right = 244.0
 margin_bottom = 108.0
 [connection signal="button_up" from="Control/TextureRect/XButton" to="." method="_on_XButton_button_up"]
+[connection signal="button_down" from="Control/TextureRect/HBoxContainer/LeftButton" to="Control/TextureRect/HBoxContainer/CharacterInfo" method="_on_LeftButton_button_down"]
+[connection signal="characterSelected" from="Control/TextureRect/HBoxContainer/CharacterInfo" to="." method="_on_CharacterInfo_characterSelected"]
+[connection signal="button_down" from="Control/TextureRect/HBoxContainer/RightButton" to="Control/TextureRect/HBoxContainer/CharacterInfo" method="_on_RightButton_button_down"]

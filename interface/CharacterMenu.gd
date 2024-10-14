@@ -4,5 +4,8 @@ signal exit;
 
 
 func _on_XButton_button_up() -> void:
-	print("exit emmited!")
+	emit_signal("exit")
+
+
+func _on_CharacterInfo_characterSelected() -> void:
 	emit_signal("exit")
