@@ -15,6 +15,8 @@ const caracalSpriteSheetPath = "res://Actors/Player/CaracalIdle-Sheet.png"
 const caracalImagePath = "res://CaracaleIcon.png"
 const lynxSpriteSheetPath = "res://Actors/Player/Lynx-Sheet.png"
 const lynxImagePath = "res://Lynx.png"
+const servalSpriteSheetPath = "res://Actors/Player/Serval-Sheet.png"
+const servalImagePath = "res://Serval.png"
 func _ready() -> void:
 	speedBox._setTexturePath("res://CarcaleIcon.png")
 	powerBox._setTexturePath("res://CarcaleIcon.png")
@@ -29,7 +31,7 @@ func _setupCharacterData():
 	characterArray.append(_setCharacterData(caracalData,3,3,3,4, caracalSpriteSheetPath, caracalImagePath))
 	#Serval
 	var servalData = characterDataClass.new()
-	characterArray.append(_setCharacterData(servalData,4,3,3,3, caracalSpriteSheetPath, caracalImagePath))
+	characterArray.append(_setCharacterData(servalData,4,3,3,3, servalSpriteSheetPath, servalImagePath))
 	#Lynx 
 	var lynxData = characterDataClass.new()
 	characterArray.append(_setCharacterData(lynxData,3,4,2,2, lynxSpriteSheetPath, lynxImagePath))
