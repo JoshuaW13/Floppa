@@ -3,6 +3,7 @@ extends CanvasLayer
 #variables
 onready var pauseItems = $Control
 var gameover = false;
+var killedEnnemies =0;
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,6 +28,8 @@ func player_died_menu(score):
 	var score_display = $Control/PauseMenu/Score
 	var high_score_display = $Control/PauseMenu/HighScore
 	PlayerData.check_highscore(score)
+	print("WE are checking killed ennemis with "+str(killedEnnemies))
+	PlayerData.check_Killed_Ennemies(killedEnnemies);
 	high_score_display.text = "HighScore: "+str(PlayerData.highScore)
 	score_display.text = "Score: "+str(score)
 	for node in pauseItems.get_children():
@@ -55,3 +58,7 @@ func _on_homebutton_button_up() -> void:
 func _on_restartbutton_button_up() -> void:
 	toggle_pause()
 	get_tree().change_scene("res://World.tscn")
+
+
+func _on_EnnemySpawner_ennemyKilled() -> void:
+	killedEnnemies += 1;

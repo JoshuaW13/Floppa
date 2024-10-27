@@ -4,6 +4,7 @@ extends Node
 onready var timer = $Timer
 var wave = 0;
 signal pointScored;
+signal ennemyKilled;
 
 #ennemies
 var eagle;
@@ -100,6 +101,7 @@ func _on_Timer_timeout() -> void:
 
 func _on_ennemy_killed(points):
 	emit_signal("pointScored",points)
+	emit_signal("ennemyKilled")
 #turns on ennemy spawn in sync with prey spawner
 func _on_PreySpawner_Ennemy() -> void:
 	timer.autostart = true;
