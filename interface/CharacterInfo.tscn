@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://interface/images/MenuBackground.png" type="Texture" id=1]
 [ext_resource path="res://CaracaleIcon.png" type="Texture" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://interface/CharacterInfo.gd" type="Script" id=4]
 [ext_resource path="res://interface/images/PlayButton.png" type="Texture" id=5]
 [ext_resource path="res://interface/images/PlayButtonPressed.png" type="Texture" id=6]
+[ext_resource path="res://interface/TextureButton.gd" type="Script" id=7]
+[ext_resource path="res://interface/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=8]
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 8 )
 
 [node name="PlayerInfo" type="TextureRect"]
 margin_left = 20.0
@@ -73,4 +79,38 @@ size_flags_vertical = 4
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 5 )
 texture_hover = ExtResource( 5 )
+script = ExtResource( 7 )
+
+[node name="ColorRect" type="ColorRect" parent="HBoxContainer/TextureButton"]
+visible = false
+margin_left = 3.0
+margin_top = -20.0
+margin_right = 33.0
+margin_bottom = 10.0
+rect_scale = Vector2( 1.00596, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/TextureButton/ColorRect"]
+modulate = Color( 0.188235, 0.105882, 0.0901961, 1 )
+anchor_left = 5.76805
+anchor_top = 1.0
+anchor_right = 6.9243
+anchor_bottom = 2.0
+margin_left = -180.0
+margin_top = -38.0
+margin_right = -140.0
+margin_bottom = -24.0
+rect_scale = Vector2( 0.58005, 0.977044 )
+custom_fonts/font = SubResource( 1 )
+text = "asdsdasdsad"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
 [connection signal="button_down" from="HBoxContainer/TextureButton" to="." method="_on_TextureButton_button_down"]
+[connection signal="button_down" from="HBoxContainer/TextureButton" to="HBoxContainer/TextureButton" method="_on_TextureButton_button_down"]
+[connection signal="mouse_entered" from="HBoxContainer/TextureButton" to="HBoxContainer/TextureButton" method="_on_TextureButton_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/TextureButton" to="HBoxContainer/TextureButton" method="_on_TextureButton_mouse_exited"]

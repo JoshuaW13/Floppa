@@ -12,6 +12,7 @@ onready var powerBox = $HBoxContainer/statBox/Power
 onready var healthBox = $HBoxContainer/statBox/Health
 onready var jumpBox = $HBoxContainer/statBox/Jump
 onready var characterImageRect = $HBoxContainer/TextureRect
+onready var toolTipButton = $HBoxContainer/TextureButton/ColorRect/Label
 onready var characterSelector = $HBoxContainer/TextureButton
 const LOCKED_SPRITE = "res://interface/images/Locked.png"
 const PLAY_IMAGE = "res://interface/images/PlayButtonPressed.png"
@@ -19,8 +20,10 @@ const caracalSpriteSheetPath = "res://Actors/Player/CaracalIdle-Sheet.png"
 const caracalImagePath = "res://CaracaleIcon.png"
 const lynxSpriteSheetPath = "res://Actors/Player/Lynx-Sheet.png"
 const lynxImagePath = "res://Lynx.png"
+const LYNX_TOOLTIP = "Kill 10 Hostile Animals"
 const servalSpriteSheetPath = "res://Actors/Player/Serval-Sheet.png"
 const servalImagePath = "res://Serval.png"
+const SERVAL_TOOLTIP = "Achieve Score of 100"
 func _ready() -> void:
 	speedBox._setTexturePath("res://CarcaleIcon.png")
 	powerBox._setTexturePath("res://CarcaleIcon.png")
@@ -32,21 +35,22 @@ func _ready() -> void:
 func _setupCharacterData():
 	# Caracal
 	var caracalData = characterDataClass.new()
-	characterArray.append(_setCharacterData(caracalData,3,3,3,4, caracalSpriteSheetPath, caracalImagePath))
+	characterArray.append(_setCharacterData(caracalData,3,3,3,4, caracalSpriteSheetPath, caracalImagePath, ""))
 	#Serval
 	var servalData = characterDataClass.new()
-	characterArray.append(_setCharacterData(servalData,4,3,3,3, servalSpriteSheetPath, servalImagePath))
+	characterArray.append(_setCharacterData(servalData,4,3,3,3, servalSpriteSheetPath, servalImagePath, SERVAL_TOOLTIP))
 	#Lynx 
 	var lynxData = characterDataClass.new()
-	characterArray.append(_setCharacterData(lynxData,3,4,2,2, lynxSpriteSheetPath, lynxImagePath))
+	characterArray.append(_setCharacterData(lynxData,3,4,2,2, lynxSpriteSheetPath, lynxImagePath, LYNX_TOOLTIP))
 
-func _setCharacterData(my_character, speed, power, health, jump, sprite, image):
+func _setCharacterData(my_character, speed, power, health, jump, sprite, image, tooltip):
 	my_character.speedValue =speed
 	my_character.powerValue = power
 	my_character.healthValue = health
 	my_character.jumpValue = jump
 	my_character.spritePath = sprite
 	my_character.imagePath = image
+	my_character.toolTip = tooltip
 	return my_character
 
 func _setCharacterStats(my_character):
@@ -56,10 +60,13 @@ func _setCharacterStats(my_character):
 	jumpBox._setStatValue(my_character.jumpValue )
 	characterImageRect.set_texture(load(my_character.imagePath))
 	if(!_character_unlocked(currentCharacterIndex)):
+		characterSelector.unlocked = false
 		characterImageRect.modulate = Color(1,1,1,0.5)
 		characterSelector.set_normal_texture(load(LOCKED_SPRITE))
+		toolTipButton.text = my_character.toolTip
 		characterSelector.set_disabled(true)
 	else:
+		characterSelector.unlocked = true		
 		characterImageRect.modulate = Color(1,1,1,1)
 		characterSelector.set_normal_texture(load(PLAY_IMAGE))
 		characterSelector.set_disabled(false)
