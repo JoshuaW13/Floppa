@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://interface/PauseScreen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://interface/images/XButtonPressed.png" type="Texture" id=2]
-[ext_resource path="res://interface/images/MenuBackground.png" type="Texture" id=3]
 [ext_resource path="res://interface/images/XButton.png" type="Texture" id=4]
 [ext_resource path="res://interface/CharacterMenu.gd" type="Script" id=5]
 [ext_resource path="res://interface/themes/MainTheme.tres" type="Theme" id=6]
@@ -33,7 +32,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="Control" parent="Control"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -44,23 +43,6 @@ margin_right = 161.0
 margin_bottom = 90.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource( 3 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="XButton" type="TextureButton" parent="Control/TextureRect"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -32.0
-margin_bottom = 32.0
-texture_normal = ExtResource( 2 )
-texture_pressed = ExtResource( 4 )
-texture_hover = ExtResource( 4 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/TextureRect"]
 anchor_left = 0.5
@@ -90,6 +72,18 @@ __meta__ = {
 
 [node name="CharacterInfo" parent="Control/TextureRect/HBoxContainer" instance=ExtResource( 11 )]
 
+[node name="XButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer/CharacterInfo"]
+margin_left = 175.0
+margin_top = -8.0
+margin_right = 207.0
+margin_bottom = 100.0
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 4 )
+texture_hover = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="RightButton" type="TextureButton" parent="Control/TextureRect/HBoxContainer"]
 margin_left = 224.0
 margin_top = 46.0
@@ -105,7 +99,7 @@ texture_hover = ExtResource( 10 )
 margin_left = 244.0
 margin_right = 244.0
 margin_bottom = 108.0
-[connection signal="button_up" from="Control/TextureRect/XButton" to="." method="_on_XButton_button_up"]
 [connection signal="button_down" from="Control/TextureRect/HBoxContainer/LeftButton" to="Control/TextureRect/HBoxContainer/CharacterInfo" method="_on_LeftButton_button_down"]
 [connection signal="characterSelected" from="Control/TextureRect/HBoxContainer/CharacterInfo" to="." method="_on_CharacterInfo_characterSelected"]
+[connection signal="button_up" from="Control/TextureRect/HBoxContainer/CharacterInfo/XButton" to="." method="_on_XButton_button_up"]
 [connection signal="button_down" from="Control/TextureRect/HBoxContainer/RightButton" to="Control/TextureRect/HBoxContainer/CharacterInfo" method="_on_RightButton_button_down"]
