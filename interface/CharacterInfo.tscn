@@ -82,31 +82,32 @@ texture_hover = ExtResource( 5 )
 script = ExtResource( 7 )
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer/TextureButton"]
-visible = false
-margin_left = 3.0
-margin_top = -20.0
-margin_right = 33.0
-margin_bottom = 10.0
+modulate = Color( 0.827451, 0.827451, 0.827451, 1 )
+self_modulate = Color( 0, 0, 0, 0.760784 )
+margin_left = -1.48984
+margin_top = -27.296
+margin_right = 33.5102
+margin_bottom = 7.70401
 rect_scale = Vector2( 1.00596, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Label" type="Label" parent="HBoxContainer/TextureButton/ColorRect"]
-modulate = Color( 0.188235, 0.105882, 0.0901961, 1 )
-anchor_left = 5.76805
-anchor_top = 1.0
-anchor_right = 6.9243
-anchor_bottom = 2.0
+anchor_left = 5.14286
+anchor_top = 1.09373
+anchor_right = 6.34286
+anchor_bottom = 2.09373
 margin_left = -180.0
 margin_top = -38.0
 margin_right = -140.0
 margin_bottom = -24.0
-rect_scale = Vector2( 0.58005, 0.977044 )
+rect_scale = Vector2( 0.427637, 0.715432 )
 custom_fonts/font = SubResource( 1 )
 text = "asdsdasdsad"
 align = 1
 valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
