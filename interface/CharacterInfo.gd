@@ -25,10 +25,10 @@ const servalSpriteSheetPath = "res://Actors/Player/Serval-Sheet.png"
 const servalImagePath = "res://Serval.png"
 const SERVAL_TOOLTIP = "Achieve Score of 100"
 func _ready() -> void:
-	speedBox._setTexturePath("res://CarcaleIcon.png")
+	speedBox._setTexturePath("res://interface/images/Lightning.png")
 	powerBox._setTexturePath("res://interface/images/Claw.png")
 	healthBox._setTexturePath("res://interface/images/healthIcon.png")
-	jumpBox._setTexturePath("res://CarcaleIcon.png")
+	jumpBox._setTexturePath("res://interface/images/Jump.png")
 	_setupCharacterData();	
 	_setCharacterStats(characterArray[currentCharacterIndex]);
 
