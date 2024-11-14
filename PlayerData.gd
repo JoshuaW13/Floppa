@@ -1,12 +1,13 @@
 extends Node
 #fields
 var highScore = 0;
-const SERVAL_SCORE = 100;
-const LYNX_KILL_COUNT = 10;
+const SERVAL_SCORE = 1;
+const LYNX_KILL_COUNT = 1;
 
 #unlocks
 var serval = false;
 var lynx = false;
+signal character_unlocked(notificationText)
 
 #stats
 var speed = 3
@@ -21,10 +22,12 @@ func check_highscore(score):
 		highScore = score;
 	if score >= SERVAL_SCORE:
 		serval = true
+		emit_signal("character_unlocked", "Serval Unlocked!")		
 
 func check_Killed_Ennemies(killedEnnemies):
 	if killedEnnemies >= LYNX_KILL_COUNT:
 		lynx = true
+		emit_signal("character_unlocked", "Lynx Unlocked!")
 
 func _setCharacterInfo(newSpeed, newPower, newHealth, newJump, newSprite):
 	speed = newSpeed

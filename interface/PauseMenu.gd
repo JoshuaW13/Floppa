@@ -28,7 +28,6 @@ func player_died_menu(score):
 	var score_display = $Control/PauseMenu/Score
 	var high_score_display = $Control/PauseMenu/HighScore
 	PlayerData.check_highscore(score)
-	print("WE are checking killed ennemis with "+str(killedEnnemies))
 	PlayerData.check_Killed_Ennemies(killedEnnemies);
 	high_score_display.text = "HighScore: "+str(PlayerData.highScore)
 	score_display.text = "Score: "+str(score)

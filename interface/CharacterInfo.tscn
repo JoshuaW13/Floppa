@@ -111,7 +111,7 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
-[connection signal="button_down" from="HBoxContainer/TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="button_down" from="HBoxContainer/TextureButton" to="HBoxContainer/TextureButton" method="_on_TextureButton_button_down"]
+[connection signal="button_down" from="HBoxContainer/TextureButton" to="." method="_on_TextureButton_button_down"]
 [connection signal="mouse_entered" from="HBoxContainer/TextureButton" to="HBoxContainer/TextureButton" method="_on_TextureButton_mouse_entered"]
 [connection signal="mouse_exited" from="HBoxContainer/TextureButton" to="HBoxContainer/TextureButton" method="_on_TextureButton_mouse_exited"]
