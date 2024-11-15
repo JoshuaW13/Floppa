@@ -10,7 +10,8 @@ _data = {
 }
 
 [sub_resource type="DynamicFont" id=2]
-size = 6
+size = 5
+outline_color = Color( 0.188235, 0.105882, 0.0901961, 1 )
 font_data = ExtResource( 3 )
 
 [node name="NotificationPoster" type="Control"]
@@ -31,7 +32,7 @@ __meta__ = {
 curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="notificationDisplayPath"]
-position = Vector2( 192, 56 )
+position = Vector2( 192, 32 )
 rotation = -1.5708
 loop = false
 
@@ -50,15 +51,15 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="notificationDisplayPath/PathFollow2D/TextureRect"]
-modulate = Color( 0.188235, 0.105882, 0.0901961, 1 )
+modulate = Color( 0.670588, 0.403922, 0.27451, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -28.0
-margin_top = -7.5
+margin_left = -20.0
+margin_top = -8.0
 margin_right = 28.0
-margin_bottom = 7.5
+margin_bottom = 7.0
 custom_fonts/font = SubResource( 2 )
 text = "Character Unlocked"
 autowrap = true

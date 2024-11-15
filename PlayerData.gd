@@ -20,12 +20,12 @@ var spritePath = "res://Actors/Player/CaracalIdle-Sheet.png"
 func check_highscore(score):
 	if score > highScore:
 		highScore = score;
-	if score >= SERVAL_SCORE:
+	if score >= SERVAL_SCORE && !serval:
 		serval = true
 		emit_signal("character_unlocked", "Serval Unlocked!")		
 
 func check_Killed_Ennemies(killedEnnemies):
-	if killedEnnemies >= LYNX_KILL_COUNT:
+	if killedEnnemies >= LYNX_KILL_COUNT && !lynx:
 		lynx = true
 		emit_signal("character_unlocked", "Lynx Unlocked!")
 

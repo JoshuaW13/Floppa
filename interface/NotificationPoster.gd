@@ -38,7 +38,6 @@ func _on_NotificationPoster_notification_added() -> void:
 
 func calculate_alpha():
 	var alpha = 1-displayPath.unit_offset
-	print("The alpha is "+str(alpha))
 	var new_color = notification.modulate
 	new_color.a = alpha
 	notification.modulate = new_color
@@ -52,4 +51,4 @@ func start_posting_notification():
 		isPosting = true
 		notificationLabel.text = notificationQueue.pop_front()  # Get the next notification text
 		self.visible = true  # Make the notification visible
-		speed = 0.7  # Set a negative speed to move the notification to the left along the path
+		speed = 0.5  # Set a negative speed to move the notification to the left along the path
