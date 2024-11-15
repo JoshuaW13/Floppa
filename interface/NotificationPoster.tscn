@@ -1,36 +1,55 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://interface/images/MenuBackground.png" type="Texture" id=1]
 [ext_resource path="res://interface/NotificationPoster.gd" type="Script" id=2]
 [ext_resource path="res://interface/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 192, 32, 0, 0, 0, 0, 192, 0 )
+}
+
+[sub_resource type="DynamicFont" id=2]
 size = 6
 font_data = ExtResource( 3 )
 
 [node name="NotificationPoster" type="Control"]
-margin_right = 416.0
-margin_bottom = 224.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -208.0
+margin_top = -224.0
+margin_right = 208.0
 mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="notificationDisplayPath" type="Path2D" parent="."]
+curve = SubResource( 1 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="notificationDisplayPath"]
+position = Vector2( 192, 56 )
+rotation = -1.5708
+loop = false
+
+[node name="TextureRect" type="TextureRect" parent="notificationDisplayPath/PathFollow2D"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -36.0
-margin_top = 10.0
-margin_right = 36.0
-margin_bottom = 48.0
+margin_left = 8.00009
+margin_top = -24.0
+margin_right = 80.0001
+margin_bottom = 14.0
+rect_rotation = 90.0
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="Label" type="Label" parent="notificationDisplayPath/PathFollow2D/TextureRect"]
 modulate = Color( 0.188235, 0.105882, 0.0901961, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
@@ -40,10 +59,11 @@ margin_left = -28.0
 margin_top = -7.5
 margin_right = 28.0
 margin_bottom = 7.5
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Character Unlocked"
 autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="notification_added" from="." to="." method="_on_NotificationPoster_notification_added"]
+[connection signal="notification_posting_finished" from="." to="." method="_on_NotificationPoster_notification_posting_finished"]
