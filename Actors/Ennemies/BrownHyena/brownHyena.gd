@@ -11,6 +11,7 @@ enum states{
 var state = states.WALK
 var damage = 1.0;
 var velocity = Vector2(-30,0.0);
+var attackerDirection = 1;
 onready var health = health setget _set_health;
 onready var invulnerableTimer = $InvulnerableTimer
 onready var animationPlayer = $AnimationPlayer
@@ -33,7 +34,7 @@ func init(direction):
 	else:
 		print("Invalid direction passed!")
 	velocity = HYENA_WALK_SPEED;
-	HYENA_RUN_SPEED = HYENA_WALK_SPEED*-4
+	HYENA_RUN_SPEED = HYENA_WALK_SPEED*4
 
 func _set_health(value):
 	var prev_health = health;
@@ -108,9 +109,18 @@ func _on_brownhyena_killed(_points) -> void:
 	biteHitbox.set_deferred("disabled", true);
 	hurtBox.set_deferred("disabled", true);
 	detectionBox.set_deferred("disabled", true)
-	velocity = HYENA_RUN_SPEED
+	velocity = HYENA_RUN_SPEED*attackerDirection
 
 
 func _on_InvulnerableTimer_timeout() -> void:
 	if state!=states.FLEE:
 		hurtBox.set_deferred("disabled", false);
+
+func _determine_last_attacker_direction(_area: Area2D):
+	var area_position = global_position;
+	var body_position = _area.global_position;
+	if body_position.x>=area_position.x:
+		attackerDirection = 1 #entered from right
+	elif body_position.x<area_position.x:
+		attackerDirection = -1 #enteded from the left
+	
