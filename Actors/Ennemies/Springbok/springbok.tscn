@@ -99,6 +99,30 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( -11.1244, -15.4946 ), Vector2( -15.0973, -20.3947 ), Vector2( -16.9514, -24.712 ), Vector2( -33.1082, -3.33731 ), Vector2( -33.0641, -2.35731 ), Vector2( -17.5915, -24.8179 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath("FootHitBox:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = false
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("FootHitBox:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1, 1 ) ]
+}
 
 [sub_resource type="Animation" id=5]
 length = 0.6
@@ -138,6 +162,18 @@ tracks/2/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 0.0, 90.0, 90.0, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("FootHitBox:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -183,7 +219,7 @@ height = 13.4949
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 4.15332
-height = 44.1755
+height = 7.69336
 
 [node name="springbok" type="KinematicBody2D"]
 collision_layer = 0
@@ -196,7 +232,7 @@ scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 7
-frame = 3
+frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/DeathLeft = SubResource( 2 )
@@ -220,8 +256,8 @@ rotation = -1.5708
 shape = SubResource( 8 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2( 31.4749, -2.78771 )
-rotation = 1.5708
+position = Vector2( -25.237, -13.7505 )
+rotation = -0.805547
 collision_layer = 32
 collision_mask = 64
 
@@ -230,6 +266,7 @@ modulate = Color( 1, 0.00392157, 0.00392157, 1 )
 position = Vector2( 2.78771, -0.52511 )
 rotation = -1.5708
 shape = SubResource( 9 )
+disabled = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 6.0625, -0.125 )
@@ -244,11 +281,13 @@ rotation = -1.5708
 shape = SubResource( 1 )
 
 [node name="FootHitBox" type="Area2D" parent="."]
+scale = Vector2( -1, 1 )
 collision_layer = 34
 collision_mask = 72
 
 [node name="footCollisionShape" type="CollisionShape2D" parent="FootHitBox"]
-position = Vector2( 0, 24.722 )
+modulate = Color( 0.807843, 0.129412, 0.129412, 1 )
+position = Vector2( 24, 23.9999 )
 rotation = -1.5708
 shape = SubResource( 1 )
 [connection signal="killed" from="." to="." method="_on_springbok_killed"]
