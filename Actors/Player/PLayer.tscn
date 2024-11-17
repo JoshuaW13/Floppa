@@ -1125,7 +1125,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="CapsuleShape2D" id=17]
-radius = 8.90573
+radius = 10.024
 height = 16.918
 
 [sub_resource type="CapsuleShape2D" id=18]
@@ -1152,11 +1152,10 @@ position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
-frame = 17
+frame = 20
 
 [node name="Detection range" type="Area2D" parent="."]
-position = Vector2( -3.15, 0 )
-rotation = 3.14159
+position = Vector2( 1.80709, -11.2975 )
 collision_mask = 10
 
 [node name="FootCollider" type="CollisionShape2D" parent="Detection range"]
@@ -1198,7 +1197,8 @@ anims/Invincibility = SubResource( 15 )
 anims/Rest = SubResource( 16 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -2.082, 0 )
+position = Vector2( -4.014, 0 )
+scale = Vector2( -1, 1 )
 
 [node name="Hitbox" type="Area2D" parent="Position2D"]
 position = Vector2( -16.7975, -11.2975 )
@@ -1206,6 +1206,7 @@ collision_layer = 16
 collision_mask = 2147483780
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D/Hitbox"]
+visible = false
 modulate = Color( 0.921569, 0.117647, 0.117647, 1 )
 shape = SubResource( 17 )
 disabled = true
@@ -1221,8 +1222,9 @@ collision_layer = 16
 collision_mask = 132
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D2/GroundHitbox"]
+visible = false
 modulate = Color( 0.878431, 0.588235, 0.176471, 1 )
-position = Vector2( 7.72985, 5.05412 )
+position = Vector2( 7.5812, 5.50008 )
 shape = SubResource( 18 )
 disabled = true
 
