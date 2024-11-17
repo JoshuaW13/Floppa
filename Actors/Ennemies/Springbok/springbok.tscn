@@ -3,10 +3,6 @@
 [ext_resource path="res://Actors/Ennemies/Springbok/Springbok-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Ennemies/Springbok/springbok.gd" type="Script" id=2]
 
-[sub_resource type="CapsuleShape2D" id=1]
-radius = 4.15332
-height = 44.1755
-
 [sub_resource type="Animation" id=2]
 resource_name = "DeathLeft"
 length = 0.8
@@ -185,6 +181,10 @@ height = 37.25
 radius = 8.44797
 height = 13.4949
 
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.15332
+height = 44.1755
+
 [node name="springbok" type="KinematicBody2D"]
 collision_layer = 0
 collision_mask = 8
@@ -197,11 +197,6 @@ texture = ExtResource( 1 )
 vframes = 4
 hframes = 7
 frame = 3
-
-[node name="footCollider" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 24.722 )
-rotation = -1.5708
-shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/DeathLeft = SubResource( 2 )
@@ -232,7 +227,7 @@ collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 modulate = Color( 1, 0.00392157, 0.00392157, 1 )
-position = Vector2( 0.794598, -0.397297 )
+position = Vector2( 2.78771, -0.52511 )
 rotation = -1.5708
 shape = SubResource( 9 )
 
@@ -242,6 +237,20 @@ scale = Vector2( 3.21875, 1 )
 
 [node name="invulnerableTimer" type="Timer" parent="."]
 wait_time = 0.5
+
+[node name="groundCollider" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 24.722 )
+rotation = -1.5708
+shape = SubResource( 1 )
+
+[node name="FootHitBox" type="Area2D" parent="."]
+collision_layer = 34
+collision_mask = 72
+
+[node name="footCollisionShape" type="CollisionShape2D" parent="FootHitBox"]
+position = Vector2( 0, 24.722 )
+rotation = -1.5708
+shape = SubResource( 1 )
 [connection signal="killed" from="." to="." method="_on_springbok_killed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
