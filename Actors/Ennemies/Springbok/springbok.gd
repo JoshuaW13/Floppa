@@ -15,6 +15,8 @@ onready var animationPLayer = $AnimationPlayer
 onready var damagePlayer = $DamageStateAnimator
 onready var hurtbox = $HurtBox/CollisionShape2D
 onready var invulnerableTimer = $invulnerableTimer
+onready var footHitbox = $FootHitBox/footCollisionShape
+onready var hornHitbox = $Hitbox/CollisionShape2D
 
 func _ready() -> void:
 	points=5
@@ -84,8 +86,9 @@ func _on_Hitbox_area_entered(_area: Area2D) -> void:
 	get_tree().call_group("Player","set_knock")
 
 func _on_springbok_killed(_points) -> void:
-	print("springbok killed!")
 	hurtbox.set_deferred("disabled", true)
+	footHitbox.set_deferred("disabled", true)
+	hornHitbox.set_deferred("disabled", true)
 	velocity = velocity/1.4;
 	state = states.DEAD
 
