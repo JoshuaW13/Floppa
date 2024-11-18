@@ -26,6 +26,7 @@ var attacked = 0;
 var animationFree = 1;
 var screen_size = Vector2.ZERO;
 var velocity;
+var attackAnimationSpeed = 1.0
 onready var health = health setget _set_health;
 export onready var attack = attack setget _set_attack;
 
@@ -72,17 +73,13 @@ func _set_player_jump_speed(value):
 	var newSpeed = player_speed.y
 	match value:
 		2:
-			newSpeed = newSpeed * 0.85
+			newSpeed = newSpeed * 0.80
 		4:
 			newSpeed = newSpeed*1.15
 	player_speed.y = newSpeed
 
 func _set_attack(value):
-	print("The value going in here is "+str(value))
 	match value:
-		2:
-			attack = 0.5
-			return
 		3:
 			attack = 1
 			return
@@ -90,7 +87,6 @@ func _set_attack(value):
 			attack = 2
 			return
 	attack = 1;
-	print("attack is "+str(attack))
 
 func set_knock():
 	if damageStatesAnimations.current_animation != "Invincibility":

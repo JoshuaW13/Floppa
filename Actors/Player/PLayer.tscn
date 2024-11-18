@@ -1152,7 +1152,7 @@ position = Vector2( -3, 0 )
 texture = ExtResource( 1 )
 vframes = 7
 hframes = 10
-frame = 20
+frame = 46
 
 [node name="Detection range" type="Area2D" parent="."]
 position = Vector2( 1.80709, -11.2975 )
@@ -1197,8 +1197,7 @@ anims/Invincibility = SubResource( 15 )
 anims/Rest = SubResource( 16 )
 
 [node name="Position2D" type="Position2D" parent="."]
-position = Vector2( -4.014, 0 )
-scale = Vector2( -1, 1 )
+position = Vector2( -2.082, 0 )
 
 [node name="Hitbox" type="Area2D" parent="Position2D"]
 position = Vector2( -16.7975, -11.2975 )
@@ -1212,9 +1211,8 @@ shape = SubResource( 17 )
 disabled = true
 
 [node name="Position2D2" type="Position2D" parent="."]
-position = Vector2( 0, 2.97302 )
+position = Vector2( -5.91889, 3.12167 )
 rotation = -3.14159
-scale = Vector2( -1, 1 )
 
 [node name="GroundHitbox" type="Area2D" parent="Position2D2"]
 position = Vector2( 5.35143, -1.04055 )
@@ -1224,12 +1222,13 @@ collision_mask = 132
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Position2D2/GroundHitbox"]
 visible = false
 modulate = Color( 0.878431, 0.588235, 0.176471, 1 )
-position = Vector2( 7.5812, 5.50008 )
+position = Vector2( 7.72985, 5.05412 )
 shape = SubResource( 18 )
 disabled = true
 
 [node name="HurtBox" type="Area2D" parent="."]
-position = Vector2( -2.251, 3.94 )
+position = Vector2( -0.530032, -2.15278 )
+rotation = 0.785398
 collision_layer = 64
 collision_mask = 32
 
@@ -1247,5 +1246,6 @@ one_shot = true
 position = Vector2( -0.117985, 11.4445 )
 rotation = -1.5708
 shape = SubResource( 20 )
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Jump" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]

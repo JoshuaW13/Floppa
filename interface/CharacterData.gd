@@ -8,5 +8,6 @@ var speedValue = 0
 var powerValue =0
 var healthValue = 0
 var jumpValue = 0
+var attackSpeed = 1.0
 
 

@@ -35,15 +35,15 @@ func _ready() -> void:
 func _setupCharacterData():
 	# Caracal
 	var caracalData = characterDataClass.new()
-	characterArray.append(_setCharacterData(caracalData,3,3,3,4, caracalSpriteSheetPath, caracalImagePath, ""))
+	characterArray.append(_setCharacterData(caracalData,3,3,3,3, caracalSpriteSheetPath, caracalImagePath, "", 1.0))
 	#Serval
 	var servalData = characterDataClass.new()
-	characterArray.append(_setCharacterData(servalData,4,3,3,3, servalSpriteSheetPath, servalImagePath, SERVAL_TOOLTIP))
+	characterArray.append(_setCharacterData(servalData,4,3,3,4, servalSpriteSheetPath, servalImagePath, SERVAL_TOOLTIP, 1.5))
 	#Lynx 
 	var lynxData = characterDataClass.new()
-	characterArray.append(_setCharacterData(lynxData,3,4,2,2, lynxSpriteSheetPath, lynxImagePath, LYNX_TOOLTIP))
+	characterArray.append(_setCharacterData(lynxData,3,4,2,2, lynxSpriteSheetPath, lynxImagePath, LYNX_TOOLTIP, 1.0))
 
-func _setCharacterData(my_character, speed, power, health, jump, sprite, image, tooltip):
+func _setCharacterData(my_character, speed, power, health, jump, sprite, image, tooltip, attackSpeed):
 	my_character.speedValue =speed
 	my_character.powerValue = power
 	my_character.healthValue = health
@@ -51,6 +51,7 @@ func _setCharacterData(my_character, speed, power, health, jump, sprite, image, 
 	my_character.spritePath = sprite
 	my_character.imagePath = image
 	my_character.toolTip = tooltip
+	my_character.attackSpeed = attackSpeed
 	return my_character
 
 func _setCharacterStats(my_character):
@@ -105,5 +106,6 @@ func _on_TextureButton_button_down() -> void:
 	var my_character = characterArray[currentCharacterIndex];
 	if(!_character_unlocked(currentCharacterIndex)):
 		return
-	PlayerData._setCharacterInfo(my_character.speedValue, my_character.powerValue,my_character.healthValue,my_character.jumpValue, my_character.spritePath)	
+	PlayerData._setCharacterInfo(my_character.speedValue, my_character.powerValue,my_character.healthValue,my_character.jumpValue, my_character.spritePath)
+	PlayerData.attackSpeed = my_character.attackSpeed
 	emit_signal("characterSelected")

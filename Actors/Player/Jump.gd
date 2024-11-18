@@ -15,9 +15,11 @@ func handle_input(_event: InputEvent) -> void:
 	if _event.is_action_pressed("Attack"):
 		player.animationPlayer.clear_queue();
 		if(player.facing=="left"):
+			player.animationPlayer.playback_speed = PlayerData.attackSpeed
 			player.animationPlayer.play("AerialAttackLeft")
 			player.animationPlayer.queue("JumpLeft")
 		elif(player.facing=="right"):
+			player.animationPlayer.playback_speed = PlayerData.attackSpeed			
 			player.animationPlayer.play("AerialAttackRight")
 			player.animationPlayer.queue("JumpRight")
 
@@ -30,3 +32,7 @@ func physics_update(_delta: float) -> void:
 			state_machine.transition_to("Idle")
 		else:
 			state_machine.transition_to("Run")
+
+
+func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+	player.animationPlayer.playback_speed = 1.0	

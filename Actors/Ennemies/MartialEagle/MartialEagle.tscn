@@ -450,6 +450,7 @@ script = ExtResource( 2 )
 texture = ExtResource( 1 )
 vframes = 2
 hframes = 9
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FlapLeft = SubResource( 1 )

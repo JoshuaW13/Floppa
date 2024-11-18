@@ -5,16 +5,17 @@ const SERVAL_SCORE = 100;
 const LYNX_KILL_COUNT = 10;
 
 #unlocks
-var serval = false;
-var lynx = false;
+var serval = true;
+var lynx = true;
 signal character_unlocked(notificationText)
 
 #stats
 var speed = 3
 var power = 3
 var health =3
-var jump =4
+var jump =3
 var spritePath = "res://Actors/Player/CaracalIdle-Sheet.png"
+var attackSpeed = 1.0
 
 #check highscore and update
 func check_highscore(score):

@@ -3,7 +3,7 @@
 [ext_resource path="res://Actors/Ennemies/Springbok/Springbok-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Ennemies/Springbok/springbok.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "DeathLeft"
 length = 0.8
 tracks/0/type = "value"
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 resource_name = "DeathRight"
 length = 0.8
 tracks/0/type = "value"
@@ -59,7 +59,7 @@ tracks/1/keys = {
 "values": [ true ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "RunLeft"
 length = 0.6
 loop = true
@@ -124,7 +124,7 @@ tracks/4/keys = {
 "values": [ Vector2( -1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -176,7 +176,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1, 1 ) ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=5]
 resource_name = "Damage"
 length = 0.3
 step = 0.05
@@ -193,7 +193,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 0, 0, 1 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=6]
 resource_name = "Rest"
 length = 0.1
 step = 0.05
@@ -210,14 +210,14 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CapsuleShape2D" id=8]
+[sub_resource type="CapsuleShape2D" id=7]
 height = 37.25
 
-[sub_resource type="CapsuleShape2D" id=9]
+[sub_resource type="CapsuleShape2D" id=8]
 radius = 8.44797
 height = 13.4949
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=9]
 radius = 4.15332
 height = 7.69336
 
@@ -232,18 +232,18 @@ scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
 vframes = 4
 hframes = 7
-frame = 8
+frame = 27
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/DeathLeft = SubResource( 2 )
-anims/DeathRight = SubResource( 3 )
-anims/RunLeft = SubResource( 4 )
-anims/RunRight = SubResource( 5 )
+anims/DeathLeft = SubResource( 1 )
+anims/DeathRight = SubResource( 2 )
+anims/RunLeft = SubResource( 3 )
+anims/RunRight = SubResource( 4 )
 
 [node name="DamageStateAnimator" type="AnimationPlayer" parent="."]
 autoplay = "Rest"
-anims/Damage = SubResource( 6 )
-anims/Rest = SubResource( 7 )
+anims/Damage = SubResource( 5 )
+anims/Rest = SubResource( 6 )
 
 [node name="HurtBox" type="Area2D" parent="."]
 position = Vector2( 0, 3.875 )
@@ -253,11 +253,10 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 modulate = Color( 0.0313726, 0.952941, 0.976471, 1 )
 rotation = -1.5708
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="Hitbox" type="Area2D" parent="."]
-position = Vector2( -25.237, -13.7505 )
-rotation = -0.805547
+position = Vector2( -16.2061, -22.9765 )
 collision_layer = 32
 collision_mask = 64
 
@@ -265,7 +264,7 @@ collision_mask = 64
 modulate = Color( 1, 0.00392157, 0.00392157, 1 )
 position = Vector2( 2.78771, -0.52511 )
 rotation = -1.5708
-shape = SubResource( 9 )
+shape = SubResource( 8 )
 disabled = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
@@ -278,7 +277,7 @@ wait_time = 0.5
 [node name="groundCollider" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 24.722 )
 rotation = -1.5708
-shape = SubResource( 1 )
+shape = SubResource( 9 )
 
 [node name="FootHitBox" type="Area2D" parent="."]
 scale = Vector2( -1, 1 )
@@ -289,7 +288,7 @@ collision_mask = 72
 modulate = Color( 0.807843, 0.129412, 0.129412, 1 )
 position = Vector2( 24, 23.9999 )
 rotation = -1.5708
-shape = SubResource( 1 )
+shape = SubResource( 9 )
 [connection signal="killed" from="." to="." method="_on_springbok_killed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
