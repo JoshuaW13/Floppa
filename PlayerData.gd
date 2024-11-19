@@ -5,8 +5,8 @@ const SERVAL_SCORE = 100;
 const LYNX_KILL_COUNT = 10;
 
 #unlocks
-var serval = true;
-var lynx = true;
+var serval = false;
+var lynx = false;
 signal character_unlocked(notificationText)
 
 #stats

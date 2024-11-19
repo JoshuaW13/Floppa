@@ -34,7 +34,7 @@ func init(direction):
 	else:
 		print("Invalid direction passed!")
 	velocity = HYENA_WALK_SPEED;
-	HYENA_RUN_SPEED = HYENA_WALK_SPEED*4
+	HYENA_RUN_SPEED = HYENA_WALK_SPEED.abs()*4
 
 func _set_health(value):
 	var prev_health = health;
@@ -99,6 +99,7 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 		return
 	var player = area.get_parent().get_parent()	
 	_damage(player.attack)
+	_determine_last_attacker_direction(area)
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	queue_free();
@@ -120,7 +121,7 @@ func _determine_last_attacker_direction(_area: Area2D):
 	var area_position = global_position;
 	var body_position = _area.global_position;
 	if body_position.x>=area_position.x:
-		attackerDirection = 1 #entered from right
+		attackerDirection = -1 #entered from right
 	elif body_position.x<area_position.x:
-		attackerDirection = -1 #enteded from the left
+		attackerDirection = 1 #enteded from the left
 	
