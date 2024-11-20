@@ -36,7 +36,7 @@ func _physics_process(_delta: float) -> void:
 	if position.y>= 180 and state==DEATH:
 		queue_free();
 	_decideAnimation()
-	move_and_slide(velocity);
+	var _newVector = move_and_slide(velocity);
 
 
 func _on_Area2D_body_entered(_body: Node) -> void:

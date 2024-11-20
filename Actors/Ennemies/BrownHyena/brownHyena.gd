@@ -78,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		_process_attack();
 	if state == states.FLEE:
 		_process_flee();
-	move_and_slide(velocity, FLOOR_NORMAL);
+	var _newVector = move_and_slide(velocity, FLOOR_NORMAL);
 
 #Player enteres hyena's bite detect area
 func _on_DetectionBox_area_entered(_area: Area2D) -> void:

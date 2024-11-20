@@ -29,7 +29,7 @@ func determine_ypos()->float:
 func _physics_process(_delta: float) -> void:
 	_decideAnimation();
 	position.y += determine_ypos();
-	move_and_slide(velocity);
+	var _newVector = move_and_slide(velocity);
 
 #bird exits screen
 func _on_VisibilityNotifier2D_screen_exited() -> void:

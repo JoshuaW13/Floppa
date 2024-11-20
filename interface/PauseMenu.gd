@@ -51,12 +51,12 @@ func _on_pausebutton_button_up() -> void:
 
 func _on_homebutton_button_up() -> void:
 	toggle_pause()
-	get_tree().change_scene("res://interface/TitleScreen.tscn")
+	var _sceneChangeStatus = get_tree().change_scene("res://interface/TitleScreen.tscn")
 
 
 func _on_restartbutton_button_up() -> void:
 	toggle_pause()
-	get_tree().change_scene("res://World.tscn")
+	var _sceneChangeStatus = get_tree().change_scene("res://World.tscn")
 
 
 func _on_EnnemySpawner_ennemyKilled() -> void:

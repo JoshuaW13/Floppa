@@ -34,5 +34,5 @@ func physics_update(_delta: float) -> void:
 			state_machine.transition_to("Run")
 
 
-func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
+func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 	player.animationPlayer.playback_speed = 1.0	

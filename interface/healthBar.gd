@@ -6,7 +6,7 @@ var healthBar = Array()
 func _ready() -> void:
 	var playerHealth = PlayerData.health
 	print("The player health is "+str(playerHealth))
-	for i in range(playerHealth):
+	for _i in range(playerHealth):
 		healthBar.append(heartScene.instance())
 		add_child(healthBar[-1])
 

@@ -60,7 +60,7 @@ func _setCharacterStats(my_character):
 	healthBox._setStatValue(my_character.healthValue)
 	jumpBox._setStatValue(my_character.jumpValue )
 	characterImageRect.set_texture(load(my_character.imagePath))
-	if(!_character_unlocked(currentCharacterIndex)):
+	if(!_character_unlocked()):
 		characterSelector.unlocked = false
 		characterImageRect.modulate = Color(1,1,1,0.5)
 		characterSelector.set_normal_texture(load(LOCKED_SPRITE))
@@ -90,7 +90,7 @@ func _on_RightButton_button_down() -> void:
 		currentCharacterIndex +=1
 	_updateCharacter()
 
-func _character_unlocked(currentCharacterIndex: int):
+func _character_unlocked():
 	match currentCharacterIndex:
 		1:
 			if !PlayerData.serval:
@@ -104,7 +104,7 @@ func _character_unlocked(currentCharacterIndex: int):
 func _on_TextureButton_button_down() -> void:
 	#set character data
 	var my_character = characterArray[currentCharacterIndex];
-	if(!_character_unlocked(currentCharacterIndex)):
+	if(!_character_unlocked()):
 		return
 	PlayerData._setCharacterInfo(my_character.speedValue, my_character.powerValue,my_character.healthValue,my_character.jumpValue, my_character.spritePath)
 	PlayerData.attackSpeed = my_character.attackSpeed

@@ -94,10 +94,12 @@ func _on_Timer_timeout() -> void:
 			spawn_aerial()
 		elif altitude%2==0:
 			spawn_ennemy()
-		yield(get_tree().create_timer(2), "timeout")
-		#print("spawned")
+		if is_instance_valid(self):
+			yield(get_tree().create_timer(2), "timeout")
+		else:
+			print("Instance is no longer valid.")
+			return  # Exit if the instance is no longer available.
 	wave+=1;
-	#print("wave over")
 
 func _on_ennemy_killed(points):
 	emit_signal("pointScored",points)

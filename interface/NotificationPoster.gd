@@ -12,7 +12,7 @@ signal notification_posting_finished
 var speed = 0  # Control the speed at which the notifications move (in units per second)
 
 func _ready() -> void:
-	PlayerData.connect("character_unlocked", self, "on_character_unlocked")
+	var _connectionStatus = PlayerData.connect("character_unlocked", self, "on_character_unlocked")
 	displayPath.unit_offset = 1  # Make sure the path starts from the beginning
 
 func on_character_unlocked(text: String) -> void:
