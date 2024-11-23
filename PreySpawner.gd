@@ -25,12 +25,12 @@ func _ready() -> void:
 	goaway = preload("res://Actors/Prey/GoAway/GoAway.tscn")
 	preys = [goaway];
 
-func _endless_spawn(spawner_side, prey, prey_spawn_location,i)->void:
-	if (i == 2) and (wave%3 ==0):
-		prey =roller.instance();
+func _endless_spawn(spawner_side, prey, prey_spawn_location, i) -> void:
+	if (i == 2) and (wave % 3 == 0):
+		prey = roller.instance();
 	else:
 		prey = preys[randi()%preys.size()].instance();
-	spawner_side = randi()%2;
+	spawner_side = randi() % 2;
 	if spawner_side == 1:
 		prey_spawn_location = $LeftPath/LeftPathLocation
 	elif spawner_side == 0:
@@ -42,40 +42,37 @@ func _endless_spawn(spawner_side, prey, prey_spawn_location,i)->void:
 	prey.position = prey_spawn_location.position;
 
 func _on_Timer_timeout() -> void:
-	#start ennemy spawner
-	if wave ==2:
+	#start enemy spawner
+	if wave == 2:
 		emit_signal("Ennemy");
 		wave += 1;
 		return
 
-	var prey ;
-	spawner_side_ = randi()%2;
+	var prey;
+	spawner_side_ = randi() % 2;
 	var prey_spawn_location;
 	
 	#early wave scripting
-	if wave ==0:
-		#print("wave 0")
+	if wave == 0:
 		prey = weaver.instance();
-	if wave <2 && wave != 0:
-		#print("reached here!")
+	if wave < 2 && wave != 0:
 		prey = preys[randi()%preys.size()].instance()
 		timer.wait_time = 10;
 		preys.append(weaver)
-	if wave >2:
-		if inter_wave==0:
-			timer.wait_time=1.5;
+	if wave > 2:
+		if inter_wave == 0:
+			timer.wait_time = 1.5;
 			timer.start()
-		elif inter_wave==3:
-			timer.wait_time=4;
+		elif inter_wave == 3:
+			timer.wait_time = 4;
 			timer.start()
-			wave+=1
+			wave += 1
 			soundPlayer.play()
-			#print("endless wave finished")
-			inter_wave=0;
+			inter_wave = 0;
 			return
-		_endless_spawn(spawner_side_, prey, prey_spawn_location,inter_wave);
-		inter_wave+=1;
-		return;
+		_endless_spawn(spawner_side_, prey, prey_spawn_location, inter_wave);
+		inter_wave += 1;
+		return ;
 
 	#Choose spawner side
 	if spawner_side_ == 1:
@@ -89,10 +86,9 @@ func _on_Timer_timeout() -> void:
 	prey.connect("killed", self, "_on_prey_killed")
 	add_child(prey)
 	prey.position = prey_spawn_location.position;
-	#print("wave finsihed")
-	wave +=1;
+	wave += 1;
 	soundPlayer.play()
 
 #signal responses
 func _on_prey_killed(points):
-	emit_signal("pointScored",points)
+	emit_signal("pointScored", points)

@@ -33,17 +33,16 @@ func spawn_ennemy():
 		timer.start()
 	else:
 		var temp = ennemies[randi()%ennemies.size()];
-		if temp==hyena:
-			num_hyenas+=1;
+		if temp == hyena:
+			num_hyenas += 1;
 		else:
-			num_hyenas=0;
-		if num_hyenas==3:
-			print("entered here!")
-			while temp ==hyena:
-				temp=ennemies[randi()%ennemies.size()]
-			num_hyenas=0;
+			num_hyenas = 0;
+		if num_hyenas == 3:
+			while temp == hyena:
+				temp = ennemies[randi()%ennemies.size()]
+			num_hyenas = 0;
 		en = temp.instance();
-	var side = randi()%2;
+	var side = randi() % 2;
 	#decide the side
 	if side == 0:
 		en.init("right")
@@ -67,7 +66,7 @@ func spawn_aerial():
 	else:
 		var temp = aerials[randi()%aerials.size()]
 		en = temp.instance();
-	var side = randi()%2;
+	var side = randi() % 2;
 	#decide the side
 	if side == 0:
 		en.init("right")
@@ -83,25 +82,25 @@ func spawn_aerial():
 
 func _on_Timer_timeout() -> void:
 	var numEnem = 1;
-	if wave  >=2 and wave <4:
+	if wave >= 2 and wave < 4:
 		numEnem = 2
-	elif wave>=4:
-		numEnem = wave/3+2
+	elif wave >= 4:
+		numEnem = wave / 3 + 2
 
 	for i in numEnem:
-		var altitude = randi()%5;
-		if altitude %2==1:
+		var altitude = randi() % 5;
+		if altitude % 2 == 1:
 			spawn_aerial()
-		elif altitude%2==0:
+		elif altitude % 2 == 0:
 			spawn_ennemy()
 		if is_instance_valid(self):
-			yield(get_tree().create_timer(2), "timeout")
+			yield (get_tree().create_timer(2), "timeout")
 		else:
-			return  # Exit if the instance is no longer available.
-	wave+=1;
+			return # Exit if the instance is no longer available.
+	wave += 1;
 
 func _on_ennemy_killed(points):
-	emit_signal("pointScored",points)
+	emit_signal("pointScored", points)
 	emit_signal("ennemyKilled")
 #turns on ennemy spawn in sync with prey spawner
 func _on_PreySpawner_Ennemy() -> void:

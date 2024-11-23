@@ -38,9 +38,6 @@ func _ready() -> void:
 	_set_player_jump_speed(PlayerData.jump)
 	sprite.set_texture(load(PlayerData.spritePath))
 	screen_size = get_viewport_rect().size
-	
-func onCharacterUpdated():
-	print("Character updated!");
 
 func damage(amount):
 	if invulnerableTimer.is_stopped():
@@ -121,7 +118,6 @@ func jump(speed: Vector2, direction: Vector2):
 	return speed.y*direction.y
 
 func _physics_process(_delta: float) -> void:
-	#print(health)
 	var is_jump_interrupted = Input.is_action_just_released("jump") and velocity.y <0.0 #see if jump interupted
 	if is_on_floor(): attacked = 0; #Check if can attack again
 	var direction = get_direction() #calc direction

@@ -4,28 +4,26 @@ extends PlayerState
 # If we get a message asking us to jump, we jump.
 func enter(_msg := {}) -> void:
 	#start the start of jump animation
-	if(player.facing == 'left'):
+	if (player.facing == 'left'):
 		player.animationPlayer.play("JumpLeftStart")
 		player.animationPlayer.queue("JumpLeft")
-	elif(player.facing == 'right'):
+	elif (player.facing == 'right'):
 		player.animationPlayer.play("JumpRightStart")
 		player.animationPlayer.queue("JumpRight")
 
 func handle_input(_event: InputEvent) -> void:
 	if _event.is_action_pressed("Attack"):
 		player.animationPlayer.clear_queue();
-		if(player.facing=="left"):
+		if (player.facing == "left"):
 			player.animationPlayer.playback_speed = PlayerData.attackSpeed
 			player.animationPlayer.play("AerialAttackLeft")
 			player.animationPlayer.queue("JumpLeft")
-		elif(player.facing=="right"):
-			player.animationPlayer.playback_speed = PlayerData.attackSpeed			
+		elif (player.facing == "right"):
+			player.animationPlayer.playback_speed = PlayerData.attackSpeed
 			player.animationPlayer.play("AerialAttackRight")
 			player.animationPlayer.queue("JumpRight")
 
 func physics_update(_delta: float) -> void:
-	#print("Is jumping")
-	#print(player.facing)
 	# Landing.
 	if player.is_on_floor():
 		if is_equal_approx(player.velocity.x, 0.0):
@@ -35,4 +33,4 @@ func physics_update(_delta: float) -> void:
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
-	player.animationPlayer.playback_speed = 1.0	
+	player.animationPlayer.playback_speed = 1.0

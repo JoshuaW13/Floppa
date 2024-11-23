@@ -2,7 +2,7 @@ extends Node
 #fields
 var highScore = 0;
 const SERVAL_SCORE = 75;
-const LYNX_KILL_COUNT = 8;
+const LYNX_KILL_COUNT = 10;
 
 #unlocks
 var serval = false;
