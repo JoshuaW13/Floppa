@@ -79,8 +79,11 @@ func _on_HurtBox_area_entered(_area: Area2D) -> void:
 func _on_AnimationPlayer_animation_finished(anim_name: String) -> void:
 	if anim_name == "DeathLeft" or anim_name == "DeathRight":
 		velocity.x = 0
-		yield(get_tree().create_timer(1), "timeout")
-		queue_free()
+	var timer = get_tree().create_timer(2)
+	yield(timer, "timeout")
+	# Check if the instance is still valid after the wait time
+	if is_instance_valid(self):
+		queue_free()  # Only free the object if it's still valid			
 
 func _on_Hitbox_area_entered(_area: Area2D) -> void:
 	get_tree().call_group("Player","set_knock")

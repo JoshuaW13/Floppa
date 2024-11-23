@@ -97,7 +97,6 @@ func _on_Timer_timeout() -> void:
 		if is_instance_valid(self):
 			yield(get_tree().create_timer(2), "timeout")
 		else:
-			print("Instance is no longer valid.")
 			return  # Exit if the instance is no longer available.
 	wave+=1;
 
