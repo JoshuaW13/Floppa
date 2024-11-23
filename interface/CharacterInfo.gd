@@ -20,10 +20,10 @@ const caracalSpriteSheetPath = "res://Actors/Player/CaracalIdle-Sheet.png"
 const caracalImagePath = "res://CaracaleIcon.png"
 const lynxSpriteSheetPath = "res://Actors/Player/Lynx-Sheet.png"
 const lynxImagePath = "res://Lynx.png"
-const LYNX_TOOLTIP = "Kill 10 Hostile Animals"
+const LYNX_TOOLTIP = "Kill 8 Hostile Animals"
 const servalSpriteSheetPath = "res://Actors/Player/Serval-Sheet.png"
 const servalImagePath = "res://Serval.png"
-const SERVAL_TOOLTIP = "Achieve Score of 100"
+const SERVAL_TOOLTIP = "Achieve Score of 75"
 func _ready() -> void:
 	speedBox._setTexturePath("res://interface/images/Lightning.png")
 	powerBox._setTexturePath("res://interface/images/Claw.png")
@@ -41,7 +41,7 @@ func _setupCharacterData():
 	characterArray.append(_setCharacterData(servalData,4,3,3,4, servalSpriteSheetPath, servalImagePath, SERVAL_TOOLTIP, 1.5))
 	#Lynx 
 	var lynxData = characterDataClass.new()
-	characterArray.append(_setCharacterData(lynxData,3,4,2,2, lynxSpriteSheetPath, lynxImagePath, LYNX_TOOLTIP, 1.0))
+	characterArray.append(_setCharacterData(lynxData,2,4,2,2, lynxSpriteSheetPath, lynxImagePath, LYNX_TOOLTIP, 1.0))
 
 func _setCharacterData(my_character, speed, power, health, jump, sprite, image, tooltip, attackSpeed):
 	my_character.speedValue =speed

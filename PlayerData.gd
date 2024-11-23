@@ -1,8 +1,8 @@
 extends Node
 #fields
 var highScore = 0;
-const SERVAL_SCORE = 100;
-const LYNX_KILL_COUNT = 10;
+const SERVAL_SCORE = 75;
+const LYNX_KILL_COUNT = 8;
 
 #unlocks
 var serval = false;
