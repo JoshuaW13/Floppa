@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/birdDeath2.mp3-96aaf8fad532a5a88cfaf3866856b690.mp3str"
+
+[deps]
+
+source_file="res://Sounds/birdDeath2.mp3"
+dest_files=[ "res://.import/birdDeath2.mp3-96aaf8fad532a5a88cfaf3866856b690.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -11,5 +11,5 @@ dest_files=[ "res://.import/birdNaughtyBoy.mp3-c4d6446b4c5635dcf00912f386b6b0f2.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

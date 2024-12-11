@@ -7,6 +7,7 @@ var frequency;
 var amplitude;
 onready var animationplayer = $AnimationPlayer
 onready var deathSound = $deathSound
+onready var hurtBox = $Hurtbox/CollisionShape2D
 var velocity = Vector2(60.0, 0.0);
 
 func _ready() -> void:
@@ -39,6 +40,8 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 #bird is killed
 func _on_Hurtbox_area_entered(_area: Area2D) -> void:
 	deathSound.play();
+	hurtBox.set_deferred("disabled", true)
+	emit_signal("killed",points)	
 	hide()
 
 #bird exits tree
@@ -47,5 +50,4 @@ func _on_WeaverBird_tree_exited() -> void:
 
 
 func _on_deathSound_finished() -> void:
-	emit_signal("killed",points)
 	queue_free()

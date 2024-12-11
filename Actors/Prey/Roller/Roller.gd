@@ -6,6 +6,8 @@ enum {
 }
 onready var animationplayer = $AnimationPlayer
 onready var detection = $Area2D/DetectionRange
+onready var deathSound = $deathSound
+onready var hurtbox = $Hitbox/collisionshape
 #fields
 var threatDetected = false; 
 var state = FLYING
@@ -50,5 +52,10 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 
 #roller killed
 func _on_Hitbox_area_entered(_area: Area2D) -> void:
-	emit_signal("killed",points)
+	hide()
+	hurtbox.set_deferred("disabled", true)
+	emit_signal("killed",points)	
+	deathSound.play()
+
+func _on_deathSound_finished() -> void:
 	queue_free()
