@@ -20,6 +20,7 @@ onready var invulnerableTimer = $InvulnerabilityTimer
 onready var damageStatesAnimations = $DamageStateAnimations;
 onready var hurtbox = $HurtBox/CollisionShape2D
 onready var sprite = $Sprite
+onready var hurtSound = $SoundEffects/Damage
 var facing = "left";
 var knock = false;
 var attacked = 0;
@@ -56,7 +57,7 @@ func _set_health(value):
 	if health != prev_health:
 		emit_signal("health_update", health)
 		if health == 0:
-			kill()
+			hide()
 
 func _set_player_speed(value):
 	var newSpeed = player_speed.x
@@ -129,7 +130,7 @@ func _physics_process(_delta: float) -> void:
 	
 #damage player
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	print(area.name)
+	hurtSound.play();
 	if(area.name == "biteHitbox"):
 		damage(3)
 	else:
@@ -139,3 +140,8 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 func _on_InvulnerabilityTimer_timeout() -> void:
 	damageStatesAnimations.play("Rest")
 	hurtbox.set_deferred("disabled", false);
+
+
+func _on_AudioStreamPlayer2D_finished() -> void:
+	if health == 0:
+		kill();

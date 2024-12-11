@@ -153,6 +153,7 @@ autostart = true
 
 [node name="NotificationPoster" parent="PauseMenu" instance=ExtResource( 10 )]
 visible = false
+
 [connection signal="ennemyKilled" from="EnnemySpawner" to="PauseMenu" method="_on_EnnemySpawner_ennemyKilled"]
 [connection signal="pointScored" from="EnnemySpawner" to="." method="_on_EnnemySpawner_pointScored"]
 [connection signal="timeout" from="EnnemySpawner/Timer" to="EnnemySpawner" method="_on_Timer_timeout"]
