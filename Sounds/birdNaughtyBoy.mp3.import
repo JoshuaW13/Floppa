@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/birdNaughtyBoy.mp3-c4d6446b4c5635dcf00912f386b6b0f2.mp3str"
+
+[deps]
+
+source_file="res://Sounds/birdNaughtyBoy.mp3"
+dest_files=[ "res://.import/birdNaughtyBoy.mp3-c4d6446b4c5635dcf00912f386b6b0f2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

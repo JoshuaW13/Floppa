@@ -21,6 +21,7 @@ onready var damageStatesAnimations = $DamageStateAnimations;
 onready var hurtbox = $HurtBox/CollisionShape2D
 onready var sprite = $Sprite
 onready var hurtSound = $SoundEffects/Damage
+
 var facing = "left";
 var knock = false;
 var attacked = 0;

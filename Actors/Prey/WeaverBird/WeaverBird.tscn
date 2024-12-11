@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Actors/Prey/WeaverBird/WeaverBird-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Prey/WeaverBird/WeaverBird.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/birdDeath.mp3" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlyLeft"
@@ -52,8 +53,8 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 3
 hframes = 4
+vframes = 3
 frame = 8
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -76,6 +77,12 @@ collision_mask = 0
 modulate = Color( 0.933333, 0.109804, 0.109804, 1 )
 position = Vector2( -0.140308, 0.982151 )
 shape = SubResource( 4 )
+
+[node name="deathSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+attenuation = 0.732043
+
 [connection signal="tree_exited" from="." to="." method="_on_WeaverBird_tree_exited"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="finished" from="deathSound" to="." method="_on_deathSound_finished"]
