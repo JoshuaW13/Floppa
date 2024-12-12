@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/hyenaInPain.wav-9a59b9a67f9d084dff88475f6fbc828d.sample"
+
+[deps]
+
+source_file="res://Sounds/hyenaInPain.wav"
+dest_files=[ "res://.import/hyenaInPain.wav-9a59b9a67f9d084dff88475f6fbc828d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

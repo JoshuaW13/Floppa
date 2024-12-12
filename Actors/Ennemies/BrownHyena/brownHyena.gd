@@ -19,6 +19,7 @@ onready var damagePLayer = $DamageStatePlayer
 onready var biteHitbox = $biteHitbox/CollisionShape2D
 onready var detectionBox = $DetectionBox/CollisionShape2D
 onready var hurtBox = $HurtBox/CollisionShape2D
+onready var painSound = $hyenaInPain
 
 func _ready() -> void:
 	_set_health(4)
@@ -41,6 +42,7 @@ func _set_health(value):
 	health = clamp(value,0,6);
 	if health != prev_health:
 		if health == 0:
+			painSound.play()
 			emit_signal("killed",points)
 
 func _damage(value):

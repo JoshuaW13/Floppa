@@ -1,7 +1,8 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Actors/Ennemies/BrownHyena/Brown Hyena-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Ennemies/BrownHyena/brownHyena.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/hyenaInPain.wav" type="AudioStream" id=3]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 18.5828
@@ -349,8 +350,8 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 1 )
-vframes = 2
 hframes = 29
+vframes = 2
 frame = 29
 
 [node name="FloorCollider" type="CollisionShape2D" parent="."]
@@ -408,6 +409,11 @@ scale = Vector2( 2.85838, 1 )
 [node name="InvulnerableTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="hyenaInPain" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = -7.068
+
 [connection signal="killed" from="." to="." method="_on_brownhyena_killed"]
 [connection signal="area_entered" from="DetectionBox" to="." method="_on_DetectionBox_area_entered"]
 [connection signal="area_exited" from="DetectionBox" to="." method="_on_DetectionBox_area_exited"]
