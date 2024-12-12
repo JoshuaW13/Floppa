@@ -21,6 +21,7 @@ onready var damageStatesAnimations = $DamageStateAnimations;
 onready var hurtbox = $HurtBox/CollisionShape2D
 onready var sprite = $Sprite
 onready var hurtSound = $SoundEffects/Damage
+onready var boneCrushedSound = $SoundEffects/Eaten
 
 var facing = "left";
 var knock = false;
@@ -58,7 +59,10 @@ func _set_health(value):
 	if health != prev_health:
 		emit_signal("health_update", health)
 		if health == 0:
+			print("Hurtbox should be disabled!");
+			hurtbox.set_deferred("disabled", true);
 			hide()
+			kill();
 
 func _set_player_speed(value):
 	var newSpeed = player_speed.x
@@ -100,6 +104,8 @@ func get_direction() -> Vector2:
 
 #calculate move velocity based on direction and if jump is interrupted dont allow double jumps
 func calculate_move_velocity(linear_velocity: Vector2, speed: Vector2, direction: Vector2, is_jump_interrupted: bool) -> Vector2:
+	if health ==0:
+		return Vector2(0,0)
 	var out = linear_velocity
 	out.y += GRAVITY*get_physics_process_delta_time()
 	if !animationFree:
@@ -131,18 +137,19 @@ func _physics_process(_delta: float) -> void:
 	
 #damage player
 func _on_HurtBox_area_entered(area: Area2D) -> void:
-	hurtSound.play();
 	if(area.name == "biteHitbox"):
+		boneCrushedSound.play();
 		damage(3)
 	else:
+		hurtSound.play();
 		damage(1)
 
 #give player invincibility
 func _on_InvulnerabilityTimer_timeout() -> void:
 	damageStatesAnimations.play("Rest")
-	hurtbox.set_deferred("disabled", false);
+	if health>0:
+		hurtbox.set_deferred("disabled", false);
 
-
-func _on_AudioStreamPlayer2D_finished() -> void:
+func _on_SoundEffects_soundFinished() -> void:
 	if health == 0:
-		kill();
+		queue_free()

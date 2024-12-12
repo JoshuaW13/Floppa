@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/boneCrusher.mp3-095c72288ff79de329793cd426bbafcc.mp3str"
+
+[deps]
+
+source_file="res://Sounds/boneCrusher.mp3"
+dest_files=[ "res://.import/boneCrusher.mp3-095c72288ff79de329793cd426bbafcc.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
