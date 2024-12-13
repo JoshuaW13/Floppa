@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/springbokGrunt.mp3-63e603ca3ecc50d8e8f023884eab85ee.mp3str"
+
+[deps]
+
+source_file="res://Sounds/springbokGrunt.mp3"
+dest_files=[ "res://.import/springbokGrunt.mp3-63e603ca3ecc50d8e8f023884eab85ee.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Actors/Ennemies/Springbok/Springbok-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Ennemies/Springbok/springbok.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/springbokGrunt.mp3" type="AudioStream" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "DeathLeft"
@@ -230,8 +231,8 @@ script = ExtResource( 2 )
 modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 1 )
-vframes = 4
 hframes = 7
+vframes = 4
 frame = 27
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -289,6 +290,12 @@ modulate = Color( 0.807843, 0.129412, 0.129412, 1 )
 position = Vector2( 24, 23.9999 )
 rotation = -1.5708
 shape = SubResource( 9 )
+
+[node name="grunt" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+volume_db = 2.862
+pitch_scale = 0.6
+
 [connection signal="killed" from="." to="." method="_on_springbok_killed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]

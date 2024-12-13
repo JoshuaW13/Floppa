@@ -17,8 +17,10 @@ onready var hurtbox = $HurtBox/CollisionShape2D
 onready var invulnerableTimer = $invulnerableTimer
 onready var footHitbox = $FootHitBox/footCollisionShape
 onready var hornHitbox = $Hitbox/CollisionShape2D
+onready var grunt = $grunt
 
 func _ready() -> void:
+	grunt.play(2.0)
 	points=5
 	_set_health(2);
 
