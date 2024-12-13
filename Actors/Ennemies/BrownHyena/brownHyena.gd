@@ -104,7 +104,8 @@ func _on_HurtBox_area_entered(area: Area2D) -> void:
 	_determine_last_attacker_direction(area)
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
-	queue_free();
+	if !painSound.playing:
+		_on_hyenaInPain_finished()
 
 
 func _on_brownhyena_killed(_points) -> void:
@@ -126,4 +127,6 @@ func _determine_last_attacker_direction(_area: Area2D):
 		attackerDirection = -1 #entered from right
 	elif body_position.x<area_position.x:
 		attackerDirection = 1 #enteded from the left
-	
+
+func _on_hyenaInPain_finished() -> void:
+	queue_free()

@@ -420,3 +420,4 @@ volume_db = -7.068
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="timeout" from="InvulnerableTimer" to="." method="_on_InvulnerableTimer_timeout"]
+[connection signal="finished" from="hyenaInPain" to="." method="_on_hyenaInPain_finished"]

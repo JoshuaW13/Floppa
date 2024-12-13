@@ -20,6 +20,7 @@ onready var invulnerableTimer = $InvulnerableTimer
 onready var attackScream =  $sounds/attackScream
 onready var deathScream = $sounds/death
 onready var hitbox = $HitBox/CollisionShape2D
+onready var beakHitbox = $beakHitBox/CollisionShape2D
 
 func _ready() -> void:
 	points = 7
@@ -46,7 +47,8 @@ func _set_health(value):
 			deathScream.play()
 			hide()
 			hurtBox.set_deferred("disabled", true);
-			hurtBox.set_deferred("disabled", true);	
+			hitbox.set_deferred("disabled", true);
+			beakHitbox.set_deferred("disabled", true)
 			emit_signal("killed", points)
 
 func damage(value):
