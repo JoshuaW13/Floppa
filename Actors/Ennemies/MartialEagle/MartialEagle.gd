@@ -17,6 +17,9 @@ onready var hurtBox = $HurtBox/CollisionShape2D
 onready var damagePlayer = $DamagePlayer
 onready var detection = $Detection/CollisionShape2D
 onready var invulnerableTimer = $InvulnerableTimer
+onready var attackScream =  $sounds/attackScream
+onready var deathScream = $sounds/death
+onready var hitbox = $HitBox/CollisionShape2D
 
 func _ready() -> void:
 	points = 7
@@ -40,6 +43,10 @@ func _set_health(value):
 	health = clamp(value, 0, 2)
 	if health != prev_health:
 		if health == 0:
+			deathScream.play()
+			hide()
+			hurtBox.set_deferred("disabled", true);
+			hurtBox.set_deferred("disabled", true);	
 			emit_signal("killed", points)
 
 func damage(value):
@@ -102,6 +109,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 #eagle detects player
 func _on_Detection_area_entered(area: Area2D) -> void:
 	#print("detected!",area.name)
+	attackScream.play()
 	detection.set_deferred("disabled", true)
 	target = area.global_position;
 	target.y -= 10
@@ -118,9 +126,9 @@ func _on_VisibilityNotifier2D_screen_entered() -> void:
 	detection.set_deferred("disabled", false)
 
 
-func _on_eagle_killed(_points) -> void:
-	queue_free()
-
-
 func _on_InvulnerableTimer_timeout() -> void:
 	hurtBox.set_deferred("disabled", false);
+
+
+func _on_death_finished() -> void:
+	queue_free()

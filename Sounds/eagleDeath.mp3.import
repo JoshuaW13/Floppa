@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/eagleDeath.mp3-7831eb1350a6890ef4b6b435a543dae4.mp3str"
+
+[deps]
+
+source_file="res://Sounds/eagleDeath.mp3"
+dest_files=[ "res://.import/eagleDeath.mp3-7831eb1350a6890ef4b6b435a543dae4.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -1,7 +1,9 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Actors/Ennemies/MartialEagle/Martial Eagle-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Ennemies/MartialEagle/MartialEagle.gd" type="Script" id=2]
+[ext_resource path="res://Sounds/eagleScream.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/eagleDeath.mp3" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FlapLeft"
@@ -448,8 +450,8 @@ script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
-vframes = 2
 hframes = 9
+vframes = 2
 frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -512,9 +514,23 @@ shape = SubResource( 13 )
 [node name="InvulnerableTimer" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="attackScream" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource( 3 )
+volume_db = 3.0
+
+[node name="death" type="AudioStreamPlayer2D" parent="sounds"]
+stream = ExtResource( 4 )
+volume_db = -15.0
+pitch_scale = 1.15
+attenuation = 0.392292
+
 [connection signal="killed" from="." to="." method="_on_eagle_killed"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Detection" to="." method="_on_Detection_area_entered"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="InvulnerableTimer" to="." method="_on_InvulnerableTimer_timeout"]
+[connection signal="finished" from="sounds/death" to="." method="_on_death_finished"]
