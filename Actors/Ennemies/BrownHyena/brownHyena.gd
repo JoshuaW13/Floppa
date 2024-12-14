@@ -3,14 +3,14 @@ extends Ennemy
 #fields
 var HYENA_WALK_SPEED;
 var HYENA_RUN_SPEED;
-enum states{
+enum states {
 	WALK,
 	ATTACK,
 	FLEE
 }
 var state = states.WALK
 var damage = 1.0;
-var velocity = Vector2(-30,0.0);
+var velocity = Vector2(-30, 0.0);
 var attackerDirection = 1;
 onready var health = health setget _set_health;
 onready var invulnerableTimer = $InvulnerableTimer
@@ -29,51 +29,51 @@ func _ready() -> void:
 func init(direction):
 	direction = direction.to_lower();
 	if direction == "left":
-		HYENA_WALK_SPEED = Vector2(-30,0)
+		HYENA_WALK_SPEED = Vector2(-30, 0)
 	elif direction == "right":
-		HYENA_WALK_SPEED = Vector2(30,0)
+		HYENA_WALK_SPEED = Vector2(30, 0)
 	else:
 		print("Invalid direction passed!")
 	velocity = HYENA_WALK_SPEED;
-	HYENA_RUN_SPEED = HYENA_WALK_SPEED.abs()*4
+	HYENA_RUN_SPEED = HYENA_WALK_SPEED.abs() * 4
 
 func _set_health(value):
 	var prev_health = health;
-	health = clamp(value,0,6);
+	health = clamp(value, 0, 6);
 	if health != prev_health:
 		if health == 0:
 			painSound.play(0.5)
-			emit_signal("killed",points)
+			emit_signal("killed", points)
 
 func _damage(value):
 	if invulnerableTimer.is_stopped():
 		hurtBox.set_deferred("disabled", true);
 		invulnerableTimer.start()
-	_set_health(health-value)
+	_set_health(health - value)
 	damagePLayer.play("Damage");
 	damagePLayer.queue("Rest")
 
 
-func _process_walk()->void:
+func _process_walk() -> void:
 	if velocity.x < 0:
 		animationPlayer.play("WalkLeft");
 	elif velocity.x >= 0:
 		animationPlayer.play("WalkRight");
 	
-func _process_attack()->void:
+func _process_attack() -> void:
 	if animationPlayer.current_animation == "WalkLeft":
 		animationPlayer.play("AttackLeft")
 	if animationPlayer.current_animation == "WalkRight":
 		animationPlayer.play("AttackRight")
 
-func _process_flee()->void:
-	if velocity.x <=0:
+func _process_flee() -> void:
+	if velocity.x <= 0:
 		animationPlayer.play("RunLeft");
-	if velocity.x >0:
+	if velocity.x > 0:
 		animationPlayer.play("RunRight");
 
 func _physics_process(delta: float) -> void:
-	velocity.y += GRAVITY*delta
+	velocity.y += GRAVITY * delta
 	if state == states.WALK:
 		_process_walk();
 	if state == states.ATTACK:
@@ -89,7 +89,7 @@ func _on_DetectionBox_area_entered(_area: Area2D) -> void:
 
 #Player leaves hyena's bite detec area
 func _on_DetectionBox_area_exited(_area: Area2D) -> void:
-	biteHitbox.set_deferred("disabled",true)
+	biteHitbox.set_deferred("disabled", true)
 	if state == states.FLEE:
 		return
 	state = states.WALK;
@@ -99,9 +99,9 @@ func _on_DetectionBox_area_exited(_area: Area2D) -> void:
 func _on_HurtBox_area_entered(area: Area2D) -> void:
 	if area.name == "HurtBox":
 		return
-	var player = area.get_parent().get_parent()	
-	_damage(player.attack)
+	var player = area.get_parent().get_parent()
 	_determine_last_attacker_direction(area)
+	_damage(player.attack)
 
 func _on_VisibilityNotifier2D_screen_exited() -> void:
 	if !painSound.playing:
@@ -113,20 +113,20 @@ func _on_brownhyena_killed(_points) -> void:
 	biteHitbox.set_deferred("disabled", true);
 	hurtBox.set_deferred("disabled", true);
 	detectionBox.set_deferred("disabled", true)
-	velocity = HYENA_RUN_SPEED*attackerDirection
+	velocity = HYENA_RUN_SPEED * attackerDirection
 
 
 func _on_InvulnerableTimer_timeout() -> void:
-	if state!=states.FLEE:
+	if state != states.FLEE:
 		hurtBox.set_deferred("disabled", false);
 
 func _determine_last_attacker_direction(_area: Area2D):
 	var area_position = global_position;
 	var body_position = _area.global_position;
-	if body_position.x>=area_position.x:
-		attackerDirection = -1 #entered from right
-	elif body_position.x<area_position.x:
-		attackerDirection = 1 #enteded from the left
+	if body_position.x >= area_position.x:
+		attackerDirection = -1 # entered from right
+	elif body_position.x < area_position.x:
+		attackerDirection = 1 # enteded from the left
 
 func _on_hyenaInPain_finished() -> void:
 	queue_free()
