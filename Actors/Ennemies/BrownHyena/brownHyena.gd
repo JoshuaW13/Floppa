@@ -42,7 +42,7 @@ func _set_health(value):
 	health = clamp(value,0,6);
 	if health != prev_health:
 		if health == 0:
-			painSound.play()
+			painSound.play(0.5)
 			emit_signal("killed",points)
 
 func _damage(value):
