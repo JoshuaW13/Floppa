@@ -266,7 +266,6 @@ modulate = Color( 1, 0.00392157, 0.00392157, 1 )
 position = Vector2( 2.78771, -0.52511 )
 rotation = -1.5708
 shape = SubResource( 8 )
-disabled = true
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( 6.0625, -0.125 )
