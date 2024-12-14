@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Actors/Prey/Roller/roller-Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Actors/Prey/Roller/Roller.gd" type="Script" id=2]
 [ext_resource path="res://Sounds/birdNaughtyBoy.mp3" type="AudioStream" id=3]
+[ext_resource path="res://Sounds/rollerScared.mp3" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "DeathLeft"
@@ -195,6 +196,11 @@ shape = SubResource( 11 )
 stream = ExtResource( 3 )
 volume_db = -4.0
 pitch_scale = 1.15
+
+[node name="chirp" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
+volume_db = -4.0
+pitch_scale = 1.2
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

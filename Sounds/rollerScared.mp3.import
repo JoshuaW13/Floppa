@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/rollerScared.mp3-86e548166fea0a378a15d20931b319ad.mp3str"
+
+[deps]
+
+source_file="res://Sounds/rollerScared.mp3"
+dest_files=[ "res://.import/rollerScared.mp3-86e548166fea0a378a15d20931b319ad.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

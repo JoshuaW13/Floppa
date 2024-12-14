@@ -8,6 +8,7 @@ onready var animationplayer = $AnimationPlayer
 onready var detection = $Area2D/DetectionRange
 onready var deathSound = $deathSound
 onready var hurtbox = $Hitbox/collisionshape
+onready var chirp = $chirp
 #fields
 var threatDetected = false; 
 var state = FLYING
@@ -45,6 +46,8 @@ func _on_Area2D_body_entered(_body: Node) -> void:
 			animationplayer.play("FastFlyLeft");
 	
 	threatDetected = true;
+	if !deathSound.playing:
+		chirp.play()
 
 #Destroys if exits screen
 func _on_VisibilityNotifier2D_screen_exited() -> void:
@@ -54,7 +57,8 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 func _on_Hitbox_area_entered(_area: Area2D) -> void:
 	hide()
 	hurtbox.set_deferred("disabled", true)
-	emit_signal("killed",points)	
+	emit_signal("killed",points)
+	chirp.stop()
 	deathSound.play()
 
 func _on_deathSound_finished() -> void:

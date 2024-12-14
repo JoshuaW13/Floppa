@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/goAwayFlee.mp3-d3291a619b4e3ba1830eb73fc5911d73.mp3str"
+
+[deps]
+
+source_file="res://Sounds/goAwayFlee.mp3"
+dest_files=[ "res://.import/goAwayFlee.mp3-d3291a619b4e3ba1830eb73fc5911d73.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

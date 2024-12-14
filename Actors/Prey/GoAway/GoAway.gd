@@ -11,6 +11,7 @@ onready var animationPlayer = $AnimationPlayer
 onready var detectionBox = $Area2D/DetectionBox
 onready var hurtbox = $HurtBox/hitbox
 onready var deathSound = $deathSound
+onready var chirp = $Chirp
 var state = FLYING;
 var velocity = Vector2((randi()%75+55), 0.0)
 
@@ -48,6 +49,8 @@ func _on_Area2D_body_entered(_body: Node) -> void:
 	elif velocity.x >0:
 		animationPlayer.play("DeathRight");
 	threatDetected = true;
+	if !deathSound.playing:
+		chirp.play()
 	detectionBox.set_deferred("disabled", true);
 	
 	velocity.y = -120
@@ -59,6 +62,7 @@ func _on_VisibilityNotifier2D_screen_exited() -> void:
 #goaway bird killed
 func _on_HurtBox_area_entered(_area: Area2D) -> void:
 	hide()
+	chirp.stop()
 	deathSound.play()
 	hurtbox.set_deferred("disabled", true)
 	emit_signal("killed",points)	
