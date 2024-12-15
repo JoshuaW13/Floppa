@@ -527,7 +527,6 @@ volume_db = -15.0
 pitch_scale = 1.15
 attenuation = 0.392292
 
-[connection signal="killed" from="." to="." method="_on_eagle_killed"]
 [connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
 [connection signal="area_entered" from="Detection" to="." method="_on_Detection_area_entered"]
