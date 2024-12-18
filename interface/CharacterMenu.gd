@@ -8,4 +8,5 @@ func _on_XButton_button_up() -> void:
 
 
 func _on_CharacterInfo_characterSelected() -> void:
+	AudioController.buttonSelection()
 	emit_signal("exit")

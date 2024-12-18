@@ -69,6 +69,7 @@ config/icon="res://CarcaleIcon.png"
 [autoload]
 
 PlayerData="*res://PlayerData.gd"
+AudioController="*res://AudioController.tscn"
 
 [debug]
 

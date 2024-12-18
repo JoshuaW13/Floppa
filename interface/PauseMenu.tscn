@@ -14,12 +14,12 @@
 [ext_resource path="res://interface/themes/MainTheme.tres" type="Theme" id=12]
 [ext_resource path="res://interface/fonts/PressStart2P-Regular.ttf" type="DynamicFontData" id=13]
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=1]
 size = 5
 outline_color = Color( 0.188235, 0.105882, 0.0901961, 1 )
 font_data = ExtResource( 13 )
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 5
 outline_color = Color( 0.188235, 0.105882, 0.0901961, 1 )
 font_data = ExtResource( 13 )
@@ -110,7 +110,7 @@ margin_top = 104.0
 margin_right = 240.0
 margin_bottom = 112.0
 theme = ExtResource( 12 )
-custom_fonts/font = SubResource( 2 )
+custom_fonts/font = SubResource( 1 )
 text = "Score: 678"
 align = 1
 
@@ -124,7 +124,7 @@ margin_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource( 12 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "Highscore: 678"
 align = 1
 __meta__ = {
@@ -142,6 +142,7 @@ texture_hover = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
 [connection signal="button_up" from="Control/PauseMenu/XButton" to="." method="_on_XButton_button_up"]
 [connection signal="button_up" from="Control/PauseMenu/homebutton" to="." method="_on_homebutton_button_up"]
 [connection signal="button_up" from="Control/PauseMenu/restartbutton" to="." method="_on_restartbutton_button_up"]

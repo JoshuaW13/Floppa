@@ -42,19 +42,22 @@ func player_died_menu(score):
 
 #exit pause when x pressed
 func _on_XButton_button_up() -> void:
+	AudioController.buttonClick()
 	toggle_pause()
 
 #pause button 
 func _on_pausebutton_button_up() -> void:
+	AudioController.buttonClick()	
 	toggle_pause()
 
-
 func _on_homebutton_button_up() -> void:
+	AudioController.buttonClick()
 	toggle_pause()
 	var _sceneChangeStatus = get_tree().change_scene("res://interface/TitleScreen.tscn")
 
 
 func _on_restartbutton_button_up() -> void:
+	AudioController.buttonSelection()
 	toggle_pause()
 	var _sceneChangeStatus = get_tree().change_scene("res://World.tscn")
 

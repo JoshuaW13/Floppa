@@ -76,6 +76,7 @@ func _updateCharacter():
 	_setCharacterStats(characterArray[currentCharacterIndex]);	
 
 func _on_LeftButton_button_down() -> void:
+	AudioController.buttonClick()
 	if currentCharacterIndex==0:
 		currentCharacterIndex = 2
 	else: 
@@ -84,6 +85,7 @@ func _on_LeftButton_button_down() -> void:
 
 
 func _on_RightButton_button_down() -> void:
+	AudioController.buttonClick()
 	if currentCharacterIndex==2:
 		currentCharacterIndex = 0
 	else: 
