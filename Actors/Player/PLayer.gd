@@ -78,7 +78,8 @@ func _set_player_jump_speed(value):
 		2:
 			newSpeed = newSpeed * 0.80
 		4:
-			newSpeed = newSpeed*1.15
+			newSpeed = newSpeed*1.45
+			GRAVITY = 1500
 	player_speed.y = newSpeed
 
 func _set_attack(value):
