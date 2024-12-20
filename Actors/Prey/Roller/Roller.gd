@@ -15,7 +15,7 @@ var state = FLYING
 var velocity = Vector2(95.0,0.0);
 
 func _ready() -> void:
-	points = 3;
+	points = 5;
 
 func _decideAnimation() ->void:
 	if threatDetected:

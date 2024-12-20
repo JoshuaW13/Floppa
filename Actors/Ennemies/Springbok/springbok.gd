@@ -21,7 +21,7 @@ onready var grunt = $grunt
 
 func _ready() -> void:
 	grunt.play(2.0)
-	points=5
+	points=4
 	_set_health(2);
 
 func init(direction):

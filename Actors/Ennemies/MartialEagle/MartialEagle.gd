@@ -23,7 +23,7 @@ onready var hitbox = $HitBox/CollisionShape2D
 onready var beakHitbox = $beakHitBox/CollisionShape2D
 
 func _ready() -> void:
-	points = 7
+	points = 6
 	detection.set_deferred("disabled", true)
 	_set_health(2)
 

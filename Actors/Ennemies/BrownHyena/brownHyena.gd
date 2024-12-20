@@ -23,7 +23,7 @@ onready var painSound = $hyenaInPain
 
 func _ready() -> void:
 	_set_health(4)
-	points = 8;
+	points = 5;
 	biteHitbox.set_deferred("disabled", true);
 
 func init(direction):
