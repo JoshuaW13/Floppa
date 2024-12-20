@@ -1,6 +1,7 @@
 extends Node
 class_name CharacterData
 
+var character = PlayerData.characters.FLOPPA
 var spritePath = ""
 var imagePath = ""
 var toolTip = ""

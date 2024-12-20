@@ -29,21 +29,23 @@ func _ready() -> void:
 	powerBox._setTexturePath("res://interface/images/Claw.png")
 	healthBox._setTexturePath("res://interface/images/healthIcon.png")
 	jumpBox._setTexturePath("res://interface/images/Jump.png")
-	_setupCharacterData();	
+	_setupCharacterData();
+	currentCharacterIndex = PlayerData.currentCharacter
 	_setCharacterStats(characterArray[currentCharacterIndex]);
 
 func _setupCharacterData():
 	# Caracal
 	var caracalData = characterDataClass.new()
-	characterArray.append(_setCharacterData(caracalData,3,3,3,3, caracalSpriteSheetPath, caracalImagePath, "", 1.0))
+	characterArray.append(_setCharacterData(PlayerData.characters.FLOPPA,caracalData,3,3,3,3, caracalSpriteSheetPath, caracalImagePath, "", 1.0))
 	#Serval
 	var servalData = characterDataClass.new()
-	characterArray.append(_setCharacterData(servalData,4,3,3,4, servalSpriteSheetPath, servalImagePath, SERVAL_TOOLTIP, 1.5))
+	characterArray.append(_setCharacterData(PlayerData.characters.SERVAL,servalData,4,3,3,4, servalSpriteSheetPath, servalImagePath, SERVAL_TOOLTIP, 1.5))
 	#Lynx 
 	var lynxData = characterDataClass.new()
-	characterArray.append(_setCharacterData(lynxData,2,4,2,2, lynxSpriteSheetPath, lynxImagePath, LYNX_TOOLTIP, 1.0))
+	characterArray.append(_setCharacterData(PlayerData.characters.LYNX,lynxData,2,4,2,2, lynxSpriteSheetPath, lynxImagePath, LYNX_TOOLTIP, 1.0))
 
-func _setCharacterData(my_character, speed, power, health, jump, sprite, image, tooltip, attackSpeed):
+func _setCharacterData(character,my_character, speed, power, health, jump, sprite, image, tooltip, attackSpeed):
+	my_character.character = character
 	my_character.speedValue =speed
 	my_character.powerValue = power
 	my_character.healthValue = health
@@ -108,6 +110,6 @@ func _on_TextureButton_button_down() -> void:
 	var my_character = characterArray[currentCharacterIndex];
 	if(!_character_unlocked()):
 		return
-	PlayerData._setCharacterInfo(my_character.speedValue, my_character.powerValue,my_character.healthValue,my_character.jumpValue, my_character.spritePath)
+	PlayerData._setCharacterInfo(my_character.character,my_character.speedValue, my_character.powerValue,my_character.healthValue,my_character.jumpValue, my_character.spritePath)
 	PlayerData.attackSpeed = my_character.attackSpeed
 	emit_signal("characterSelected")

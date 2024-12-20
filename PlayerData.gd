@@ -5,11 +5,18 @@ const SERVAL_SCORE = 75;
 const LYNX_KILL_COUNT = 10;
 
 #unlocks
-var serval = false;
-var lynx = false;
+var serval = true;
+var lynx = true;
 signal character_unlocked(notificationText)
 
+enum characters {
+	FLOPPA=0,
+	SERVAL=1,
+	LYNX=2
+}
+
 #stats
+var currentCharacter = characters.FLOPPA
 var speed = 3
 var power = 3
 var health =3
@@ -30,7 +37,8 @@ func check_Killed_Ennemies(killedEnnemies):
 		lynx = true
 		emit_signal("character_unlocked", "Lynx Unlocked!")
 
-func _setCharacterInfo(newSpeed, newPower, newHealth, newJump, newSprite):
+func _setCharacterInfo(character, newSpeed, newPower, newHealth, newJump, newSprite):
+	currentCharacter = character
 	speed = newSpeed
 	power = newPower
 	health = newHealth
