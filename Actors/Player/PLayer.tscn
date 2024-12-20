@@ -1262,7 +1262,6 @@ pitch_scale = 1.08
 stream = ExtResource( 8 )
 pitch_scale = 0.85
 
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Jump" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
 [connection signal="soundFinished" from="SoundEffects" to="." method="_on_SoundEffects_soundFinished"]
