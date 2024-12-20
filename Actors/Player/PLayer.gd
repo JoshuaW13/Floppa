@@ -59,7 +59,6 @@ func _set_health(value):
 	if health != prev_health:
 		emit_signal("health_update", health)
 		if health == 0:
-			print("Hurtbox should be disabled!");
 			hurtbox.set_deferred("disabled", true);
 			hide()
 			kill();
